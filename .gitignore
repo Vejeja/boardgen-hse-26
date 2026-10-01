@@ -10,6 +10,7 @@ htmlcov/
 /build/
 
 .env
+*.log
 
 
 .vscode/

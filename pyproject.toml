@@ -62,4 +62,5 @@ line-ending = "auto"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 markers = [
+    "integration: multi-component tests that may touch larger artifacts",
 ]
