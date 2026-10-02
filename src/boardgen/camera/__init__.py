@@ -1,0 +1,1 @@
+"""Camera components for BoardGen."""

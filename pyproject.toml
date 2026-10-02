@@ -10,6 +10,10 @@ dependencies = [
     "numpy>=2.0.0",
     "opencv-python>=4.10.0.0",
     "Pillow>=10.4.0",
+    "PyYAML>=6.0.2",
+    "scikit-image>=0.24.0",
+    "trimesh>=4.4.0",
+    "scipy>=1.14.0",
 ]
 
 [project.scripts]
@@ -73,6 +77,7 @@ line-ending = "auto"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 markers = [
+    "unit: fast CPU-only tests",
     "integration: multi-component tests that may touch larger artifacts",
     "gpu: tests requiring CUDA/MPS or other GPU support",
 ]
