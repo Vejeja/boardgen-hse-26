@@ -9,6 +9,8 @@ htmlcov/
 /dist/
 /build/
 
+/cache/
+/.cache/
 .env
 *.log
 
