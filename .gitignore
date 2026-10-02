@@ -11,6 +11,7 @@ htmlcov/
 
 /cache/
 /.cache/
+/temp/
 .env
 *.log
 
