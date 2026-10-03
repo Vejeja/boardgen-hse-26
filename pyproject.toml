@@ -81,4 +81,5 @@ markers = [
     "unit: fast CPU-only tests",
     "integration: multi-component tests that may touch larger artifacts",
     "gpu: tests requiring CUDA/MPS or other GPU support",
+    "research: experimental benchmarks not required for the base suite",
 ]

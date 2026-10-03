@@ -5,11 +5,12 @@ import sys
 import cv2
 import numpy as np
 import pytest
+import trimesh
 from PIL import Image
 from scipy.spatial.transform import Rotation
 
 from boardgen.common.image_utils import load_view_masks
-from boardgen.evaluation.benchmark3d import hull, inputs, synthetic
+from boardgen.evaluation.benchmark3d import hull, inputs, render_textured, run_command, synthetic
 from boardgen.evaluation.benchmark_preview import read_colmap
 from boardgen.reconstruction.recon3d import load_masks
 
@@ -91,6 +92,11 @@ def test_heldout_masks_do_not_change_reconstructed_geometry(tmp_path):
     assert before["heldout"]["iou_mean"] > 0.8
 
 
+def test_external_exit_zero_without_artifact_is_failure(tmp_path):
+    artifact = tmp_path / "missing.ply"
+    result = run_command(tmp_path / "run", [sys.executable, "-c", "pass"], [str(artifact)])
+    assert result["returncode"] == 0
+    assert result["status"] == "failed"
 
 
 def test_unreadable_mask_fails_without_shifting_camera_alignment(tmp_path):
@@ -115,6 +121,21 @@ def test_binary_colmap_projection_uses_world_to_camera_translation(tmp_path):
     assert (name, width, height) == ("view_0000.png", 80, 60)
 
 
+def test_texture_renderer_resolves_occlusion_independent_of_face_order():
+    front = np.array([[1, 1, 1], [5, 1, 1], [1, 5, 1]], float)
+    vertices = np.vstack([front, front * 2])
+    mesh = trimesh.Trimesh(vertices=vertices, faces=[[0, 1, 2], [3, 4, 5]], process=False)
+    atlas = Image.fromarray(np.array([[[255, 0, 0], [0, 0, 255]]], np.uint8))
+    mesh.visual = trimesh.visual.texture.TextureVisuals(
+        uv=np.array([[0, 0]] * 3 + [[1, 0]] * 3), image=atlas
+    )
+    projection = np.column_stack([np.eye(3), np.zeros(3)])
+    first = render_textured(mesh, projection, 8, 8)
+    mesh.faces = mesh.faces[::-1]
+    second = render_textured(mesh, projection, 8, 8)
+    np.testing.assert_array_equal(first, second)
+    np.testing.assert_array_equal(first[2, 2], [255, 0, 0])
+    np.testing.assert_array_equal(first[7, 7], [0, 0, 0])
 
 
 

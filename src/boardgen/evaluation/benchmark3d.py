@@ -229,12 +229,95 @@ def evaluate(root: Path, mesh_path: Path, out: Path) -> dict:
     out.mkdir(parents=True, exist_ok=True)
     predicted = OpenCVSilhouetteRenderer().render(mesh, model, split.heldout)
     write_qc_sheet(str(out / "heldout.png"), masks, predicted, split.heldout, mesh_path.stem)
+    if mesh.visual.kind in ("texture", "vertex"):
+        result["appearance"] = appearance(root, mesh, model, split.heldout, out)
     write_json(out / "metrics.json", result)
     return result
 
 
+def render_textured(mesh: trimesh.Trimesh, projection: np.ndarray, width: int, height: int):
+    vertices = np.asarray(mesh.vertices)
+    hp = np.column_stack([vertices, np.ones(len(vertices))]) @ projection.T
+    uv = hp[:, :2] / np.maximum(hp[:, 2:3], 1e-12)
+    depth = np.full((height, width), np.inf)
+    image = np.zeros((height, width, 3), np.uint8)
+    texture_image = None
+    if mesh.visual.kind == "texture":
+        material = mesh.visual.material
+        texture_image = getattr(material, "image", None)
+        if texture_image is None:
+            texture_image = getattr(material, "baseColorTexture", None)
+        if texture_image is None:
+            raise ValueError("mesh has no supported base-color texture")
+        texture_image = np.asarray(texture_image.convert("RGB"))
+    for face in mesh.faces:
+        if np.any(hp[face, 2] <= 0):
+            continue
+        xy = uv[face]
+        lo = np.maximum(0, np.floor(xy.min(axis=0)).astype(int))
+        hi = np.minimum([width - 1, height - 1], np.ceil(xy.max(axis=0)).astype(int))
+        if np.any(hi < lo):
+            continue
+        matrix = np.vstack([xy.T, np.ones(3)])
+        if abs(np.linalg.det(matrix)) < 1e-10:
+            continue
+        xx, yy = np.meshgrid(np.arange(lo[0], hi[0] + 1), np.arange(lo[1], hi[1] + 1))
+        x, y = xx.ravel(), yy.ravel()
+        bary = np.column_stack([x, y, np.ones(len(x))]) @ np.linalg.inv(matrix).T
+        keep = np.all(bary >= -1e-8, axis=1)
+        weights = bary / hp[face, 2]
+        z = 1 / np.maximum(weights.sum(axis=1), 1e-12)
+        keep &= z < depth[y, x]
+        if not keep.any():
+            continue
+        weights = weights[keep]
+        weights /= np.maximum(weights.sum(axis=1, keepdims=True), 1e-12)
+        if texture_image is not None:
+            tex_uv = weights @ mesh.visual.uv[face]
+            th, tw = texture_image.shape[:2]
+            tx = np.clip(np.rint(tex_uv[:, 0] * (tw - 1)).astype(int), 0, tw - 1)
+            ty = np.clip(np.rint((1 - tex_uv[:, 1]) * (th - 1)).astype(int), 0, th - 1)
+            color = texture_image[ty, tx]
+        else:
+            color = weights @ mesh.visual.vertex_colors[face, :3]
+        image[y[keep], x[keep]] = np.clip(color, 0, 255).astype(np.uint8)
+        depth[y[keep], x[keep]] = z[keep]
+    return image
 
 
+def appearance(
+    root: Path, mesh: trimesh.Trimesh, model: TurntableCameraModel, indices: list[int], out: Path
+) -> dict:
+    rows, tiles = [], []
+    projections = model.projection_matrices()
+    for i in indices:
+        pred = render_textured(mesh, projections[i], model.image_width, model.image_height)
+        target = cv2.cvtColor(
+            cv2.imread(str(root / "reference/images" / f"view_{i:04d}.png")), cv2.COLOR_BGR2RGB
+        )
+        alpha = cv2.imread(str(root / "reference/masks" / f"view_{i:04d}.png"), 0)
+        target = (target.astype(float) * (alpha[:, :, None] / 255)).astype(np.uint8)
+        delta = (target.astype(float) - pred.astype(float)) / 255
+        foreground = alpha >= 128
+        mse = float(np.square(delta[foreground]).mean())
+        rows.append(
+            {
+                "view": i,
+                "foreground_psnr": float(-10 * np.log10(max(mse, 1e-12))),
+                "foreground_mae": float(np.abs(delta[foreground]).mean()),
+            }
+        )
+        cv2.imwrite(str(out / f"render_{i:04d}.png"), cv2.cvtColor(pred, cv2.COLOR_RGB2BGR))
+        tile = np.hstack([cv2.resize(target, (192, 192)), cv2.resize(pred, (192, 192))])
+        tiles.append(tile)
+    cv2.imwrite(str(out / "appearance.png"), cv2.cvtColor(np.vstack(tiles), cv2.COLOR_RGB2BGR))
+    return {
+        "foreground_psnr_mean": float(np.mean([r["foreground_psnr"] for r in rows])),
+        "foreground_mae_mean": float(np.mean([r["foreground_mae"] for r in rows])),
+        "per_view": rows,
+        "renderer": "CPU z-buffer, baked color, nearest texture sampling",
+        "note": "Mesh appearance only; not splat render metrics or relighting quality.",
+    }
 
 
 def hull(root: Path, grid: int = 64, consensus: float = 0.95) -> dict:
@@ -266,6 +349,38 @@ def hull(root: Path, grid: int = 64, consensus: float = 0.95) -> dict:
 
 
 
+def run_command(out: Path, command: list[str], expected: list[str], timeout: int = 600) -> dict:
+    if not command or not expected:
+        raise ValueError("a command and at least one expected artifact are required")
+    if out.exists():
+        raise ValueError("run directory already exists; choose a fresh run directory")
+    out.mkdir(parents=True, exist_ok=True)
+    paths = [Path(p) for p in expected]
+    if any(p.exists() for p in paths):
+        raise ValueError("expected output already exists; choose a fresh run directory")
+    started = time.perf_counter()
+    row = {"command": command, "provenance": provenance(), "expected": expected}
+    if command and Path(command[0]).is_file():
+        row["executable_sha256"] = file_hash(Path(command[0]))
+    with (out / "process.log").open("w") as log:
+        try:
+            process = subprocess.run(
+                command, stdout=log, stderr=subprocess.STDOUT, timeout=timeout, check=False
+            )
+            row["returncode"] = process.returncode
+            row["status"] = (
+                "success"
+                if process.returncode == 0 and all(p.is_file() and p.stat().st_size for p in paths)
+                else "failed"
+            )
+        except subprocess.TimeoutExpired:
+            row["status"] = "timeout"
+        except OSError as exc:
+            row.update(status="failed", error=str(exc))
+    row["runtime_seconds"] = time.perf_counter() - started
+    row["artifacts"] = {str(p): file_hash(p) for p in paths if p.is_file()}
+    write_json(out / "run.json", row)
+    return row
 
 
 
@@ -300,6 +415,11 @@ def main() -> None:
     ev.add_argument("root", type=Path)
     ev.add_argument("mesh", type=Path)
     ev.add_argument("out", type=Path)
+    run = sub.add_parser("run")
+    run.add_argument("--out", type=Path, required=True)
+    run.add_argument("--expected", action="append", required=True)
+    run.add_argument("--timeout", type=int, default=600)
+    run.add_argument("argv", nargs=argparse.REMAINDER)
     args = parser.parse_args()
     if args.command == "synthetic":
         synthetic(args.root, args.size, args.views)
@@ -318,7 +438,12 @@ def main() -> None:
         print(json.dumps(hull(args.root, args.grid, args.consensus)))
     elif args.command == "evaluate":
         print(json.dumps(evaluate(args.root, args.mesh, args.out)))
-
+    elif args.command == "run":
+        command = args.argv[1:] if args.argv[:1] == ["--"] else args.argv
+        row = run_command(args.out, command, args.expected, args.timeout)
+        print(json.dumps(row))
+        if row["status"] != "success":
+            raise SystemExit(1)
 
 
 if __name__ == "__main__":
