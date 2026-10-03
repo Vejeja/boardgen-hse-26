@@ -11,6 +11,8 @@ htmlcov/
 
 /cache/
 /.cache/
+.boardgen/
+/project.yaml
 /temp/
 .env
 *.log
