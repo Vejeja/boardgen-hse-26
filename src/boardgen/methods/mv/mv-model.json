@@ -1,0 +1,9 @@
+{
+  "repo": "tencent/Hunyuan3D-2mv",
+  "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+  "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+  "size": 4930777530,
+  "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+  "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+  "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+}

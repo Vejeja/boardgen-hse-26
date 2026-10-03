@@ -32,6 +32,10 @@ dev = [
 ]
 
 [project.optional-dependencies]
+research = [
+    "mlx==0.31.2; sys_platform == 'darwin' and platform_machine == 'arm64'",
+    "mlx-metal==0.31.2; sys_platform == 'darwin' and platform_machine == 'arm64'",
+]
 neural = [
     "torch>=2.4.0",
     "torchvision>=0.19.0",
