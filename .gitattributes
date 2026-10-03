@@ -1,1 +1,4 @@
+*.mp4 binary
 *.glb binary
+research/3d-quality/** -text
+metadata/video_index.csv -text

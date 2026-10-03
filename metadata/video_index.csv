@@ -1,0 +1,27 @@
+﻿video,class_id,yolo_class,ru_name,en_name,type,variant,color
+obj_01.mp4,0,shadow_dragon_minion,"Теневой дракон (белый, миньон)",Shadow Dragon (minion),monster,minion,white
+obj_02.mp4,1,shadow_dragon_master,"Теневой дракон (красный, вожак)",Shadow Dragon (master),monster,master,red
+obj_03.mp4,2,elemental_minion,"Элементаль (белый, миньон)",Elemental (minion),monster,minion,white
+obj_04.mp4,3,elemental_master,"Элементаль (красный, вожак)",Elemental (master),monster,master,red
+obj_05.mp4,4,ettin_minion,"Эттин (белый, миньон)",Ettin (minion),monster,minion,white
+obj_06.mp4,5,ettin_master,"Эттин (красный, вожак)",Ettin (master),monster,master,red
+obj_07.mp4,6,barghest_minion,"Баргест (белый, миньон)",Barghest (minion),monster,minion,white
+obj_08.mp4,7,barghest_master,"Баргест (красный, вожак)",Barghest (master),monster,master,red
+obj_09.mp4,8,zombie_minion,"Зомби (белый, миньон)",Zombie (minion),monster,minion,white
+obj_10.mp4,9,zombie_master,"Зомби (красный, вожак)",Zombie (master),monster,master,red
+obj_11.mp4,10,cave_spider_minion,"Пещерный паук (белый, миньон)",Cave Spider (minion),monster,minion,white
+obj_12.mp4,11,cave_spider_master,"Пещерный паук (красный, вожак)",Cave Spider (master),monster,master,red
+obj_13.mp4,12,flesh_moulder_minion,"Творец плоти (белый, миньон)",Flesh Moulder (minion),monster,minion,white
+obj_14.mp4,13,flesh_moulder_master,"Творец плоти (красный, вожак)",Flesh Moulder (master),monster,master,red
+obj_15.mp4,14,goblin_archer_minion,"Гоблин-лучник (белый, миньон)",Goblin Archer (minion),monster,minion,white
+obj_16.mp4,15,goblin_archer_master,"Гоблин-лучник (красный, вожак)",Goblin Archer (master),monster,master,red
+obj_17.mp4,16,merriod_minion,"Мерриод (белый, миньон)",Merriod (minion),monster,minion,white
+obj_18.mp4,17,merriod_master,"Мерриод (красный, вожак)",Merriod (master),monster,master,red
+obj_19.mp4,18,grisban_the_thirsty,Грисбан Жаждущий,Grisban the Thirsty,hero,,
+obj_20.mp4,19,widow_tarha,Вдова Тарха,Widow Tarha,hero,,
+obj_21.mp4,20,leoric_of_the_book,Леорик Книжник,Leoric of the Book,hero,,
+obj_22.mp4,21,jain_fairwood,Джейн Фэйрвуд,Jain Fairwood,hero,,
+obj_23.mp4,22,ashrian,Ашриан,Ashrian,hero,,
+obj_24.mp4,23,avric_albright,Аврик Олбрайт,Avric Albright,hero,,
+obj_25.mp4,24,syndrael,Синдраэль,Syndrael,hero,,
+obj_26.mp4,25,tomble_burrowell,Томбл Барроуэл,Tomble Burrowell,hero,,

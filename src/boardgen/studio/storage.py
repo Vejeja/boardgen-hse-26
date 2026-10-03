@@ -64,6 +64,9 @@ class Store:
         self.state.mkdir(parents=True, exist_ok=True)
         self.lock = threading.RLock()
         self.allowed_roots = {self.root}
+        grants = self.state / "roots.json"
+        if grants.exists():
+            self.allowed_roots.update(Path(p).resolve() for p in json.loads(grants.read_text()))
         self.db = self.state / "studio.sqlite3"
         with self.connect() as c:
             c.executescript("""
@@ -122,6 +125,13 @@ class Store:
             raise ValueError(f"Файл или папка отсутствует: {p}")
         return p
 
+    def grant(self, value: str) -> Path:
+        p = Path(value).expanduser().resolve()
+        if not p.is_dir():
+            raise ValueError("Укажите существующую папку")
+        self.allowed_roots.add(p)
+        json_write(self.state / "roots.json", [str(p) for p in sorted(self.allowed_roots)])
+        return p
 
     def load(self) -> Project:
         return Project.model_validate(yaml.safe_load(self.config_path.read_text()))
