@@ -71,6 +71,7 @@ research = [
     { name = "mapbox-earcut" },
     { name = "mlx", marker = "platform_machine == 'arm64' and sys_platform == 'darwin'" },
     { name = "mlx-metal", marker = "platform_machine == 'arm64' and sys_platform == 'darwin'" },
+    { name = "networkx" },
     { name = "pymeshlab" },
 ]
 
@@ -89,6 +90,7 @@ requires-dist = [
     { name = "mapbox-earcut", marker = "extra == 'research'", specifier = "==2.1.0" },
     { name = "mlx", marker = "platform_machine == 'arm64' and sys_platform == 'darwin' and extra == 'research'", specifier = "==0.31.2" },
     { name = "mlx-metal", marker = "platform_machine == 'arm64' and sys_platform == 'darwin' and extra == 'research'", specifier = "==0.31.2" },
+    { name = "networkx", marker = "extra == 'research'", specifier = ">=3.0" },
     { name = "numpy", specifier = ">=2.0.0" },
     { name = "opencv-python", specifier = ">=4.10.0.0" },
     { name = "pillow", specifier = ">=10.4.0" },
