@@ -18,6 +18,11 @@ REPOSITORY = (
     .expanduser()
     .resolve()
 )
+TOOLS = (
+    Path(os.environ.get("BOARDGEN_TOOLS_DIR", str(REPOSITORY / "tmp/benchmark_tools")))
+    .expanduser()
+    .resolve()
+)
 
 
 
