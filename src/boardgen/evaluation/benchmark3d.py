@@ -479,6 +479,45 @@ def run_command(out: Path, command: list[str], expected: list[str], timeout: int
     return row
 
 
+def constrain_mesh(root: Path, mesh_path: Path, out: Path, consensus: float = 0.95) -> dict:
+    data, model, masks = inputs(root)
+    mesh = trimesh.load(mesh_path, force="mesh")
+    points = np.asarray(mesh.vertices)
+    support = np.zeros(len(points), np.int32)
+    for i in data["fit"]:
+        uv, depth = model.project_points(points, i)
+        xy = np.rint(uv).astype(int)
+        valid = (
+            (depth > 0)
+            & (xy[:, 0] >= 0)
+            & (xy[:, 0] < model.image_width)
+            & (xy[:, 1] >= 0)
+            & (xy[:, 1] < model.image_height)
+        )
+        idx = np.flatnonzero(valid)
+        mask = cv2.dilate(masks[i], np.ones((3, 3), np.uint8))
+        support[idx] += mask[xy[idx, 1], xy[idx, 0]] > 0
+    keep_vertices = support / len(data["fit"]) >= consensus
+    keep = np.all(keep_vertices[mesh.faces], axis=1)
+    original = len(mesh.faces)
+    if not keep.any():
+        raise ValueError("no mesh faces are supported by the fit silhouettes")
+    mesh.update_faces(keep)
+    mesh.remove_unreferenced_vertices()
+    out.mkdir(parents=True, exist_ok=True)
+    mesh.export(out / "mesh.glb")
+    row = evaluate(root, out / "mesh.glb", out)
+    row["constraint"] = {
+        "method": "fit-mask-triangle-culling",
+        "consensus": consensus,
+        "pixel_tolerance": 1,
+        "fit": data["fit"],
+        "source_mesh_sha256": file_hash(mesh_path),
+        "faces_before": original,
+        "faces_after": len(mesh.faces),
+    }
+    write_json(out / "metrics.json", row)
+    return row
 
 
 def main() -> None:
@@ -511,6 +550,10 @@ def main() -> None:
     ev.add_argument("root", type=Path)
     ev.add_argument("mesh", type=Path)
     ev.add_argument("out", type=Path)
+    clip = sub.add_parser("constrain")
+    clip.add_argument("root", type=Path)
+    clip.add_argument("mesh", type=Path)
+    clip.add_argument("out", type=Path)
     run = sub.add_parser("run")
     run.add_argument("--out", type=Path, required=True)
     run.add_argument("--expected", action="append", required=True)
@@ -534,6 +577,8 @@ def main() -> None:
         print(json.dumps(hull(args.root, args.grid, args.consensus)))
     elif args.command == "evaluate":
         print(json.dumps(evaluate(args.root, args.mesh, args.out)))
+    elif args.command == "constrain":
+        print(json.dumps(constrain_mesh(args.root, args.mesh, args.out)))
     elif args.command == "run":
         command = args.argv[1:] if args.argv[:1] == ["--"] else args.argv
         row = run_command(args.out, command, args.expected, args.timeout)

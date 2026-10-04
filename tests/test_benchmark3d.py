@@ -10,7 +10,14 @@ from PIL import Image
 from scipy.spatial.transform import Rotation
 
 from boardgen.common.image_utils import load_view_masks
-from boardgen.evaluation.benchmark3d import hull, inputs, render_textured, run_command, synthetic
+from boardgen.evaluation.benchmark3d import (
+    constrain_mesh,
+    hull,
+    inputs,
+    render_textured,
+    run_command,
+    synthetic,
+)
 from boardgen.evaluation.benchmark_preview import read_colmap
 from boardgen.reconstruction.recon3d import load_masks
 
@@ -138,6 +145,25 @@ def test_texture_renderer_resolves_occlusion_independent_of_face_order():
     np.testing.assert_array_equal(first[7, 7], [0, 0, 0])
 
 
+def test_fit_mask_constraint_removes_floaters_without_reading_heldout_for_geometry(tmp_path):
+    root = tmp_path / "fixture"
+    synthetic(root, size=64, views=10)
+    mesh = trimesh.load(root / "truth.ply", force="mesh")
+    floater = mesh.copy()
+    floater.apply_translation([4, 0, 0])
+    combined = trimesh.util.concatenate([mesh, floater])
+    path = root / "with-floater.ply"
+    combined.export(path)
+    before = constrain_mesh(root, path, root / "before")
+    assert 0 < before["faces"] <= len(mesh.faces)
+    data = json.loads((root / "dataset.json").read_text())
+    for i in data["heldout"]:
+        Image.fromarray(np.zeros((64, 64), np.uint8)).save(
+            root / "reference/masks" / f"view_{i:04d}.png"
+        )
+    after = constrain_mesh(root, path, root / "after")
+    assert before["mesh_sha256"] == after["mesh_sha256"]
+    assert after["heldout"]["iou_mean"] == 0
 
 
 def test_real_export_keeps_neural_alpha_and_excludes_heldout_from_sfm(tmp_path, monkeypatch):
