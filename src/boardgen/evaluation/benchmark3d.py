@@ -344,9 +344,105 @@ def hull(root: Path, grid: int = 64, consensus: float = 0.95) -> dict:
     result["settings"] = {"grid": grid, "consensus": consensus, "bounds": data["bounds"]}
     write_json(out / "metrics.json", result)
 
+    seed_points(root, mesh, out / "mesh.ply")
     return result
 
 
+def seed_points(root: Path, mesh: trimesh.Trimesh, mesh_path: Path) -> None:
+    data, model, masks = inputs(root)
+    points, faces = trimesh.sample.sample_surface(mesh, 2500, seed=42)
+    normals = mesh.face_normals[faces]
+    observations = {i: [] for i in data["fit"]}
+    candidates = {}
+    extrinsics = model.opencv_extrinsics()
+    projections = model.projection_matrices()
+    for i in data["fit"]:
+        r, t = extrinsics[i]
+        center = -r.T @ t
+        hp = np.column_stack([points, np.ones(len(points))]) @ projections[i].T
+        xy = np.rint(hp[:, :2] / np.maximum(hp[:, 2:3], 1e-12)).astype(int)
+        valid = (hp[:, 2] > 0) & ((normals * (center - points)).sum(axis=1) > 0)
+        valid &= (
+            (xy[:, 0] >= 0)
+            & (xy[:, 0] < model.image_width)
+            & (xy[:, 1] >= 0)
+            & (xy[:, 1] < model.image_height)
+        )
+        valid_indices = np.flatnonzero(valid)
+        valid[valid_indices] &= masks[i, xy[valid_indices, 1], xy[valid_indices, 0]] > 0
+        candidates[i] = (xy, valid)
+    point_rows, kept, colors = [], [], []
+    for pi, point in enumerate(points):
+        seen, rgb = [], []
+        for i in data["fit"]:
+            xy, valid = candidates[i]
+            if valid[pi]:
+                x, y = xy[pi]
+                seen.append((i, x, y))
+        if len(seen) < 2:
+            continue
+        pid = len(kept) + 1
+        tracks = []
+        for i, x, y in seen:
+            tracks.extend([i + 1, len(observations[i])])
+            observations[i].append((x, y, pid))
+
+        i, x, y = seen[0]
+        rgb.append((i, x, y))
+        kept.append(point)
+        colors.append(rgb[0])
+        point_rows.append((pid, point, tracks))
+    image_cache = {
+        i: cv2.cvtColor(
+            cv2.imread(str(root / "reference/images" / f"view_{i:04d}.png")), cv2.COLOR_BGR2RGB
+        )
+        for i in data["fit"]
+    }
+    color_values = np.array([image_cache[i][y, x] for i, x, y in colors], np.uint8)
+    sparse = root / "train/sparse/0"
+    old = (sparse / "images.txt").read_text().splitlines()
+    headers = [line for line in old if line and not line.startswith("#")][::1]
+
+    headers = [
+        line for line in headers if len(line.split()) >= 10 and line.split()[-1].endswith(".png")
+    ]
+    lines = []
+    for header in headers:
+        i = int(header.split()[0]) - 1
+        lines.append(
+            header + "\n" + " ".join(f"{x} {y} {pid}" for x, y, pid in observations[i]) + "\n"
+        )
+    (sparse / "images.txt").write_text("".join(lines))
+    text = []
+    for (pid, point, tracks), color in zip(point_rows, color_values, strict=True):
+        text.append(
+            f"{pid} "
+            + " ".join(str(float(x)) for x in point)
+            + " "
+            + " ".join(str(int(x)) for x in color)
+            + " 0 "
+            + " ".join(str(x) for x in tracks)
+            + "\n"
+        )
+    (sparse / "points3D.txt").write_text("".join(text))
+    trimesh.points.PointCloud(np.array(kept), colors=color_values).export(root / "train/points.ply")
+    transforms_path = root / "train/transforms.json"
+    transforms = json.loads(transforms_path.read_text())
+    transforms["ply_file_path"] = "points.ply"
+    write_json(transforms_path, transforms)
+    write_json(
+        root / "train/seed.json",
+        {
+            "source": "fit-only-visual-hull",
+            "points": len(kept),
+            "fit": data["fit"],
+            "mesh_sha256": file_hash(mesh_path),
+            "note": "Shared initialization, not ground truth or held-out geometry.",
+        },
+    )
+
+    for name in ("cameras.txt", "images.txt", "points3D.txt"):
+        (sparse.parent / name).write_bytes((sparse / name).read_bytes())
 
 
 def run_command(out: Path, command: list[str], expected: list[str], timeout: int = 600) -> dict:
