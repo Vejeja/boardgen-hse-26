@@ -29,10 +29,15 @@ class Candidates(Figures):
 
 
 
+class Render(Model):
+    asset_ids: dict[str, Identifier] = Field(default_factory=dict)
+
+
 PARAMETERS = {
     "frames": Figures,
     "prepare": Figures,
     "prepare-candidates": Candidates,
+    "dataset": Render,
 }
 
 

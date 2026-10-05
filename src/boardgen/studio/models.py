@@ -110,18 +110,50 @@ class Prepare(Model):
         )
 
 
+class Board(Model):
+    image: str
+    width_m: Positive = 0.5
+    height_m: Positive = 0.5
 
 
 
 
+class SceneSources(Model):
+    boards: list[Board] = Field(default_factory=list)
+    skyboxes: list[str] = Field(default_factory=list)
 
 
 
 
+class Scenes(Model):
+    boards: list[Board] = Field(default_factory=list)
+    skyboxes: list[str] = Field(default_factory=list)
+    split_sources: dict[Literal["train", "val", "test"], SceneSources] = Field(default_factory=dict)
+    scene_type: Literal["board"] = "board"
 
 
+class RealDataset(Model):
+    path: str
+    role: Literal["development", "test_only"] = "development"
+    groups_csv: str | None = None
+    negative_labels_confirmed: bool = False
 
 
+class Dataset(Model):
+    name: str = Field("tabletop", pattern=r"^[a-zA-Z0-9_-]{1,80}$")
+    include_synthetic: bool = True
+    real_sources: list[RealDataset] = Field(default_factory=list)
+    val_fraction: float = Field(0.2, gt=0, lt=1)
+    seed: int = Field(42, ge=0, le=2147483647)
+    near_duplicates: Literal["review", "error"] = "review"
+    test_fraction: float = Field(0, ge=0, lt=1)
+    background_policy: Literal["none", "test_only", "all_splits"] = "none"
+
+    @model_validator(mode="after")
+    def fractions(self):
+        if self.val_fraction + self.test_fraction >= 1:
+            raise ValueError("Сумма долей val и test должна быть меньше 1")
+        return self
 
 
 
@@ -139,6 +171,8 @@ class Project(Model):
     name: str = Field("Boardgen", min_length=1, max_length=120)
     figures: list[Figure] = Field(default_factory=list)
     prepare: Prepare = Field(default_factory=Prepare)
+    scenes: Scenes = Field(default_factory=Scenes)
+    dataset: Dataset = Field(default_factory=Dataset)
 
     @model_validator(mode="after")
     def references(self):
