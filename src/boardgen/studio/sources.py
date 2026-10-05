@@ -40,4 +40,5 @@ def connect_videos(store, path: Path, mode: str):
     ids = {f.id for f in figures}
     data = project.model_dump()
     data["figures"] = [f.model_dump() for f in figures]
+    data["prepare"]["overrides"] = {k: v for k, v in project.prepare.overrides.items() if k in ids}
     return Project.model_validate(data)
