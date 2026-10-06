@@ -25,6 +25,14 @@ TOOLS = (
 )
 
 
+def blender():
+    explicit = os.environ.get("BLENDER_BIN")
+    local = TOOLS / "blender/Blender.app/Contents/MacOS/Blender"
+    return explicit or (
+        str(local)
+        if local.is_file()
+        else shutil.which("blender") or "/Applications/Blender.app/Contents/MacOS/Blender"
+    )
 
 
 def spirula():
@@ -44,7 +52,7 @@ def check(project):
     recipes = [project.prepare.resolved(f.id) for f in project.figures] or [
         project.prepare.defaults
     ]
-    paths = {"FFmpeg": shutil.which("ffmpeg")}
+    paths = {"FFmpeg": shutil.which("ffmpeg"), "Blender": blender()}
     if any(r.shape.method == "mv" for r in recipes):
         paths.update(
             {
@@ -98,6 +106,7 @@ def fingerprint():
         TOOLS / "hunyuan-mv-turbo/model.fp16.safetensors",
         TOOLS / "hunyuan-mv-turbo/config.yaml",
         spirula(),
+        Path(blender()),
         TOOLS / "openmvs/TextureMesh",
     ]
     neural = {}

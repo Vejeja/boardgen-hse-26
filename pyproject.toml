@@ -14,6 +14,7 @@ dependencies = [
     "scikit-image>=0.24.0",
     "trimesh>=4.4.0",
     "scipy>=1.14.0",
+    "OpenEXR==3.5.2",
     "pydantic==2.13.5",
 ]
 
@@ -88,5 +89,6 @@ markers = [
     "unit: fast CPU-only tests",
     "integration: multi-component tests that may touch larger artifacts",
     "gpu: tests requiring CUDA/MPS or other GPU support",
+    "blender: tests requiring Blender",
     "research: experimental benchmarks not required for the base suite",
 ]

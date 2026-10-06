@@ -9,6 +9,7 @@ htmlcov/
 /dist/
 /build/
 
+/out/
 /tmp/
 /cache/
 /.cache/
@@ -26,6 +27,7 @@ htmlcov/
 .DS_Store
 *.swp
 *.swo
+*.blend[0-9]*
 
 /videos/
 /classes.yaml
