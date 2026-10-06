@@ -2,10 +2,21 @@ import subprocess
 import sys
 
 import pytest
+from pydantic import ValidationError
 
 from boardgen.rendering.blender_render import BlenderSession
+from boardgen.studio.models import Training
+from boardgen.studio.parameters import Train
 
 
+def test_time_limits_are_validated_and_serialized():
+    assert Training(time=2.5).model_dump()["time"] == 2.5
+    assert Train(deadline_unix=1000).model_dump()["deadline_unix"] == 1000
+    for value in (0, -1, float("nan"), float("inf")):
+        with pytest.raises(ValidationError):
+            Training(time=value)
+        with pytest.raises(ValidationError):
+            Train(deadline_unix=value)
 
 
 def test_session_reuses_then_recycles_process_and_propagates_failure(tmp_path, monkeypatch):

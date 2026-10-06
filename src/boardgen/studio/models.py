@@ -223,8 +223,42 @@ class Dataset(Model):
         return self
 
 
+class Training(Model):
+    weights: str = "yolo11n.pt"
+    epochs: int = Field(100, ge=1, le=10000)
+    time: float | None = Field(None, gt=0, le=24, allow_inf_nan=False)
+    imgsz: int = Field(640, ge=64, le=2048, multiple_of=32)
+    batch: int = Field(4, ge=1, le=128)
+    patience: int = Field(20, ge=0, le=1000)
+    workers: int = Field(2, ge=0, le=16)
+    optimizer: Literal["auto", "SGD", "Adam", "AdamW"] = "auto"
+    lr0: float = Field(0.01, gt=0, le=1)
+    seed: int = Field(42, ge=0, le=2147483647)
+    deterministic: bool = True
+    mosaic: float = Field(0.5, ge=0, le=1)
+    cache: bool = False
+    nbs: int = Field(64, ge=1, le=256)
+    warmup_epochs: float = Field(3, ge=0, le=100)
+    weight_decay: float = Field(0.0005, ge=0, le=1)
+    cos_lr: bool = False
+    close_mosaic: int = Field(10, ge=0, le=1000)
+    hsv_h: float = Field(0.015, ge=0, le=1)
+    hsv_s: float = Field(0.7, ge=0, le=1)
+    hsv_v: float = Field(0.4, ge=0, le=1)
+    fliplr: float = Field(0.5, ge=0, le=1)
+    flipud: float = Field(0, ge=0, le=1)
+    mixup: float = Field(0, ge=0, le=1)
+    copy_paste: float = Field(0, ge=0, le=1)
+    scale: float = Field(0.5, ge=0, le=1)
+    translate: float = Field(0.1, ge=0, le=1)
 
 
+class Evaluation(Model):
+    split: Literal["val", "test"] = "val"
+    confidence: float = Field(0.25, gt=0, lt=1)
+    nms_iou: float = Field(0.7, gt=0, lt=1)
+    matching_iou: float = Field(0.5, gt=0, lt=1)
+    imgsz: int | None = Field(None, ge=64, le=2048, multiple_of=32)
 
 
 
@@ -240,6 +274,8 @@ class Project(Model):
     prepare: Prepare = Field(default_factory=Prepare)
     scenes: Scenes = Field(default_factory=Scenes)
     dataset: Dataset = Field(default_factory=Dataset)
+    training: Training = Field(default_factory=Training)
+    evaluation: Evaluation = Field(default_factory=Evaluation)
 
     @model_validator(mode="after")
     def references(self):
@@ -249,14 +285,18 @@ class Project(Model):
             raise ValueError("ID и названия фигур должны быть уникальны")
         if any(not n for n in names):
             raise ValueError("Название фигуры не может быть пустым")
+        if (
+            set(self.prepare.overrides) - set(ids)
+            or set(self.scenes.height_overrides) - set(ids)
+            or set(self.scenes.asset_versions) - set(ids)
+        ):
+            raise ValueError("Настройки ссылаются на отсутствующую фигуру")
         if self.scenes.selected_classes is not None and set(self.scenes.selected_classes) - set(
             ids
         ):
             raise ValueError("Выбран отсутствующий класс для сцен")
         if self.scenes.reference_class and self.scenes.reference_class not in ids:
             raise ValueError("Опорная фигура отсутствует")
-        if (set(self.prepare.overrides) - set(ids) or set(self.scenes.height_overrides) - set(ids) or set(self.scenes.asset_versions) - set(ids)):
-            raise ValueError("Настройки ссылаются на отсутствующую фигуру")
         for figure in self.figures:
             recipe = self.prepare.resolved(figure.id)
             views = figure.reviewed_views

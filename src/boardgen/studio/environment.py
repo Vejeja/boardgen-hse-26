@@ -69,7 +69,7 @@ def check(project):
                 "OpenMVS: импорт": TOOLS / "openmvs/InterfaceCOLMAP",
             }
         )
-    names = ["pymeshlab"]
+    names = ["ultralytics", "pymeshlab"]
     if any(r.matte.method == "birefnet" for r in recipes):
         names.extend(["torch", "transformers"])
     if any(r.shape.method == "mv" for r in recipes):
@@ -136,6 +136,7 @@ def fingerprint():
                 "torch",
                 "transformers",
                 "mlx",
+                "ultralytics",
                 "pymeshlab",
                 "trimesh",
                 "numpy",

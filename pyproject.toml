@@ -1,7 +1,7 @@
 [project]
 name = "boardgen"
 version = "0.3.0"
-description = "Tools for tabletop video processing."
+description = "Local application for tabletop video reconstruction, YOLO dataset generation and detector training."
 requires-python = ">=3.13"
 readme = "README.md"
 license = {text = "MIT"}
@@ -49,6 +49,9 @@ neural = [
     "einops>=0.8.0",
     "kornia>=0.7.0",
     "timm>=1.0.0",
+]
+studio = [
+    "ultralytics==8.4.174",
 ]
 
 [tool.uv]

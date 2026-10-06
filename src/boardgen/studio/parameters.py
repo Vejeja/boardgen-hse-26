@@ -25,10 +25,21 @@ class Render(Model):
     asset_ids: dict[str, Identifier] = Field(default_factory=dict)
 
 
+class Train(Model):
+    dataset_id: Identifier | None = None
+    resume_job_id: Identifier | None = None
+    accept_near_duplicates: bool = False
+    deadline_unix: float | None = Field(None, gt=0, allow_inf_nan=False)
 
 
+class Evaluate(Model):
+    dataset_id: Identifier
+    model_id: Identifier
 
 
+class Predict(Model):
+    model_id: Identifier
+    source: str = Field(min_length=1, max_length=4096)
 
 
 PARAMETERS = {
@@ -37,6 +48,9 @@ PARAMETERS = {
     "prepare-candidates": Candidates,
     "pilot": Render,
     "dataset": Render,
+    "train": Train,
+    "evaluate": Evaluate,
+    "predict": Predict,
 }
 
 
