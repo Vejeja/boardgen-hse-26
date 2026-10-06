@@ -71,6 +71,11 @@ class Store:
         with self.connect() as c:
             c.executescript("""
                 PRAGMA journal_mode=WAL;
+                CREATE TABLE IF NOT EXISTS jobs (
+                  id TEXT PRIMARY KEY, kind TEXT NOT NULL, status TEXT NOT NULL,
+                  created TEXT NOT NULL, updated TEXT NOT NULL, snapshot TEXT NOT NULL,
+                  parameters TEXT NOT NULL, result TEXT, error TEXT, pid INTEGER,
+                  cancel INTEGER NOT NULL DEFAULT 0);
                 CREATE TABLE IF NOT EXISTS artifacts (
                   id TEXT PRIMARY KEY, kind TEXT NOT NULL, figure_id TEXT,
                   cache_key TEXT NOT NULL, path TEXT NOT NULL, created TEXT NOT NULL);
@@ -256,6 +261,46 @@ class Store:
             )
         return self.artifact(artifact_id, verify=False)
 
+    def jobs(self, limit=100, statuses=None):
+        where = " WHERE status IN (" + ",".join("?" for _ in statuses) + ")" if statuses else ""
+        parameters = tuple(statuses or ()) + ((limit,) if limit else ())
+        with self.connect() as c:
+            rows = c.execute(
+                "SELECT * FROM jobs"
+                + where
+                + " ORDER BY created DESC"
+                + (" LIMIT ?" if limit else ""),
+                parameters,
+            ).fetchall()
+        return [self.job_dict(r) for r in rows]
 
+    @staticmethod
+    def job_dict(row):
+        data = dict(row)
+        for key in ("snapshot", "parameters", "result"):
+            data[key] = json.loads(data[key]) if data[key] else None
+        return data
 
+    def job(self, job_id):
+        with self.connect() as c:
+            row = c.execute("SELECT * FROM jobs WHERE id=?", (job_id,)).fetchone()
+        if not row:
+            raise ValueError("Задание не найдено")
+        return self.job_dict(row)
 
+    def update_job(self, job_id, **values):
+        allowed = {"status", "result", "error", "pid", "cancel"}
+        if set(values) - allowed:
+            raise ValueError("Unsupported job field")
+        values["updated"] = now()
+        with self.connect() as c:
+            c.execute(
+                f"UPDATE jobs SET {','.join(k + '=?' for k in values)} WHERE id=?",
+                (
+                    *[
+                        json.dumps(v, ensure_ascii=False) if k == "result" else v
+                        for k, v in values.items()
+                    ],
+                    job_id,
+                ),
+            )

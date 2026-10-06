@@ -20,6 +20,7 @@ dependencies = [
 
 [project.scripts]
 boardgen = "boardgen.cli:main"
+boardgen-project = "boardgen.studio.cli:main"
 
 [build-system]
 requires = ["hatchling"]
