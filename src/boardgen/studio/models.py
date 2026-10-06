@@ -116,6 +116,26 @@ class Board(Model):
     height_m: Positive = 0.5
 
 
+class Camera(Model):
+    distance_m: tuple[Positive, Positive] = (0.8, 1.2)
+    elevation_deg: tuple[float, float] = (25, 45)
+    azimuth_deg: tuple[float, float] = (160, 340)
+    fov_deg: float = Field(45, ge=35, le=65)
+    jitter_xy_m: float = Field(0.03, ge=0, le=1)
+    jitter_roll_deg: float = Field(4, ge=0, le=45)
+    exposure_ev: float = Field(-1.4, ge=-10, le=10)
+
+    @model_validator(mode="after")
+    def ranges(self):
+        for key in ("distance_m", "elevation_deg", "azimuth_deg"):
+            lo, hi = getattr(self, key)
+            if not all(math.isfinite(v) for v in (lo, hi)) or lo > hi:
+                raise ValueError(f"{key}: диапазон должен возрастать")
+        if not 1 <= self.elevation_deg[0] <= self.elevation_deg[1] <= 90:
+            raise ValueError("Угол над полем: от 1 до 90°")
+        if not -360 <= self.azimuth_deg[0] <= self.azimuth_deg[1] <= 360:
+            raise ValueError("Азимут: от −360 до 360°")
+        return self
 
 
 class SceneSources(Model):
@@ -123,13 +143,60 @@ class SceneSources(Model):
     skyboxes: list[str] = Field(default_factory=list)
 
 
+class Platform(Model):
+    radius_m: Positive = 0.075
+    height_m: Positive = 0.018
+    elevation_deg: tuple[float, float] = (10, 50)
+    frame_fraction: tuple[float, float] = (0.25, 0.60)
+
+    @model_validator(mode="after")
+    def ranges(self):
+        if not 1 <= self.elevation_deg[0] <= self.elevation_deg[1] <= 90:
+            raise ValueError("Подиум: угол камеры от 1 до 90°")
+        if not 0.1 <= self.frame_fraction[0] <= self.frame_fraction[1] <= 0.8:
+            raise ValueError("Подиум: доля кадра от 0.1 до 0.8")
+        return self
 
 
 class Scenes(Model):
+    asset_versions: dict[str, Identifier] = Field(default_factory=dict)
+    selected_classes: list[str] | None = None
+    scale_basis: Literal["nominal", "shared_video"] = "nominal"
+    reference_class: str | None = None
+    count: int = Field(1000, ge=2, le=1000000)
+    seed: int = Field(42, ge=0, le=2147483647)
+    image_size: tuple[int, int] = (1280, 960)
+    objects_per_scene: tuple[int, int] = (4, 12)
+    negative_fraction: float = Field(0.05, ge=0, le=0.5)
     boards: list[Board] = Field(default_factory=list)
     skyboxes: list[str] = Field(default_factory=list)
+    environment_strength: float = Field(1, ge=0, le=20)
+    camera: Camera = Field(default_factory=Camera)
+    nominal_height_m: Positive = 0.05
+    height_overrides: dict[str, Positive] = Field(default_factory=dict)
+    min_side_px: int = Field(12, ge=1, le=512)
+    max_attempts: int = Field(10, ge=1, le=100)
+    neutral_ablation: bool = False
+    scene_type: Literal["board", "platform", "mixed"] = "board"
+    platform: Platform = Field(default_factory=Platform)
     split_sources: dict[Literal["train", "val", "test"], SceneSources] = Field(default_factory=dict)
-    scene_type: Literal["board"] = "board"
+    render_samples: int = Field(64, ge=1, le=256)
+    environment_rotation_deg: tuple[float, float] = (-180, 180)
+    light_energy: tuple[Positive, Positive] = (180, 180)
+    exposure_jitter_ev: float = Field(0, ge=0, le=3)
+    balanced_classes: bool = False
+    stratified_negatives: bool = False
+
+    @model_validator(mode="after")
+    def dimensions(self):
+        if not all(64 <= v <= 8192 for v in self.image_size):
+            raise ValueError("Размер изображения: от 64 до 8192 пикселей")
+        if not 1 <= self.objects_per_scene[0] <= self.objects_per_scene[1] <= 100:
+            raise ValueError("Число фигур: возрастающий диапазон от 1 до 100")
+        for pair in (self.environment_rotation_deg, self.light_energy):
+            if not all(math.isfinite(v) for v in pair) or pair[0] > pair[1]:
+                raise ValueError("Диапазоны освещения должны возрастать")
+        return self
 
 
 class RealDataset(Model):
@@ -182,7 +249,13 @@ class Project(Model):
             raise ValueError("ID и названия фигур должны быть уникальны")
         if any(not n for n in names):
             raise ValueError("Название фигуры не может быть пустым")
-        if (set(self.prepare.overrides) - set(ids)):
+        if self.scenes.selected_classes is not None and set(self.scenes.selected_classes) - set(
+            ids
+        ):
+            raise ValueError("Выбран отсутствующий класс для сцен")
+        if self.scenes.reference_class and self.scenes.reference_class not in ids:
+            raise ValueError("Опорная фигура отсутствует")
+        if (set(self.prepare.overrides) - set(ids) or set(self.scenes.height_overrides) - set(ids) or set(self.scenes.asset_versions) - set(ids)):
             raise ValueError("Настройки ссылаются на отсутствующую фигуру")
         for figure in self.figures:
             recipe = self.prepare.resolved(figure.id)

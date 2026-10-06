@@ -41,4 +41,13 @@ def connect_videos(store, path: Path, mode: str):
     data = project.model_dump()
     data["figures"] = [f.model_dump() for f in figures]
     data["prepare"]["overrides"] = {k: v for k, v in project.prepare.overrides.items() if k in ids}
+    scenes = data["scenes"]
+    for key in ("height_overrides", "asset_versions"):
+        scenes[key] = {k: v for k, v in scenes[key].items() if k in ids}
+    if scenes["selected_classes"] is not None:
+        scenes["selected_classes"] = [i for i in scenes["selected_classes"] if i in ids] or None
+    if scenes["reference_class"] not in ids:
+        if scenes["reference_class"] and scenes["scale_basis"] == "shared_video":
+            scenes["scale_basis"] = "nominal"
+        scenes["reference_class"] = None
     return Project.model_validate(data)

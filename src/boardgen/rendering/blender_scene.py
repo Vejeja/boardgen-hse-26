@@ -251,9 +251,23 @@ def render_spec(spec):
 
 
 def main():
-    args = sys.argv[sys.argv.index("--") + 1:]
-    spec = json.loads(open(args[0]).read())
-    render_spec(spec)
+    path = sys.argv[sys.argv.index("--") + 1]
+    if path == "--serve":
+        import traceback
+
+        for line in sys.stdin:
+            try:
+                with open(json.loads(line)["path"]) as stream:
+                    render_spec(json.load(stream))
+                print("BOARDGEN_RESULT " + json.dumps({"ok": True}), flush=True)
+            except Exception as error:
+                traceback.print_exc()
+                print("BOARDGEN_RESULT " + json.dumps({"error": str(error)}), flush=True)
+        return
+    with open(path) as stream:
+        spec = json.load(stream)
+    for scene in spec if isinstance(spec, list) else [spec]:
+        render_spec(scene)
 
 
 if __name__ == "__main__":

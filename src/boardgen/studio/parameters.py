@@ -21,22 +21,21 @@ class Candidates(Figures):
         return [v for v in VARIANTS if v in values]
 
 
-
-
-
-
-
-
-
-
 class Render(Model):
     asset_ids: dict[str, Identifier] = Field(default_factory=dict)
+
+
+
+
+
+
 
 
 PARAMETERS = {
     "frames": Figures,
     "prepare": Figures,
     "prepare-candidates": Candidates,
+    "pilot": Render,
     "dataset": Render,
 }
 
