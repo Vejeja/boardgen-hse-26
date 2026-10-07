@@ -19,6 +19,14 @@ def main():
     commands.add_parser("schema", help="Print the versioned project JSON Schema")
     commands.add_parser("doctor", help="Check selected local backends")
     commands.add_parser("list", help="List jobs and published versions")
+    export = commands.add_parser("export", help="Export an idle project with results and history")
+    export.add_argument("--output", type=Path, required=True)
+    export.add_argument("--repository", type=Path, default=environment.REPOSITORY)
+    restore = commands.add_parser("restore", help="Restore a snapshot into a new project directory")
+    restore.add_argument("--bundle", type=Path, required=True)
+    restore.add_argument("--repository", type=Path, default=environment.REPOSITORY)
+    verify = commands.add_parser("verify-bundle", help="Verify all snapshot parts and contents")
+    verify.add_argument("--bundle", type=Path, required=True)
     selection = commands.add_parser(
         "import-selection", help="Import gallery choices into a new YOLO project"
     )
@@ -41,6 +49,28 @@ def main():
         from .models import Project
 
         print(json.dumps(Project.model_json_schema(), indent=2, ensure_ascii=False))
+        return
+    if args.command in {"export", "restore", "verify-bundle"}:
+        from .transfer import export_project, restore_project, verify_bundle
+
+        if args.command == "export":
+            result = export_project(Store(args.project), args.output, args.repository)
+            result = {
+                "output": str(args.output),
+                "artifacts": len(result["artifacts"]),
+                "jobs": len(result["jobs"]),
+                "parts": len(result["parts"]),
+            }
+        elif args.command == "restore":
+            result = restore_project(args.bundle, args.project, args.repository)
+        else:
+            result = verify_bundle(args.bundle)
+            result = {
+                "verified": True,
+                "files": len(result["files"]),
+                "parts": len(result["parts"]),
+            }
+        print(json.dumps(result, indent=2, ensure_ascii=False))
         return
     store = Store(args.project)
     project = store.load()
