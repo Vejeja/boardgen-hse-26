@@ -19,10 +19,24 @@ def main():
     commands.add_parser("schema", help="Print the versioned project JSON Schema")
     commands.add_parser("doctor", help="Check selected local backends")
     commands.add_parser("list", help="List jobs and published versions")
+    selection = commands.add_parser(
+        "import-selection", help="Import gallery choices into a new YOLO project"
+    )
+    selection.add_argument("--selection", type=Path, required=True)
+    selection.add_argument("--package", type=Path, required=True)
+    selection.add_argument("--count", type=int, default=1000)
     run = commands.add_parser("run", help="Execute a stage using its saved project settings")
     run.add_argument("kind", choices=sorted(PARAMETERS))
     run.add_argument("--parameters", type=Path, help="JSON file containing stage arguments")
     args = parser.parse_args()
+    if args.command == "import-selection":
+        from .selection import import_selection
+
+        result = import_selection(
+            json.loads(args.selection.read_text()), args.package, args.project, count=args.count
+        )
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return
     if args.command == "schema":
         from .models import Project
 

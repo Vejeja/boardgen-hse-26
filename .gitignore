@@ -10,9 +10,11 @@ htmlcov/
 /build/
 
 /out/
+/workspaces/
 /tmp/
 /cache/
 /.cache/
+/assets/
 .boardgen/
 /project.yaml
 /temp/
