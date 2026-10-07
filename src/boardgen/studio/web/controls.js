@@ -1,0 +1,232 @@
+import { api, state, esc, notice } from "./api.js";
+import { pageWindow } from "./lists.js";
+const tips = {
+  video:
+    "Снимите одну фигуру с разных сторон. Настройки папки применяются ко всем видео; для отдельных фигур можно задать исключения.",
+  config:
+    "Скачиваются текущие настройки, включая значения по умолчанию: видео, фигуры, обработка, сцены и обучение. Вычисленные файлы хранятся отдельно.",
+  environment:
+    "Проверка покажет недостающие программы.",
+};
+export function help(key) {
+  return `<button type="button" class="help" data-help="${esc(key)}" aria-label="Подсказка" aria-expanded="false">?</button>`;
+}
+let fieldIndex = 0;
+export function field(label, control, key = "", hint = "") {
+  if (control.includes('class="range"')) {
+    const bounds = [...control.matchAll(/<span>(.*?)<\/span>/g)].map(
+      (m) => m[1],
+    );
+    let boundIndex = 0;
+    control = control.replace(/<input\b[^>]*>/g, (tag) =>
+      tag.replace(
+        /^<input/,
+        `<input aria-label="${esc(label + " " + bounds[boundIndex++])}"`,
+      ),
+    );
+  }
+  const tag = control.match(/<(input|select|button)\b[^>]*>/);
+  let id = tag?.[0].match(/\bid="([^"]+)"/)?.[1];
+  if (tag && !id) {
+    id = `field-${++fieldIndex}`;
+    control = control.replace(tag[0], tag[0].replace(/^<\w+/, `$& id="${id}"`));
+  }
+  return `<div class="field"><span class="label">${id ? `<label for="${id}">${label}</label>` : label}${key ? help(key) : ""}</span>${control}${hint ? `<span class="hint">${hint}</span>` : ""}</div>`;
+}
+export function input(path, value, type = "text", extra = "") {
+  return `<input data-bind="${path}" type="${type}" value="${esc(value)}" ${extra}>`;
+}
+export function number(path, value, min, max, step = 1) {
+  return input(
+    path,
+    value,
+    "number",
+    `min="${min}" max="${max}" step="${step}"`,
+  );
+}
+export function select(path, value, options) {
+  return `<select data-bind="${path}">${options.map(([v, t]) => `<option value="${esc(v)}" ${String(v) === String(value) ? "selected" : ""}>${t}</option>`).join("")}</select>`;
+}
+export function check(path, value, label, key = "") {
+  return `<label class="check-row"><input type="checkbox" data-bind="${path}" ${value ? "checked" : ""}>${label}${key ? ` ${help(key)}` : ""}</label>`;
+}
+export function range(
+  path,
+  values,
+  min,
+  max,
+  step = 1,
+  unit = "",
+  labels = ["от", "до"],
+) {
+  return `<div class="range">${values.map((v, i) => `<label><span>${labels[i]}</span>${number(path + "." + i, v, min, max, step)}${unit}</label>`).join("")}</div>`;
+}
+export function empty(message) {
+  return `<div class="empty">${message}</div>`;
+}
+export function pagination(key, total, size = 5) {
+  const p = pageWindow(total, state.listPages[key] || 0, size);
+  state.listPages[key] = p.page;
+  if (total <= size) return "";
+  return `<nav class="pagination" aria-label="Страницы списка"><span>${p.start + 1}–${p.end} из ${total}</span><div class="actions"><button class="small" data-list-key="${key}" data-list-page="${p.page - 1}" ${p.page === 0 ? "disabled" : ""}>Назад</button><span>Страница ${p.page + 1} из ${p.pages}</span><button class="small" data-list-key="${key}" data-list-page="${p.page + 1}" ${p.page + 1 === p.pages ? "disabled" : ""}>Далее</button></div></nav>`;
+}
+export function listPage(items, key, size = 5) {
+  const p = pageWindow(items.length, state.listPages[key] || 0, size);
+  state.listPages[key] = p.page;
+  return {
+    rows: items.slice(p.start, p.end),
+    navigation: pagination(key, items.length, size),
+  };
+}
+export function wirePages(root, redraw) {
+  root.querySelectorAll("[data-list-key]").forEach((button) => {
+    button.onclick = async () => {
+      state.listPages[button.dataset.listKey] = Number(button.dataset.listPage);
+      await redraw(button.dataset.listKey);
+    };
+  });
+}
+export function advanced(body) {
+  return `<details><summary>Дополнительные настройки</summary>${body}</details>`;
+}
+export function pathRow(path, action, label = "Выбрать") {
+  return `<div class="path-row"><span class="path-value" title="${esc(path)}">${esc(path || "Не выбрано")}</span><button data-action="${action}">${label}</button></div>`;
+}
+let popover;
+export function wireHelp(root = document) {
+  root.querySelectorAll("[data-help]").forEach((button) =>
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      closeHelp();
+      const text = tips[button.dataset.help];
+      if (!text) return;
+      popover = document.createElement("div");
+      popover.className = "popover";
+      popover.role = "tooltip";
+      popover.textContent = text;
+      document.body.append(popover);
+      const rect = button.getBoundingClientRect();
+      const box = popover.getBoundingClientRect();
+      popover.style.left =
+        Math.max(10, Math.min(rect.left, innerWidth - box.width - 10)) + "px";
+      popover.style.top =
+        (rect.bottom + box.height + 15 < innerHeight
+          ? rect.bottom + 8
+          : Math.max(10, rect.top - box.height - 8)) + "px";
+      button.setAttribute("aria-expanded", "true");
+    }),
+  );
+}
+function closeHelp() {
+  popover?.remove();
+  popover = null;
+  document
+    .querySelectorAll("[data-help][aria-expanded=true]")
+    .forEach((e) => e.setAttribute("aria-expanded", "false"));
+}
+document.addEventListener("click", closeHelp);
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeHelp();
+});
+window.addEventListener("scroll", closeHelp, true);
+export async function choose({
+  title = "Выберите папку",
+  mode = "folder",
+  extensions = [],
+  multiple = false,
+  start = state.root,
+} = {}) {
+  const dialog = document.querySelector("#file-picker");
+  let current = start,
+    selected = [];
+  let resolve;
+  const promise = new Promise((r) => (resolve = r));
+  async function browse(path) {
+    try {
+      const data = await api("/fs/browse", {
+        method: "POST",
+        body: JSON.stringify({ path }),
+      });
+      current = data.path;
+      selected = [];
+      dialog.innerHTML = `<div class="dialog-head"><h2 id="picker-title">${title}</h2><button id="picker-close" aria-label="Закрыть">✕</button></div><div class="path-row"><button id="picker-up" aria-label="На уровень выше">↑</button><input id="picker-path" value="${esc(current)}"><button id="picker-open">Открыть</button></div><div class="files">${data.entries
+        .filter(
+          (e) =>
+            e.directory ||
+            (mode === "file" &&
+              (!extensions.length || extensions.includes(e.suffix))),
+        )
+        .map(
+          (e) =>
+            `<button class="file-entry" data-path="${esc(e.path)}" data-directory="${e.directory}"><span>${e.directory ? "▸" : "◇"}</span><span>${esc(e.name)}</span><span>${e.directory ? "Папка" : Math.round(e.size / 1024) + " КБ"}</span></button>`,
+        )
+        .join(
+          "",
+        )}</div><p class="muted small-text" id="picker-selection">${mode === "folder" ? "Будет подключена открытая папка." : "Выберите файл" + (multiple ? "ы" : "") + "."}</p><div class="actions spaced"><button id="picker-cancel">Отмена</button><button class="primary" id="picker-select">${mode === "folder" ? "Выбрать эту папку" : "Выбрать"}</button></div>`;
+      dialog.querySelector("#picker-close").onclick = () => finish(null);
+      dialog.querySelector("#picker-cancel").onclick = () => finish(null);
+      dialog.querySelector("#picker-up").onclick = () => browse(data.parent);
+      dialog.querySelector("#picker-open").onclick = () =>
+        browse(dialog.querySelector("#picker-path").value);
+      dialog.querySelector("#picker-path").onkeydown = (e) => {
+        if (e.key === "Enter") browse(e.target.value);
+      };
+      dialog.querySelectorAll(".file-entry").forEach(
+        (button) =>
+          (button.onclick = () => {
+            if (button.dataset.directory === "true") {
+              browse(button.dataset.path);
+              return;
+            }
+            if (!multiple) selected = [];
+            selected = selected.includes(button.dataset.path)
+              ? selected.filter((p) => p !== button.dataset.path)
+              : [...selected, button.dataset.path];
+            dialog
+              .querySelectorAll(".file-entry")
+              .forEach((b) =>
+                b.classList.toggle(
+                  "selected",
+                  selected.includes(b.dataset.path),
+                ),
+              );
+            dialog.querySelector("#picker-selection").textContent =
+              `Выбрано файлов: ${selected.length}`;
+          }),
+      );
+      dialog.querySelector("#picker-select").onclick = async () => {
+        const values = mode === "folder" ? [current] : selected;
+        if (!values.length) return notice("Выберите файл", true);
+        try {
+          for (const path of values)
+            await api("/fs/grant", {
+              method: "POST",
+              body: JSON.stringify({ path }),
+            });
+          finish(multiple ? values : values[0]);
+        } catch (e) {
+          notice(e.message, true);
+        }
+      };
+    } catch (e) {
+      notice(e.message, true);
+    }
+  }
+  function finish(value) {
+    dialog.close();
+    resolve(value);
+  }
+  dialog.oncancel = () => resolve(null);
+  await browse(current);
+  dialog.showModal();
+  return promise;
+}
+export function showResult(title, html) {
+  const dialog = document.querySelector("#result-dialog");
+  dialog.innerHTML = `<div class="dialog-head"><h2 id="result-title">${esc(title)}</h2><button id="result-close" aria-label="Закрыть">✕</button></div>${html}`;
+  dialog.querySelector("#result-close").onclick = () => dialog.close();
+  dialog.showModal();
+  wireHelp(dialog);
+  return dialog;
+}

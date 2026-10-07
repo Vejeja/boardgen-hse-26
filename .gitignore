@@ -24,6 +24,7 @@ htmlcov/
 /research/3d-quality/*
 !/research/3d-quality/videos/
 
+node_modules/
 .vscode/
 .idea/
 .DS_Store
