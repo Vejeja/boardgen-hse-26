@@ -15,11 +15,14 @@ dependencies = [
     "trimesh>=4.4.0",
     "scipy>=1.14.0",
     "OpenEXR==3.5.2",
+    "fastapi==0.142.4",
     "pydantic==2.13.5",
+    "uvicorn==0.54.0",
 ]
 
 [project.scripts]
 boardgen = "boardgen.cli:main"
+boardgen-studio = "boardgen.studio.api:main"
 boardgen-project = "boardgen.studio.cli:main"
 
 [build-system]
@@ -31,6 +34,7 @@ dev = [
     "ruff",
     "pytest",
     "pytest-cov",
+    "httpx>=0.28.1",
 ]
 
 [project.optional-dependencies]
