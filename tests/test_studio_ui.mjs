@@ -2,6 +2,7 @@ import { isChosenCandidate } from "../src/boardgen/studio/web/candidate_choice.j
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { pageWindow } from "../src/boardgen/studio/web/lists.js";
+import { imagePrediction } from "../src/boardgen/studio/web/result_data.js";
 
 test("every record remains reachable, including beyond the former 120-image cap", () => {
   const records = Array.from({ length: 127 }, (_, i) => i);
@@ -33,6 +34,19 @@ test("removing records clamps an old page and empty lists remain valid", () => {
     end: 5,
   });
 });
+
+test("saved JPEG images retain prediction counts from their PNG source", () => {
+  const record = { path: "/source/field.png", boxes: [[0.5, 0.5, 0.1, 0.1]] };
+  assert.equal(imagePrediction([record], "run/field.jpg"), record);
+  const empty = { path: "/source/empty.png", boxes: [] };
+  assert.equal(imagePrediction([empty], "run/empty.jpg").boxes.length, 0);
+});
+
+test("ambiguous image names do not borrow another image's predictions", () => {
+  const records = [{ path: "/a/field.png" }, { path: "/b/field.png" }];
+  assert.equal(imagePrediction(records, "run/field.jpg"), null);
+});
+
 
 test("identical meshes retain a choice of the exact version", () => {
   const candidate = { id: "new-version", mesh_sha256: "identical" };

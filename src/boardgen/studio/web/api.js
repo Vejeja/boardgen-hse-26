@@ -12,9 +12,12 @@ export const state = {
   viewTag: "front",
   selectedFramesFigure: null,
   datasetId: null,
+  modelId: null,
+  evaluationTab: "metrics",
   saving: false,
   listPages: {},
   jobHistory: { total: 0, active_count: 0, latest_resume: null },
+  predictionSource: "",
 };
 export async function api(path, options = {}) {
   const response = await fetch("/api" + path, {
@@ -52,6 +55,8 @@ export function applyProject(data, reset = false) {
     state.stage = "video";
     state.selectedFramesFigure = null;
     state.datasetId = null;
+    state.modelId = null;
+    state.predictionSource = "";
     state.listPages = {};
   }
   data.project.scenes.asset_versions ??= {};
