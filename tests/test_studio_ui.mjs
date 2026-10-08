@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { pageWindow } from "../src/boardgen/studio/web/lists.js";
+import { isChosenCandidate } from "../src/boardgen/studio/web/candidate_choice.js";
 
 test("every record remains reachable, including beyond the former 120-image cap", () => {
   const records = Array.from({ length: 127 }, (_, i) => i);
@@ -32,4 +33,13 @@ test("removing records clamps an old page and empty lists remain valid", () => {
     end: 5,
   });
 });
+
+test("identical meshes retain a choice of the exact version", () => {
+  const candidate = { id: "new-version", mesh_sha256: "identical" };
+  assert.equal(isChosenCandidate(candidate, { id: "old-version", mesh_sha256: "identical" }), false);
+  assert.equal(isChosenCandidate(candidate, { id: "new-version", mesh_sha256: "identical" }), true);
+  assert.equal(isChosenCandidate(candidate, { mesh_sha256: "identical" }), true);
+  assert.equal(isChosenCandidate(candidate, null), false);
+});
+
 

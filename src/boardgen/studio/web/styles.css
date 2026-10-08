@@ -765,6 +765,10 @@ dialog::backdrop {
     background: #26382c;
   }
 }
+
+.sticky-actions.comparison-actions {
+  position: static;
+}
 #config-json {
   font:
     13px/1.5 ui-monospace,

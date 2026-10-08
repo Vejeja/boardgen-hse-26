@@ -1,0 +1,305 @@
+#figure-comparison * {
+  box-sizing: border-box;
+}
+#figure-comparison {
+  margin: 0;
+  background: var(--panel);
+  color: var(--ink);
+  font: inherit;
+}
+#figure-comparison header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+}
+#figure-comparison h1 {
+  font-size: 24px;
+  margin: 0 0 6px;
+}
+#figure-comparison h2 {
+  font-size: 17px;
+  margin: 0;
+}
+#figure-comparison p {
+  margin: 8px 0;
+  color: var(--muted);
+}
+#figure-comparison {
+  padding: 0;
+}
+#figure-comparison button,
+#figure-comparison select {
+  font: inherit;
+  color: inherit;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+#figure-comparison button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+#figure-comparison button[aria-pressed="true"] {
+  background: var(--soft);
+  border-color: var(--accent);
+}
+#figure-comparison button:hover:not(:disabled) {
+  background: var(--soft);
+}
+#figure-comparison a {
+  color: var(--accent);
+}
+#figure-comparison label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+#figure-comparison .toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+#figure-comparison .selection {
+  padding: 14px;
+  background: var(--bg);
+  border-radius: 10px;
+}
+#figure-comparison .selection-heading {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+#figure-comparison #inventory {
+  font-size: 12px;
+  color: var(--muted);
+}
+#figure-comparison #candidates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+#figure-comparison #candidates label {
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--panel);
+}
+#figure-comparison input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+#figure-comparison input[type="range"] {
+  accent-color: var(--accent);
+  min-width: 60px;
+}
+#figure-comparison .controls {
+  margin-bottom: 16px;
+}
+#figure-comparison .comparison-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(245px, 29%);
+  gap: 18px;
+  align-items: start;
+}
+#figure-comparison #modelArea {
+  position: relative;
+  min-width: 0;
+}
+#figure-comparison #modelGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+#figure-comparison #modelArea canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+#figure-comparison .model-card {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  overflow: hidden;
+  min-width: 0;
+}
+#figure-comparison .card-header,
+#figure-comparison .card-footer {
+  padding: 10px;
+  position: relative;
+  background: var(--panel);
+  pointer-events: auto;
+}
+#figure-comparison .card-header h3 {
+  font-size: 15px;
+  margin: 0;
+}
+#figure-comparison .card-header p {
+  font-size: 12px;
+  margin: 4px 0 0;
+}
+#figure-comparison .model-window {
+  height: 280px;
+  position: relative;
+  pointer-events: none;
+}
+#figure-comparison .model-window img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.8;
+  pointer-events: none;
+}
+#figure-comparison .card-footer {
+  font-size: 12px;
+  min-height: 103px;
+}
+#figure-comparison .card-footer p {
+  margin: 0 0 7px;
+}
+#figure-comparison .card-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+#figure-comparison .card-links button {
+  padding: 5px 7px;
+  font-size: 12px;
+}
+#figure-comparison .model-card.favorite {
+  border-color: var(--accent);
+}
+#figure-comparison .model-card.loading .model-window:after {
+  content: "Загрузка сетки…";
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+#figure-comparison .reference {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  position: sticky;
+  top: 12px;
+}
+#figure-comparison .reference h2 {
+  margin-bottom: 12px;
+}
+#figure-comparison .frame-label {
+  display: block;
+}
+#figure-comparison .frame-label select {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+}
+#figure-comparison .frame-navigation {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  align-items: center;
+}
+#figure-comparison .frame-navigation input {
+  flex: 1;
+  width: 40px;
+}
+#figure-comparison .reference-modes {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+}
+#figure-comparison .reference img {
+  width: 100%;
+  max-height: 340px;
+  object-fit: contain;
+  background: #000;
+  border-radius: 5px;
+}
+#figure-comparison .reference p {
+  font-size: 12px;
+}
+#figure-comparison .hint {
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+#figure-comparison #status {
+  font-size: 13px;
+}
+#figure-comparison #alignment {
+  color: var(--accent);
+}
+#figure-comparison #frameInfo {
+  font-variant-numeric: tabular-nums;
+}
+@media (min-width: 1500px) {
+  #figure-comparison #modelGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 720px) {
+  #figure-comparison header,
+  #figure-comparison {
+    padding: 14px;
+  }
+  #figure-comparison .comparison-layout {
+    grid-template-columns: 1fr;
+  }
+  #figure-comparison .reference {
+    position: static;
+  }
+  #figure-comparison .reference img {
+    max-height: 230px;
+  }
+  #figure-comparison .model-window {
+    height: 220px;
+  }
+  #figure-comparison .selection-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+@media (max-width: 460px) {
+  #figure-comparison #modelGrid {
+    grid-template-columns: 1fr;
+  }
+}
+#figure-comparison .card-header {
+  min-height: 88px;
+}
+#figure-comparison header {
+  padding: 14px 24px;
+}
+#figure-comparison header h1 {
+  font-size: 22px;
+}
+#figure-comparison header p {
+  margin: 5px 0;
+}
+#figure-comparison header .toolbar {
+  margin-top: 8px;
+}
+#figure-comparison .controls {
+  font-size: 13px;
+}
+#figure-comparison .controls button {
+  padding: 6px 8px;
+}
+@media (max-width: 720px) {
+  #figure-comparison .card-header {
+    min-height: 108px;
+  }
+}
