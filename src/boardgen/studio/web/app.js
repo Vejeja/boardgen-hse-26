@@ -19,11 +19,13 @@ import { showArtifact } from "./results.js";
 import * as project from "./project.js";
 import * as prepare from "./prepare.js";
 import * as dataset from "./dataset.js";
-const pages = { project, prepare, dataset };
+import * as training from "./training.js";
+const pages = { project, prepare, dataset, training };
 const titles = {
   project: ["Проект", "Источники и окружение для работы."],
   prepare: ["Подготовка фигур", "Видео, маски, 3D-форма и текстуры."],
   dataset: ["Датасет", "Сцены с автоматической разметкой и разделение данных."],
+  training: ["Обучение", "Обучение YOLO на выбранной версии датасета."],
 };
 let saveTimer,
   activeLog = null,

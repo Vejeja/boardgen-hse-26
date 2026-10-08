@@ -52,6 +52,12 @@ const tips = {
     "CSV со столбцами image,group. Путь image относительно корня YOLO-датасета; одинаковый group объединяет кадры одной съёмки.",
   negative:
     "Отсутствующий файл разметки будет считаться пустым изображением только после этого подтверждения. Не включайте для неразмеченных фигур.",
+  batch:
+    "Число изображений за один шаг обучения. Если не хватает памяти, уменьшите значение.",
+  learningRate:
+    "Начальный шаг оптимизатора. При Auto Ultralytics подбирает его автоматически; для ручной настройки выберите SGD, Adam или AdamW.",
+  model:
+    "YOLO11n — самая лёгкая модель из этой серии. s/m/l/x используют больше памяти; также можно выбрать локальные веса detect (.pt).",
 };
 export function help(key) {
   return `<button type="button" class="help" data-help="${esc(key)}" aria-label="Подсказка" aria-expanded="false">?</button>`;
@@ -131,11 +137,25 @@ export function wirePages(root, redraw) {
     };
   });
 }
+export function trainingContext(metadata) {
+  const dataset = state.artifacts.find((a) => a.id === metadata.dataset_id);
+  const counts = metadata.dataset_counts || dataset?.manifest.metadata.counts;
+  const last = metadata.last_metrics || metadata.history?.at(-1) || {};
+  const zero = Number(last["metrics/mAP50(B)"]) === 0;
+  return `${counts ? `<p class="hint">Данные: ${counts.train} train · ${counts.val} val${counts.test ? ` · ${counts.test} test` : ""}</p>` : ""}${zero ? `<p class="callout warning">AP50 = 0: правильных обнаружений на val не получено.${counts?.train < 20 ? " Обучение на таком малом наборе не подтверждает качество модели." : ""}</p>` : ""}`;
+}
 export function advanced(body) {
   return `<details><summary>Дополнительные настройки</summary>${body}</details>`;
 }
 export function pathRow(path, action, label = "Выбрать") {
   return `<div class="path-row"><span class="path-value" title="${esc(path)}">${esc(path || "Не выбрано")}</span><button data-action="${action}">${label}</button></div>`;
+}
+export function versionSelector(kind, selected, id, label) {
+  const items = state.artifacts.filter((a) => a.kind === kind);
+  return field(
+    label,
+    `<select id="${id}"><option value="">Выберите результат</option>${items.map((a) => `<option value="${a.id}" ${selected === a.id ? "selected" : ""}>${esc(a.manifest.metadata.name || a.manifest.metadata.project?.dataset?.name || new Date(a.created).toLocaleString("ru"))} · ${a.id.slice(0, 6)}</option>`).join("")}</select>`,
+  );
 }
 let popover;
 export function wireHelp(root = document) {

@@ -4,6 +4,7 @@ import {
   empty,
   listPage,
   wirePages,
+  trainingContext,
 } from "./controls.js";
 import { modelViewer } from "./viewer.js";
 function annotated(
@@ -17,6 +18,19 @@ function annotated(
 ) {
   return `<figure><div style="position:relative"><img loading="lazy" src="${artifactUrl(a, path)}"><svg viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Рамки разметки" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none">${rows.map((r) => `<rect x="${r[1] - r[3] / 2}" y="${r[2] - r[4] / 2}" width="${r[3]}" height="${r[4]}" fill="none" stroke="${color}" ${dashed ? 'stroke-dasharray=".018 .01"' : ""} stroke-width=".004"/>`).join("")}</svg></div><figcaption>${esc(caption)}${rows.length ? "<br>" + rows.map((r) => esc(names[r[0]] ?? r[0])).join(", ") : " · без фигур"}</figcaption></figure>`;
 }
+function plot(history) {
+  const values = history
+    .map((r) => Number(r["metrics/mAP50-95(B)"] ?? r["metrics/mAP50-95"]))
+    .filter(Number.isFinite);
+  if (!values.length) return "";
+  const points = values
+    .map(
+      (v, i) =>
+        `${30 + (i / Math.max(1, values.length - 1)) * 650},${170 - v * 140}`,
+    )
+    .join(" ");
+  return `<p class="hint">mAP50–95 по эпохам</p><svg class="plot" viewBox="0 0 710 200" role="img" aria-label="mAP50–95 по эпохам"><path d="M30 25V170H690" fill="none" stroke="#9fac9f"/><polyline points="${points}" fill="none" stroke="#276d50" stroke-width="3"/><text x="8" y="33" font-size="11">1</text><text x="8" y="172" font-size="11">0</text><text x="30" y="190" font-size="11">1</text><text x="650" y="190" font-size="11">${values.length} эпох</text></svg>`;
+}
 export async function showArtifact(id) {
   if (!state.artifacts.some((x) => x.id === id)) return;
   const a = await api(`/artifacts/${id}`);
@@ -28,6 +42,7 @@ export async function showArtifact(id) {
     frames: "Кадры и маски",
     pilot: "Пробный рендер",
     dataset: "Версия датасета",
+    train: "Обучение YOLO",
   }[a.kind];
   if (a.kind === "figure")
     html = `<p>${esc(m.name)} · ${m.faces.toLocaleString("ru")} граней · ${m.origin === "research-import" ? "прежние вычисления" : "результат обработки"}</p><div class="viewer" id="model-viewer"></div><label class="check-row"><input type="checkbox" id="neutral-model">Показать геометрию без текстуры</label><div class="actions"><a href="${artifactUrl(a, m.mesh)}" download>Скачать GLB</a><a href="${artifactUrl(a, "manifest.json")}" target="_blank">Происхождение и параметры</a></div>${m.research_note ? `<p class="hint">${esc(m.research_note)}</p>` : ""}`;
@@ -100,6 +115,14 @@ export async function showArtifact(id) {
     gallery("train");
     return;
   }
+  if (a.kind === "train")
+    html = `<p class="hint">Датасет ${esc(m.dataset_id.slice(0, 6))} · ${esc(m.device)} · ${m.history.length} эпох</p>${trainingContext(m)}${plot(m.history)}<div class="actions"><a href="${artifactUrl(a, m.best)}" download>best.pt</a><a href="${artifactUrl(a, m.last)}" download>last.pt</a><a href="${artifactUrl(a, "training.json")}" target="_blank">Параметры и метрики</a></div>${files
+      .filter((p) => p.endsWith("results.png"))
+      .map(
+        (p) =>
+          `<img style="width:100%;margin-top:20px" src="${artifactUrl(a, p)}">`,
+      )
+      .join("")}`;
   const dialog = showResult(title, html);
   if (a.kind === "figure") {
     try {

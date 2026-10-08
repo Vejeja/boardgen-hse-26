@@ -11,6 +11,7 @@ export const state = {
   scope: "all",
   viewTag: "front",
   selectedFramesFigure: null,
+  datasetId: null,
   saving: false,
   listPages: {},
   jobHistory: { total: 0, active_count: 0, latest_resume: null },
@@ -50,6 +51,7 @@ export function applyProject(data, reset = false) {
     state.scope = "all";
     state.stage = "video";
     state.selectedFramesFigure = null;
+    state.datasetId = null;
     state.listPages = {};
   }
   data.project.scenes.asset_versions ??= {};
