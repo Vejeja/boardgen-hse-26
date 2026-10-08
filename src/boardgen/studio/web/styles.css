@@ -625,6 +625,16 @@ dialog::backdrop {
 .loading {
   padding: 40px;
 }
+.viewer {
+  width: 100%;
+  height: 440px;
+  background: #e8eeeb;
+  border-radius: 10px;
+}
+.viewer canvas {
+  width: 100%;
+  height: 100%;
+}
 .sticky-actions {
   position: sticky;
   bottom: 0;
@@ -750,6 +760,9 @@ dialog::backdrop {
   .notice.error {
     background: #ae4248;
     color: #fff;
+  }
+  .viewer {
+    background: #26382c;
   }
 }
 #config-json {

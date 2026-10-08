@@ -1,3 +1,5 @@
+# Pinned offline runtime for Studio.
+src/boardgen/studio/web/vendor/** linguist-vendored -diff -whitespace
 *.mp4 binary
 *.glb binary
 research/3d-quality/** -text
