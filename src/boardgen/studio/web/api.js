@@ -9,6 +9,8 @@ export const state = {
   page: sessionStorage.getItem("page") || "project",
   stage: "video",
   scope: "all",
+  viewTag: "front",
+  selectedFramesFigure: null,
   saving: false,
   listPages: {},
   jobHistory: { total: 0, active_count: 0, latest_resume: null },
@@ -47,6 +49,7 @@ export function applyProject(data, reset = false) {
   if (changed || reset) {
     state.scope = "all";
     state.stage = "video";
+    state.selectedFramesFigure = null;
     state.listPages = {};
   }
   data.project.scenes.asset_versions ??= {};
@@ -121,6 +124,14 @@ export function merged(a, b) {
         : v;
   return r;
 }
+export function recipe() {
+  return state.scope === "all"
+    ? state.project.prepare.defaults
+    : merged(
+        state.project.prepare.defaults,
+        state.project.prepare.overrides[state.scope],
+      );
+}
 export function setPath(object, path, value) {
   const keys = path.split(".");
   let node = object;
@@ -129,6 +140,11 @@ export function setPath(object, path, value) {
 }
 export function getPath(object, path) {
   return path.split(".").reduce((n, k) => n?.[k], object);
+}
+export function scopedFigures() {
+  return state.scope === "all"
+    ? state.project.figures
+    : state.project.figures.filter((f) => f.id === state.scope);
 }
 export const kindNames = {
   frames: "Кадры и маски",
