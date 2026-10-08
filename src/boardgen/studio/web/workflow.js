@@ -27,6 +27,11 @@ export async function updateReadiness() {
     "frames",
     "prepare",
     "prepare-candidates",
+    "pilot",
+    "dataset",
+    "train",
+    "evaluate",
+    "predict",
   ]) {
     const button = document.querySelector(`[data-action="${kind}"]`);
     if (!button) continue;

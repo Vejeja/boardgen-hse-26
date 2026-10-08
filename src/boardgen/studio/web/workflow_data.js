@@ -4,6 +4,17 @@ export function chosenFigures(project) {
     Object.keys(project.scenes.asset_versions);
   return project.figures.filter((f) => ids.includes(f.id));
 }
+export function splitCounts(count, val, test) {
+  if (val <= 0 || test < 0 || val + test >= 1) return null;
+
+  const rounded = (n) => {
+    const lower = Math.floor(n);
+    return n - lower === 0.5 ? lower + (lower % 2) : Math.round(n);
+  };
+  const train = rounded(count * (1 - val - test));
+  const endVal = rounded(count * (1 - test));
+  return { train, val: endVal - train, test: count - endVal };
+}
 function stable(value) {
   if (Array.isArray(value)) return value.map(stable);
   if (value && typeof value === "object")

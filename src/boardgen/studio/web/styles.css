@@ -593,6 +593,25 @@ summary {
   color: var(--muted);
   margin-top: 7px;
 }
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.metric {
+  background: var(--soft);
+  border-radius: 9px;
+  padding: 14px 18px;
+}
+.metric strong {
+  font-size: 24px;
+  display: block;
+  margin-top: 4px;
+}
+.metric span {
+  font-size: 11px;
+  color: var(--muted);
+}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -658,6 +677,19 @@ dialog::backdrop {
   margin-left: auto;
   color: var(--muted);
   font-size: 11px;
+}
+.board-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 105px 105px auto;
+  gap: 10px;
+  align-items: end;
+  margin-bottom: 12px;
+}
+.board-row img {
+  width: 48px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
 }
 .source-row {
   border: 1px solid var(--line);
@@ -783,6 +815,9 @@ dialog::backdrop {
   }
   .page-header .badge {
     margin-top: 10px;
+  }
+  .board-row {
+    grid-template-columns: minmax(0, 1fr) 80px 80px auto;
   }
   .view-selection {
     gap: 6px;
