@@ -50,6 +50,7 @@ class RunRequest(Model):
         "train",
         "evaluate",
         "predict",
+        "install",
     ]
     parameters: dict = Field(default_factory=dict)
 

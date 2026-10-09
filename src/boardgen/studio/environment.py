@@ -148,3 +148,131 @@ def fingerprint():
     }
 
 
+def install(project):
+    import urllib.request
+
+    if any(package(n) is None for n in ["torch", "transformers", "pymeshlab", "mlx"]):
+        uv = shutil.which("uv")
+        if not uv or not CHECKOUT:
+            raise ValueError(
+                "Для зависимостей Python выполните uv sync --locked --all-extras в checkout проекта"
+            )
+        subprocess.run([uv, "sync", "--locked", "--all-extras"], cwd=CHECKOUT, check=True)
+    if sys.platform != "darwin" or platform.machine() != "arm64":
+        raise ValueError(
+            "Автоустановка внешних программ поддерживает macOS arm64; задайте BLENDER_BIN и установите выбранный backend вручную"
+        )
+    TOOLS.mkdir(parents=True, exist_ok=True)
+    recipes = [project.prepare.resolved(f.id) for f in project.figures] or [
+        project.prepare.defaults
+    ]
+    need_mv = any(r.shape.method == "mv" for r in recipes)
+    need_spirula = any(
+        r.shape.method == "spirula" or r.appearance.registration == "orbit" for r in recipes
+    )
+    need_texture = any(r.appearance.method == "photo" for r in recipes)
+    downloads = [
+        (
+            "blender-4.5.14-macos-arm64.dmg",
+            "https://download.blender.org/release/Blender4.5/blender-4.5.14-macos-arm64.dmg",
+            "65134d9b07b20e2fa8d3c9e44f6f44ffb5c9774dd521b95f50387310241ca170",
+            "blender/Blender.app",
+            "Blender.app",
+        )
+    ]
+    if need_spirula:
+        downloads.append(
+            (
+                "spirula-2026.9.30-macos-vulkan-arm64.dmg",
+                "https://github.com/harry7557558/spirula-studio/releases/download/v2026.9.30/spirula-2026.9.30-macos-vulkan-arm64.dmg",
+                "7a43aa51ca60233129e547198cf0c4efe9f46de7e942980753f959b86a2908cc",
+                "Spirula Studio.app",
+                "Spirula Studio.app",
+            )
+        )
+    if need_texture:
+        downloads.append(
+            (
+                "OpenMVS_macOS_arm64.zip",
+                "https://github.com/cdcseacave/openMVS/releases/download/v2.4.0/OpenMVS_macOS_arm64.zip",
+                "3d4c616c97031b1ab6e2eecb0ddd5614fb99513c0782a32c9350602faf38799b",
+                "openmvs",
+                None,
+            )
+        )
+
+    def download(url, path, checksum):
+        if path.exists() and sha(path) == checksum:
+            return
+        part = path.with_suffix(".download")
+        print(f"Загрузка {path.name}", flush=True)
+        with urllib.request.urlopen(url, timeout=60) as response, part.open("wb") as stream:
+            shutil.copyfileobj(response, stream)
+        if sha(part) != checksum:
+            raise ValueError(f"Контрольная сумма не совпадает: {path.name}")
+        os.replace(part, path)
+
+    for filename, url, checksum, directory, app_name in downloads:
+        dest = TOOLS / directory
+        if dest.exists():
+            continue
+        path = TOOLS / filename
+        download(url, path, checksum)
+        if app_name:
+            mount = TOOLS / "studio-mount"
+            mount.mkdir(exist_ok=True)
+            subprocess.run(
+                [
+                    "hdiutil",
+                    "attach",
+                    "-readonly",
+                    "-nobrowse",
+                    "-mountpoint",
+                    str(mount),
+                    str(path),
+                ],
+                check=True,
+            )
+            try:
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                subprocess.run(["ditto", str(mount / app_name), str(dest)], check=True)
+            finally:
+                subprocess.run(["hdiutil", "detach", str(mount)], check=True)
+        else:
+            subprocess.run(["unzip", "-q", str(path), "-d", str(dest)], check=True)
+    if not shutil.which("ffmpeg"):
+        if not shutil.which("brew"):
+            raise ValueError("Установите FFmpeg и добавьте его в PATH")
+        subprocess.run(["brew", "install", "ffmpeg"], check=True)
+    if need_mv:
+        source = TOOLS / "hunyuan3d-swift"
+        commit = "292331f4d26ddb80b9dcea6bcb5629ff82f12b82"
+        if not source.exists():
+            subprocess.run(
+                ["git", "clone", "https://github.com/ZimengXiong/Hunyuan3D-Swift.git", str(source)],
+                check=True,
+            )
+            subprocess.run(["git", "-C", str(source), "checkout", "--detach", commit], check=True)
+        if (
+            subprocess.check_output(
+                ["git", "-C", str(source), "rev-parse", "HEAD"], text=True
+            ).strip()
+            != commit
+        ):
+            raise ValueError("Версия Hunyuan MLX отличается от зафиксированной")
+        meta = json.loads((PACKAGE / "methods/mv/mv-model.json").read_text())
+        folder = TOOLS / "hunyuan-mv-turbo"
+        folder.mkdir(exist_ok=True)
+        shutil.copy2(
+            PACKAGE / "methods/mv/mv-config.yaml",
+            folder / "config.yaml",
+        )
+        url = meta.get("url") or meta.get("download_url")
+        if not url:
+            raise ValueError("Нет URL в зафиксированном описании весов MV")
+        download(url, folder / "model.fp16.safetensors", meta["sha256"])
+    if any(r.matte.method == "birefnet" for r in recipes):
+        from boardgen.video.neuralseg import load_model
+
+        load_model()
+    return check(project)

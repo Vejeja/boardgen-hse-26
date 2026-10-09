@@ -153,7 +153,10 @@ export function wire(navigate, redraw, run, flush) {
               .filter((i) => !i.ready)
               .map((i) => esc(i.name))
               .join(", ")
-      } </div><details><summary>Диагностика</summary><p class="small-text muted">Python ${esc(result.python)} · ${esc(result.executable)}</p><table><thead><tr><th>Компонент</th><th>Состояние</th><th>Версия или путь</th></tr></thead><tbody>${result.items.map((i) => `<tr><td>${esc(i.name)}</td><td>${i.ready ? "Готов" : "Отсутствует"}</td><td>${esc(i.version || i.path)}</td></tr>`).join("")}</tbody></table></details>`;
+      } ${!result.ready ? '<button class="small" id="install-environment">Установить недостающее</button>' : ""}</div><details><summary>Диагностика</summary><p class="small-text muted">Python ${esc(result.python)} · ${esc(result.executable)}</p><table><thead><tr><th>Компонент</th><th>Состояние</th><th>Версия или путь</th></tr></thead><tbody>${result.items.map((i) => `<tr><td>${esc(i.name)}</td><td>${i.ready ? "Готов" : "Отсутствует"}</td><td>${esc(i.version || i.path)}</td></tr>`).join("")}</tbody></table></details>`;
+    document
+      .querySelector("#install-environment")
+      ?.addEventListener("click", () => run("install"));
   };
   document.querySelector("[data-action=next-prepare]").onclick = () =>
     navigate("prepare");

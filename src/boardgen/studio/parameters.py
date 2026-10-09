@@ -51,6 +51,7 @@ PARAMETERS = {
     "train": Train,
     "evaluate": Evaluate,
     "predict": Predict,
+    "install": Model,
 }
 
 

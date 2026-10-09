@@ -91,6 +91,34 @@ def test_reconnecting_same_inputs_keeps_review_and_empty_folder_does_not_reset(t
     assert next(f for f in merged.figures if f.id == p.figures[0].id) == p.figures[0]
 
 
+def test_job_history_is_paged_lightweight_and_hides_already_continued_training(tmp_path):
+    store = Store(tmp_path)
+    store.save(Project(dataset={"include_synthetic": False}))
+    jobs = [enqueue(store, "install", {}) for _ in range(12)]
+    for job in jobs:
+        store.update_job(job["id"], status="cancelled")
+    folder = tmp_path / "dataset-input"
+    folder.mkdir()
+    (folder / "data.yaml").write_text("train: images/train\n")
+    data = store.publish(folder, "dataset", "data", {})
+    stopped = enqueue(store, "train", {"dataset_id": data["id"]})
+    checkpoint = store.state / "jobs" / stopped["id"] / "training/resume-last.pt"
+    checkpoint.parent.mkdir()
+    checkpoint.write_bytes(b"checkpoint")
+    store.update_job(stopped["id"], status="cancelled")
+    app = create_app(tmp_path)
+    with TestClient(app) as client:
+        first = client.get("/api/jobs").json()
+        assert first["total"] == 13 and len(first["items"]) == 5
+        assert "snapshot" not in first["items"][0]
+        assert first["latest_resume"]["id"] == stopped["id"]
+        final = client.get("/api/jobs?offset=10&limit=5").json()
+        assert len(final["items"]) == 3
+        assert not {j["id"] for j in first["items"]} & {j["id"] for j in final["items"]}
+        child = enqueue(store, "train", {"resume_job_id": stopped["id"]})
+        store.update_job(child["id"], status="success")
+        assert client.get("/api/jobs").json()["latest_resume"] is None
+        assert client.get("/api/jobs?limit=10000").status_code == 422
 
 
 def test_artifact_list_omits_heavy_payload_but_detail_retains_it(tmp_path):

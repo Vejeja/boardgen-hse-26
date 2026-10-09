@@ -40,6 +40,8 @@ def selected_assets(store: Store, project: Project, parameters: dict) -> dict[st
 def execute(store: Store, project: Project, job: dict, folder: Path) -> dict:
     parameters = job["parameters"]
     kind = job["kind"]
+    if kind == "install":
+        return environment.install(project)
     versions = environment.fingerprint()
     if kind == "prepare-candidates":
         from .candidates import prepare_candidates

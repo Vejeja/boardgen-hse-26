@@ -158,8 +158,39 @@ def test_spherical_camera_is_recorded_and_reproducible():
     assert 25 <= first["elevation_deg"] <= 45
 
 
+def test_job_snapshots_are_immutable_and_cancel_queue(tmp_path):
+    store = Store(tmp_path)
+    p = store.load()
+    p.dataset.include_synthetic = False
+    store.save(p)
+    job = enqueue(store, "install", {})
+    p.name = "New"
+    store.save(p)
+    assert store.job(job["id"])["snapshot"]["name"] == "Boardgen"
+    assert cancel(store, job["id"])["status"] == "cancelled"
+    assert Store(tmp_path).job(job["id"])["status"] == "cancelled"
 
 
+def test_cancel_terminates_descendant_process_group(tmp_path):
+    store = Store(tmp_path)
+    store.save(Project(dataset={"include_synthetic": False}))
+    job = enqueue(store, "install", {})
+    script = "import subprocess,sys,time; subprocess.Popen([sys.executable,'-c','import time; time.sleep(60)']); time.sleep(60)"
+    process = subprocess.Popen(
+        [sys.executable, "-c", script, "boardgen.studio.worker", str(store.root), job["id"]],
+        start_new_session=True,
+    )
+    try:
+        store.update_job(job["id"], status="running", pid=process.pid)
+        cancel(store, job["id"])
+        assert process.wait(timeout=5) != 0
+        Supervisor(store).tick()
+        assert store.job(job["id"])["status"] == "cancelled"
+    finally:
+        try:
+            os.killpg(process.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
 
 
 def test_api_requires_same_origin_token_and_valid_schema(tmp_path):
@@ -193,6 +224,13 @@ def test_api_requires_same_origin_token_and_valid_schema(tmp_path):
         )
 
 
+def test_dead_worker_is_interrupted_instead_of_false_success(tmp_path):
+    store = Store(tmp_path)
+    store.save(Project(dataset={"include_synthetic": False}))
+    job = enqueue(store, "install", {})
+    store.update_job(job["id"], status="running", pid=99999999)
+    Supervisor(store).tick()
+    assert store.job(job["id"])["status"] == "interrupted"
 
 
 def test_publication_recovers_after_rename_before_database_commit(tmp_path):
@@ -211,8 +249,30 @@ def test_publication_recovers_after_rename_before_database_commit(tmp_path):
         store.artifact(restored["id"])
 
 
+def test_unknown_job_parameters_are_rejected(tmp_path):
+    store = Store(tmp_path)
+    with pytest.raises(ValidationError):
+        enqueue(store, "install", {"epochs": 12})
+    with pytest.raises(ValidationError):
+        enqueue(store, "evaluate", {"dataset_id": "a", "model_id": "b", "conf": 0.2})
 
 
+def test_unrelated_recycled_pid_is_not_cancelled(tmp_path):
+    store = Store(tmp_path)
+    store.save(Project(dataset={"include_synthetic": False}))
+    job = enqueue(store, "install", {})
+    process = subprocess.Popen(
+        [sys.executable, "-c", "import time; time.sleep(60)"], start_new_session=True
+    )
+    try:
+        store.update_job(job["id"], status="running", pid=process.pid)
+        cancel(store, job["id"])
+        Supervisor(store).tick()
+        assert process.poll() is None
+        assert store.job(job["id"])["status"] == "cancelled"
+    finally:
+        process.terminate()
+        process.wait(timeout=5)
 
 
 def test_yolo_label_caches_cannot_mutate_frozen_dataset(tmp_path):
