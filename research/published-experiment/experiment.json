@@ -1,0 +1,511 @@
+{
+  "source_project": "/Users/v.kornilova/Documents/course/boardgen/workspaces/blender-training-20261009",
+  "classes": [
+    "obj_01",
+    "obj_02",
+    "obj_04",
+    "obj_06",
+    "obj_07",
+    "obj_08",
+    "obj_10",
+    "obj_14",
+    "obj_15",
+    "obj_16",
+    "obj_18",
+    "obj_19",
+    "obj_21"
+  ],
+  "targets": {
+    "train": 1800,
+    "val": 320,
+    "test": 320
+  },
+  "budget_seconds": 14400,
+  "hard_limit_seconds": 18000,
+  "generation_limit_seconds": 4500,
+  "evaluation_reserve_seconds": 720,
+  "board_fraction": 0.7,
+  "camera_bands": [
+    [
+      18,
+      40
+    ],
+    [
+      40,
+      65
+    ],
+    [
+      65,
+      85
+    ],
+    [
+      85,
+      90
+    ]
+  ],
+  "camera_band_fractions": [
+    0.2,
+    0.35,
+    0.3,
+    0.15
+  ],
+  "background_assignment": "New protocol: Kroote family and board1 in development; Ferrin and board2 held out.",
+  "prior_results": "Preserved; this experiment starts from official COCO weights.",
+  "project": {
+    "schema_version": "boardgen.studio.v1",
+    "name": "Ночной эксперимент: 13 фигур, разнообразные Blender-сцены",
+    "figures": [
+      {
+        "id": "obj_01",
+        "name": "Теневой дракон (белый, миньон)",
+        "video": "/Users/v.kornilova/Documents/course/boardgen/research/3d-quality/videos/obj_01.mp4",
+        "clip": {
+          "start_s": 0.0,
+          "end_s": null
+        },
+        "reviewed_views": {},
+        "reviewed_frames_id": null,
+        "front_view": null,
+        "period_views": null,
+        "focal_px": null
+      },
+      {
+        "id": "obj_02",
+        "name": "Теневой дракон (красный, вожак)",
+        "video": "/Users/v.kornilova/Documents/course/boardgen/research/3d-quality/videos/obj_02.mp4",
+        "clip": {
+          "start_s": 0.0,
+          "end_s": null
+        },
+        "reviewed_views": {},
+        "reviewed_frames_id": null,
+        "front_view": null,
+        "period_views": null,
+        "focal_px": null
+      },
+      {
+        "id": "obj_04",
+        "name": "Элементаль (красный, вожак)",
+        "video": "/Users/v.kornilova/Documents/course/boardgen/research/3d-quality/videos/obj_04.mp4",
+        "clip": {
+          "start_s": 0.0,
+          "end_s": null
+        },
+        "reviewed_views": {},
+        "reviewed_frames_id": null,
+        "front_view": null,
+        "period_views": null,
+        "focal_px": null
+      },
+      {
+        "id": "obj_06",
+        "name": "Эттин (красный, вожак)",
+        "video": "/Users/v.kornilova/Documents/course/boardgen/research/3d-quality/videos/obj_06.mp4",
+        "clip": {
+          "start_s": 0.0,
+          "end_s": null
+        },
+        "reviewed_views": {},
+        "reviewed_frames_id": null,
+        "front_view": null,
+        "period_views": null,
+        "focal_px": null
+      },
+      {
+        "id": "obj_07",
+        "name": "Баргест (белый, миньон)",
+        "video": "/Users/v.kornilova/Documents/course/boardgen/research/3d-quality/videos/obj_07.mp4",
+        "clip": {
+          "start_s": 0.0,
+          "end_s": null
+        },
+        "reviewed_views": {},
+        "reviewed_frames_id": null,
+        "front_view": null,
+        "period_views": null,
+        "focal_px": null
+      },
+      {
+        "id": "obj_08",
+        "name": "Баргест (красный, вожак)",
+        "video": "/Users/v.kornilova/Documents/course/boardgen/research/3d-quality/videos/obj_08.mp4",
+        "clip": {
+          "start_s": 0.0,
+          "end_s": null
+        },
+        "reviewed_views": {},
+        "reviewed_frames_id": null,
+        "front_view": null,
+        "period_views": null,
+        "focal_px": null
+      },
+      {
+        "id": "obj_10",
+        "name": "Зомби (красный, вожак)",
+        "video": "/Users/v.kornilova/Documents/course/boardgen/research/3d-quality/videos/obj_10.mp4",
+        "clip": {
+          "start_s": 0.0,
+          "end_s": null
+        },
+        "reviewed_views": {},
+        "reviewed_frames_id": null,
+        "front_view": null,
+        "period_views": null,
+        "focal_px": null
+      },
+      {
+        "id": "obj_14",
+        "name": "Творец плоти (красный, вожак)",
+        "video": "/Users/v.kornilova/Documents/course/boardgen/research/3d-quality/videos/obj_14.mp4",
+        "clip": {
+          "start_s": 0.0,
+          "end_s": null
+        },
+        "reviewed_views": {},
+        "reviewed_frames_id": null,
+        "front_view": null,
+        "period_views": null,
+        "focal_px": null
+      },
+      {
+        "id": "obj_15",
+        "name": "Гоблин-лучник (белый, миньон)",
+        "video": "/Users/v.kornilova/Documents/course/boardgen/research/3d-quality/videos/obj_15.mp4",
+        "clip": {
+          "start_s": 0.0,
+          "end_s": null
+        },
+        "reviewed_views": {},
+        "reviewed_frames_id": null,
+        "front_view": null,
+        "period_views": null,
+        "focal_px": null
+      },
+      {
+        "id": "obj_16",
+        "name": "Гоблин-лучник (красный, вожак)",
+        "video": "/Users/v.kornilova/Documents/course/boardgen/research/3d-quality/videos/obj_16.mp4",
+        "clip": {
+          "start_s": 0.0,
+          "end_s": null
+        },
+        "reviewed_views": {},
+        "reviewed_frames_id": null,
+        "front_view": null,
+        "period_views": null,
+        "focal_px": null
+      },
+      {
+        "id": "obj_18",
+        "name": "Мерриод (красный, вожак)",
+        "video": "/Users/v.kornilova/Documents/course/boardgen/research/3d-quality/videos/obj_18.mp4",
+        "clip": {
+          "start_s": 0.0,
+          "end_s": null
+        },
+        "reviewed_views": {},
+        "reviewed_frames_id": null,
+        "front_view": null,
+        "period_views": null,
+        "focal_px": null
+      },
+      {
+        "id": "obj_19",
+        "name": "Грисбан Жаждущий",
+        "video": "/Users/v.kornilova/Documents/course/boardgen/research/3d-quality/videos/obj_19.mp4",
+        "clip": {
+          "start_s": 0.0,
+          "end_s": null
+        },
+        "reviewed_views": {},
+        "reviewed_frames_id": null,
+        "front_view": null,
+        "period_views": null,
+        "focal_px": null
+      },
+      {
+        "id": "obj_21",
+        "name": "Леорик Книжник",
+        "video": "/Users/v.kornilova/Documents/course/boardgen/research/3d-quality/videos/obj_21.mp4",
+        "clip": {
+          "start_s": 0.0,
+          "end_s": null
+        },
+        "reviewed_views": {},
+        "reviewed_frames_id": null,
+        "front_view": null,
+        "period_views": null,
+        "focal_px": null
+      }
+    ],
+    "prepare": {
+      "defaults": {
+        "matte": {
+          "method": "birefnet",
+          "input_size": 1024,
+          "cross_check": false
+        },
+        "shape": {
+          "method": "spirula",
+          "extraction": "native",
+          "candidate_frames": 100,
+          "frame_size": 1024,
+          "mesh_resolution": 256,
+          "timeout_seconds": 840,
+          "iterations": 5000,
+          "cameras": "orbit",
+          "profile": "control",
+          "cap": 120000,
+          "seed": 23
+        },
+        "appearance": {
+          "method": "photo",
+          "photo_views": 12,
+          "registration": "silhouette",
+          "texture_size": 4096
+        }
+      },
+      "overrides": {},
+      "reuse_completed": true
+    },
+    "scenes": {
+      "asset_versions": {
+        "obj_01": "71efeb3390a54d45843ceca04db26243",
+        "obj_02": "a9c4069c62874154b9d693fa29c98832",
+        "obj_04": "a3ec13cf59b34ac09843f89187d0a17a",
+        "obj_06": "9c913d25491141e9bbb61e495695994c",
+        "obj_07": "8fdf51dae33b400e98b043fb393d9cee",
+        "obj_08": "95cfe73992a84d6cb12a01a62d44d00f",
+        "obj_10": "012de31d7f48417f95b6e9ac4bab1a02",
+        "obj_14": "1a9d245d2a254c738a574948a8b42d03",
+        "obj_15": "a660ecd9f7c2495f8e0d5b9bc696d72c",
+        "obj_16": "da53f37948ec4a12bae80a37629ee7b4",
+        "obj_18": "73113531269746ffa58a35a3556d8ff5",
+        "obj_19": "297694b0a0854d50bd1d40851ac8a82f",
+        "obj_21": "d4fecbfb7edb444b9fd15bb897e86f25"
+      },
+      "selected_classes": [
+        "obj_01",
+        "obj_02",
+        "obj_04",
+        "obj_06",
+        "obj_07",
+        "obj_08",
+        "obj_10",
+        "obj_14",
+        "obj_15",
+        "obj_16",
+        "obj_18",
+        "obj_19",
+        "obj_21"
+      ],
+      "scale_basis": "nominal",
+      "reference_class": null,
+      "count": 2440,
+      "seed": 10102026,
+      "image_size": [
+        1152,
+        1152
+      ],
+      "objects_per_scene": [
+        2,
+        6
+      ],
+      "negative_fraction": 0.1,
+      "boards": [
+        {
+          "image": "/Users/v.kornilova/Documents/course/boardgen/data/board/board1.png",
+          "width_m": 0.5,
+          "height_m": 0.5
+        },
+        {
+          "image": "/Users/v.kornilova/Documents/course/boardgen/data/board/kroote_grass_river.jpg",
+          "width_m": 0.5,
+          "height_m": 0.5
+        },
+        {
+          "image": "/Users/v.kornilova/Documents/course/boardgen/data/board/kroote_stone_lakes.jpg",
+          "width_m": 0.5,
+          "height_m": 0.5
+        },
+        {
+          "image": "/Users/v.kornilova/Documents/course/boardgen/data/board/kroote_desert_island.jpg",
+          "width_m": 0.5,
+          "height_m": 0.5
+        }
+      ],
+      "skyboxes": [
+        "/Users/v.kornilova/Documents/course/boardgen/data/skybox/room.jpg"
+      ],
+      "environment_strength": 1.0,
+      "camera": {
+        "distance_m": [
+          0.65,
+          1.1
+        ],
+        "elevation_deg": [
+          18.0,
+          90.0
+        ],
+        "azimuth_deg": [
+          -180.0,
+          180.0
+        ],
+        "fov_deg": 45.0,
+        "jitter_xy_m": 0.03,
+        "jitter_roll_deg": 7.0,
+        "exposure_ev": -1.1
+      },
+      "nominal_height_m": 0.05,
+      "height_overrides": {},
+      "min_side_px": 16,
+      "max_attempts": 20,
+      "neutral_ablation": false,
+      "scene_type": "mixed",
+      "platform": {
+        "radius_m": 0.075,
+        "height_m": 0.018,
+        "elevation_deg": [
+          10.0,
+          85.0
+        ],
+        "frame_fraction": [
+          0.22,
+          0.55
+        ]
+      },
+      "split_sources": {
+        "train": {
+          "boards": [
+            {
+              "image": "/Users/v.kornilova/Documents/course/boardgen/data/board/board1.png",
+              "width_m": 0.5,
+              "height_m": 0.5
+            },
+            {
+              "image": "/Users/v.kornilova/Documents/course/boardgen/data/board/kroote_grass_river.jpg",
+              "width_m": 0.5,
+              "height_m": 0.5
+            },
+            {
+              "image": "/Users/v.kornilova/Documents/course/boardgen/data/board/kroote_stone_lakes.jpg",
+              "width_m": 0.5,
+              "height_m": 0.5
+            },
+            {
+              "image": "/Users/v.kornilova/Documents/course/boardgen/data/board/kroote_desert_island.jpg",
+              "width_m": 0.5,
+              "height_m": 0.5
+            }
+          ],
+          "skyboxes": [
+            "/Users/v.kornilova/Documents/course/boardgen/data/skybox/room.jpg"
+          ]
+        },
+        "val": {
+          "boards": [
+            {
+              "image": "/Users/v.kornilova/Documents/course/boardgen/data/board/board1.png",
+              "width_m": 0.5,
+              "height_m": 0.5
+            },
+            {
+              "image": "/Users/v.kornilova/Documents/course/boardgen/data/board/kroote_grass_river.jpg",
+              "width_m": 0.5,
+              "height_m": 0.5
+            },
+            {
+              "image": "/Users/v.kornilova/Documents/course/boardgen/data/board/kroote_stone_lakes.jpg",
+              "width_m": 0.5,
+              "height_m": 0.5
+            },
+            {
+              "image": "/Users/v.kornilova/Documents/course/boardgen/data/board/kroote_desert_island.jpg",
+              "width_m": 0.5,
+              "height_m": 0.5
+            }
+          ],
+          "skyboxes": [
+            "/Users/v.kornilova/Documents/course/boardgen/data/skybox/room.jpg"
+          ]
+        },
+        "test": {
+          "boards": [
+            {
+              "image": "/Users/v.kornilova/Documents/course/boardgen/data/board/board2.jpeg",
+              "width_m": 0.5,
+              "height_m": 0.28095238095238095
+            },
+            {
+              "image": "/Users/v.kornilova/Documents/course/boardgen/data/board/ferrin_cavern.jpg",
+              "width_m": 0.5,
+              "height_m": 0.5
+            }
+          ],
+          "skyboxes": [
+            "/Users/v.kornilova/Documents/course/boardgen/data/skybox/room2.jpg"
+          ]
+        }
+      },
+      "render_samples": 16,
+      "environment_rotation_deg": [
+        -180.0,
+        180.0
+      ],
+      "light_energy": [
+        90.0,
+        280.0
+      ],
+      "exposure_jitter_ev": 0.6,
+      "balanced_classes": true,
+      "stratified_negatives": true
+    },
+    "dataset": {
+      "name": "nightly-13",
+      "include_synthetic": true,
+      "real_sources": [],
+      "val_fraction": 0.13114754098360656,
+      "seed": 10102026,
+      "near_duplicates": "error",
+      "test_fraction": 0.13114754098360656,
+      "background_policy": "test_only"
+    },
+    "training": {
+      "weights": "yolo11s.pt",
+      "epochs": 150,
+      "time": null,
+      "imgsz": 960,
+      "batch": 8,
+      "patience": 25,
+      "workers": 0,
+      "optimizer": "AdamW",
+      "lr0": 0.001,
+      "seed": 10102026,
+      "deterministic": true,
+      "mosaic": 0.1,
+      "cache": false,
+      "nbs": 16,
+      "warmup_epochs": 3.0,
+      "weight_decay": 0.0005,
+      "cos_lr": true,
+      "close_mosaic": 15,
+      "hsv_h": 0.005,
+      "hsv_s": 0.2,
+      "hsv_v": 0.3,
+      "fliplr": 0.0,
+      "flipud": 0.0,
+      "mixup": 0.0,
+      "copy_paste": 0.0,
+      "scale": 0.25,
+      "translate": 0.08
+    },
+    "evaluation": {
+      "split": "val",
+      "confidence": 0.45,
+      "nms_iou": 0.45,
+      "matching_iou": 0.5,
+      "imgsz": 960
+    }
+  },
+  "runner_sha256": "2f44f1d2db4d5aba49003281cad18de3fd12ca9ad5035c9b649e70f009afa5ff"
+}

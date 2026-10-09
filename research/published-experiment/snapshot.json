@@ -1,0 +1,126 @@
+{
+  "schema": "boardgen.published-assets.v1",
+  "experiment": "blender-nightly-13-20261010",
+  "bundle_manifest_sha256": "29159dfd84f714c404288d7d4e71e05a5ca7ab4585ec8307bdc6e057fb9497ec",
+  "additional_files": {
+    "class-map.json": "66cf0dca26ea204d4a3c583a8afd4c4b255593a34745d978ed140cea4610d86c",
+    "experiment.json": "f54eb9a79b28a4aad914124642edba111260eb41f6b95f2bbafb249430673c8d"
+  },
+  "model_sha256": "c9d019ac25420e6e47e3b4d820f0d85fa1c20c257cb2c08f04c826be6c6489bb",
+  "initial_weights_sha256": "85a76fe86dd8afe384648546b56a7a78580c7cb7b404fc595f97969322d502d5",
+  "dataset_manifest_sha256": "3d55b0ba26edc8b8382cb0b987646032e5d3305faf849ce5d15a69b26e1dffe7",
+  "normalized_dataset_manifest_sha256": "b84b54c1669d8db0a869958d5e1c6147d4f4686e4e467fe5f279923347cc0f88",
+  "dataset_id": "2159b118be6f44a88886511e41b6e53f",
+  "model_id": "8bcff3941ab0426ab09f565df0dc445b",
+  "collection_count": 26,
+  "class_count": 13,
+  "dataset_counts": {
+    "val": 320,
+    "test": 320,
+    "train": 1798
+  },
+  "selected_figures": [
+    {
+      "object": "obj_01",
+      "asset_id": "71efeb3390a54d45843ceca04db26243",
+      "mesh_sha256": "7b10d4066e4ba81cf7da5afebf9e5f7d12416b0c5f086052675695c6c0a8aa48",
+      "local_class_id": 0,
+      "name": "Теневой дракон (белый, миньон)"
+    },
+    {
+      "object": "obj_02",
+      "asset_id": "a9c4069c62874154b9d693fa29c98832",
+      "mesh_sha256": "f3766558c893a0d068936b034e0fb7d401f18327797b8754c543213a0c98f9de",
+      "local_class_id": 1,
+      "name": "Теневой дракон (красный, вожак)"
+    },
+    {
+      "object": "obj_04",
+      "asset_id": "a3ec13cf59b34ac09843f89187d0a17a",
+      "mesh_sha256": "a00551ab2da211a0b6cf82ac32456f19c574791074a8707fa1fa11dc06177844",
+      "local_class_id": 2,
+      "name": "Элементаль (красный, вожак)"
+    },
+    {
+      "object": "obj_06",
+      "asset_id": "9c913d25491141e9bbb61e495695994c",
+      "mesh_sha256": "9cf732bc82b40d0bb33b76b104c7ed7789b66e0b6e4470be370fb1da91b5300d",
+      "local_class_id": 3,
+      "name": "Эттин (красный, вожак)"
+    },
+    {
+      "object": "obj_07",
+      "asset_id": "8fdf51dae33b400e98b043fb393d9cee",
+      "mesh_sha256": "f4b811a517f5a016b77e2a2614e4f21eb3cb13ea93ae37217f5bb324f7f29269",
+      "local_class_id": 4,
+      "name": "Баргест (белый, миньон)"
+    },
+    {
+      "object": "obj_08",
+      "asset_id": "95cfe73992a84d6cb12a01a62d44d00f",
+      "mesh_sha256": "95d0dc638800aae15f9e7552fea364442ec814bf602928f949e1f0f7eb3dac86",
+      "local_class_id": 5,
+      "name": "Баргест (красный, вожак)"
+    },
+    {
+      "object": "obj_10",
+      "asset_id": "012de31d7f48417f95b6e9ac4bab1a02",
+      "mesh_sha256": "f199db54c3588cc76fcb370265a8d22cc22958d79d4390f043444ab2d9de5d2a",
+      "local_class_id": 6,
+      "name": "Зомби (красный, вожак)"
+    },
+    {
+      "object": "obj_14",
+      "asset_id": "1a9d245d2a254c738a574948a8b42d03",
+      "mesh_sha256": "4024b3d0fad09509d5acdd6c353566eba7da79a0eef8b28a93b0305ebdf0fdc2",
+      "local_class_id": 7,
+      "name": "Творец плоти (красный, вожак)"
+    },
+    {
+      "object": "obj_15",
+      "asset_id": "a660ecd9f7c2495f8e0d5b9bc696d72c",
+      "mesh_sha256": "08b418b3f78421c06301bd068774aa0b3d6455e8d955e8200feb292c9fe1b0fe",
+      "local_class_id": 8,
+      "name": "Гоблин-лучник (белый, миньон)"
+    },
+    {
+      "object": "obj_16",
+      "asset_id": "da53f37948ec4a12bae80a37629ee7b4",
+      "mesh_sha256": "628c4690399e047deafeb5e2949f097a9d3a02e034943ebaff5fc31b5efa82ee",
+      "local_class_id": 9,
+      "name": "Гоблин-лучник (красный, вожак)"
+    },
+    {
+      "object": "obj_18",
+      "asset_id": "73113531269746ffa58a35a3556d8ff5",
+      "mesh_sha256": "213fe56932eaad68443180450b069be794e8870c9ccfacd33042a7a067bd0d66",
+      "local_class_id": 10,
+      "name": "Мерриод (красный, вожак)"
+    },
+    {
+      "object": "obj_19",
+      "asset_id": "297694b0a0854d50bd1d40851ac8a82f",
+      "mesh_sha256": "ca9076f4a2c6ac2a3eebd36e546bfb6e437ad570d434196b6e01e9d16a59b1ab",
+      "local_class_id": 11,
+      "name": "Грисбан Жаждущий"
+    },
+    {
+      "object": "obj_21",
+      "asset_id": "d4fecbfb7edb444b9fd15bb897e86f25",
+      "mesh_sha256": "3987c9904e1eb3d7a0fca888e57701d0121b81cd94dd8a54919f978f62bed494",
+      "local_class_id": 12,
+      "name": "Леорик Книжник"
+    }
+  ],
+  "archive_review": {
+    "directory": "boardgen-archive",
+    "selected": "20261009-230236/source.tar: research/3d-quality data",
+    "not_restored": [
+      "obsolete static viewers and duplicated vendor bundle",
+      "research-cleanup-20261011: pilot YOLO11n/YOLO26 runs and older Studio snapshot",
+      "Git bundles and source backups already represented by repository history"
+    ],
+    "final_experiment_source": "boardgen/workspaces/blender-nightly-13-20261010",
+    "excluded_runtime_file": ".DS_Store"
+  }
+}

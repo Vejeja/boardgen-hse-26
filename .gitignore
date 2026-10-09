@@ -21,6 +21,8 @@ htmlcov/
 .env
 *.log
 
+/research/published-experiment/project.tar.gz.part-*
+/research/yolo/weights/
 /research/3d-quality/*
 !/research/3d-quality/videos/
 !/research/3d-quality/manifest.json
@@ -42,4 +44,5 @@ node_modules/
 /classes.yaml
 
 /docs/experiments/
+/research/yolo-blender-nightly/
 

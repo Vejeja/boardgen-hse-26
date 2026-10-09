@@ -2,5 +2,8 @@
 src/boardgen/studio/web/vendor/** linguist-vendored -diff -whitespace
 *.mp4 binary
 *.glb binary
+
 research/3d-quality/** -text
+research/published-experiment/** -text
+research/yolo/weights/*.pt binary
 metadata/video_index.csv -text
