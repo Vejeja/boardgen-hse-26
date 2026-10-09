@@ -23,6 +23,12 @@ htmlcov/
 
 /research/3d-quality/*
 !/research/3d-quality/videos/
+!/research/3d-quality/manifest.json
+!/research/3d-quality/comparison-recipes-20261009.json
+!/research/3d-quality/correction-recipes-20261009.json
+!/research/3d-quality/catalog.json
+!/research/3d-quality/parameters.json
+!/research/3d-quality/classes-full.yaml
 
 node_modules/
 .vscode/
@@ -35,4 +41,5 @@ node_modules/
 /videos/
 /classes.yaml
 
+/docs/experiments/
 

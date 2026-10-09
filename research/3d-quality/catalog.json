@@ -1,0 +1,378 @@
+[
+  {
+    "id": "spirula-oct7-gnome",
+    "objects": [
+      "gnome"
+    ],
+    "title": "Spirula 7 октября: согласованные глубины + фото + локальный hull",
+    "mesh": "models/spirula-oct7-gnome.glb",
+    "images": [
+      "previews/bcab81663893e897.jpg",
+      "previews/1af053898646a0a8.jpg",
+      "previews/37b810429076f48d.png"
+    ],
+    "timing": "Обучение 461.2 с; сумма успешных этапов с полным набором нейромасок, SIFT, камерами и текстурой ≈10.8 мин. Подбор, неудачные прогоны и просмотр исключены; это сумма замеров с переиспользованием кэша, не холодный запуск.",
+    "note": "Полное видео; исправленные камеры физической вертушки, fit-only BA. 15k шагов, cap120k; глубины из 32 ракурсов, фильтрация по другим глубинам и нейромаскам перед Poisson8. 34136 граней тела + 5607 локального hull. OpenMVS накладывает фото без изменения формы; дополнение однотонное. Есть шум и отверстия; выбран из проверенных, глобальный оптимум не доказан.",
+    "orientation": {
+      "mesh_sha256": "ca9076f4a2c6ac2a3eebd36e546bfb6e437ad570d434196b6e01e9d16a59b1ab",
+      "quaternion_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "note": "Y-up, front +Z from physical orbit front anchor. One uniform scale, no axis stretching. Four-view preview checked."
+    },
+    "extra": null,
+    "mesh_sha256": "ca9076f4a2c6ac2a3eebd36e546bfb6e437ad570d434196b6e01e9d16a59b1ab",
+    "use_status": "current_candidate_not_yolo_validated"
+  },
+  {
+    "id": "spirula-native-oct7-gnome",
+    "objects": [
+      "gnome"
+    ],
+    "title": "Spirula 7 октября: тело + своя текстура + локальный hull",
+    "mesh": "models/spirula-native-oct7-gnome.glb",
+    "images": [
+      "previews/85f5aff45f68bbf3.jpg",
+      "previews/c3bc35bebee19469.jpg"
+    ],
+    "timing": "Тот же checkpoint, обучение 461.2 с; извлечение поверхности 7–9 с, локальный hull 4.9 с. С подготовкой ≈10.8 мин.",
+    "note": "Полное видео и те же исправленные камеры. 117924 граней тела + 6758 дополнения. Сохранены собственная текстура 2048² и UV Spirula; у дракона более мягкое извлечение iso0.4/carve5 сохраняет крылья. У гнома остаются разрывы головы, у дракона шум краёв. Для сравнения с фототекстурированной поверхностью выше.",
+    "orientation": {
+      "mesh_sha256": "87ffb5fcb871863c61e8cabe812a596082e6d0ffbd18f8f1e320639add0f2b98",
+      "quaternion_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "note": "Y-up, front +Z from physical orbit front anchor. One uniform scale, no axis stretching. Four-view preview checked."
+    },
+    "extra": null,
+    "mesh_sha256": "87ffb5fcb871863c61e8cabe812a596082e6d0ffbd18f8f1e320639add0f2b98",
+    "use_status": "native_texture_alternative"
+  },
+  {
+    "id": "spirula-oct7-dragon",
+    "objects": [
+      "dragon"
+    ],
+    "title": "Spirula 7 октября: согласованные глубины + фото + локальный hull",
+    "mesh": "models/spirula-oct7-dragon.glb",
+    "images": [
+      "previews/7d79b443d72b4de4.jpg",
+      "previews/5c57852b12b4a8cc.jpg",
+      "previews/b3b1e8667e2caee1.png"
+    ],
+    "timing": "Обучение 353.0 с; сумма успешных этапов с полным набором нейромасок, SIFT, камерами и текстурой ≈9.4 мин. Подбор, неудачные прогоны и просмотр исключены; это сумма замеров с переиспользованием кэша, не холодный запуск.",
+    "note": "Полное видео; исправленные камеры физической вертушки, fit-only BA. 15k шагов, cap120k; глубины из 32 ракурсов, фильтрация по другим глубинам и нейромаскам перед Poisson8. 94539 граней тела + 635 локального hull. OpenMVS накладывает фото без изменения формы; дополнение однотонное. Есть шум и отверстия; выбран из проверенных, глобальный оптимум не доказан.",
+    "orientation": {
+      "mesh_sha256": "f3766558c893a0d068936b034e0fb7d401f18327797b8754c543213a0c98f9de",
+      "quaternion_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "note": "Y-up, front +Z from physical orbit front anchor. One uniform scale, no axis stretching. Four-view preview checked."
+    },
+    "extra": null,
+    "mesh_sha256": "f3766558c893a0d068936b034e0fb7d401f18327797b8754c543213a0c98f9de",
+    "use_status": "current_candidate_not_yolo_validated"
+  },
+  {
+    "id": "spirula-native-oct7-dragon",
+    "objects": [
+      "dragon"
+    ],
+    "title": "Spirula 7 октября: тело + своя текстура + локальный hull",
+    "mesh": "models/spirula-native-oct7-dragon.glb",
+    "images": [
+      "previews/03e01fd2e62b0b5b.jpg",
+      "previews/e766c0e18215e845.jpg"
+    ],
+    "timing": "Тот же checkpoint, обучение 353.0 с; извлечение поверхности 7–9 с, локальный hull 4.3 с. С подготовкой ≈9.2 мин.",
+    "note": "Полное видео и те же исправленные камеры. 93825 граней тела + 1155 дополнения. Сохранены собственная текстура 2048² и UV Spirula; у дракона более мягкое извлечение iso0.4/carve5 сохраняет крылья. У гнома остаются разрывы головы, у дракона шум краёв. Для сравнения с фототекстурированной поверхностью выше.",
+    "orientation": {
+      "mesh_sha256": "8b6a5a27cf7abaf1c85adafea35aac145ad62a4e8a75eccdad86bbe8205dbc01",
+      "quaternion_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "note": "Y-up, front +Z from physical orbit front anchor. One uniform scale, no axis stretching. Four-view preview checked."
+    },
+    "extra": null,
+    "mesh_sha256": "8b6a5a27cf7abaf1c85adafea35aac145ad62a4e8a75eccdad86bbe8205dbc01",
+    "use_status": "native_texture_alternative"
+  },
+  {
+    "id": "photo-mv-orbit-gnome",
+    "objects": [
+      "gnome"
+    ],
+    "title": "MV гном: фото + согласованные камеры вертушки",
+    "mesh": "models/photo-mv-orbit-gnome.glb",
+    "images": [
+      "previews/8566100549ca124f.jpg",
+      "previews/ba8ad76121cd0fa7.jpg"
+    ],
+    "timing": "Готовая MV-сетка и нейромаски; регистрация 10.8 с и запекание 7.4 с CPU. ",
+    "note": "Геометрия MV 120k сохранена. Новая калибровка по SIFT и повтору ракурсов, одна общая регистрация вместо независимой подгонки силуэтов; смешивание с меньшим размытием. Различия формы лица мешают точному совпадению внутренних деталей.",
+    "orientation": {
+      "mesh_sha256": "e10190675a11c3a151757081f5701ac2bccd835dc33fe7c4e7c7c5bc2ce080e8",
+      "quaternion_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "note": "Unmodified canonical MV geometry, Y-up front +Z. Face correspondence preview checked."
+    },
+    "extra": null,
+    "mesh_sha256": "e10190675a11c3a151757081f5701ac2bccd835dc33fe7c4e7c7c5bc2ce080e8",
+    "use_status": "current_candidate_not_yolo_validated"
+  },
+  {
+    "id": "hybrid-gnome",
+    "objects": [
+      "gnome"
+    ],
+    "title": "Spirula: тело + своя текстура + локальный hull",
+    "mesh": "models/hybrid-gnome.glb",
+    "images": [
+      "previews/556aef874c7cd18e.png",
+      "previews/d6fd92f7f75fdc88.png"
+    ],
+    "timing": "Обучение 295 с; mesh 8,6 с; дополнение 6,7 с. С 40 масками и остальными этапами ≈6–7 мин, оценка.",
+    "note": "Именно вариант «сохранил тело и текстуру Spirula». Топор дополнен силуэтами; тело и UV сохранены. Тени в текстуре, местами грубое дополнение и отверстия.",
+    "orientation": {
+      "mesh_sha256": "e5496b9aac8b927fdfaea1bac5a2168f78d12201b0cf7759e96e18d87495df2c",
+      "quaternion_xyzw": [
+        0.0,
+        -0.984807753012208,
+        0.0,
+        0.17364817766693041
+      ],
+      "note": "Display front selected from face/axe or head/wing landmarks; Y-up source."
+    },
+    "extra": null,
+    "mesh_sha256": "e5496b9aac8b927fdfaea1bac5a2168f78d12201b0cf7759e96e18d87495df2c",
+    "use_status": "retained_baseline"
+  },
+  {
+    "id": "fusion-dragon",
+    "objects": [
+      "dragon"
+    ],
+    "title": "Spirula → native depth fusion → OpenMVS фото",
+    "mesh": "models/fusion-dragon.glb",
+    "images": [
+      "previews/65f6d0f666185628.png",
+      "previews/648e4f670c1e500e.png"
+    ],
+    "timing": "Обучение 319 с; depth fusion 14 с; фото 2,8 с. С 60 масками и остальными этапами ≈8–9 мин, оценка.",
+    "note": "Прежний текстурированный дракон. Крылья и хвост узнаваемы; есть отверстия и шум. Невидимый низ уплощён при упаковке.",
+    "orientation": {
+      "mesh_sha256": "21db44bddf265697b503d3d6d4498e904f625a46965ca2c79602c0747a62fa33",
+      "quaternion_xyzw": [
+        0.0,
+        0.9238795325112867,
+        0.0,
+        0.38268343236508984
+      ],
+      "note": "Display front selected from face/axe or head/wing landmarks; Y-up source."
+    },
+    "extra": null,
+    "mesh_sha256": "21db44bddf265697b503d3d6d4498e904f625a46965ca2c79602c0747a62fa33",
+    "use_status": "retained_baseline"
+  },
+  {
+    "id": "mini-gnome",
+    "objects": [
+      "gnome"
+    ],
+    "title": "Hunyuan mini: один снимок",
+    "mesh": "models/mini-gnome.glb",
+    "images": [
+      "previews/a7876155cf998323.png"
+    ],
+    "timing": "Гном 82 с + упаковка ≈3 с; дракон 139 с + ≈8 с. Маски и загрузка весов исключены.",
+    "note": "Цельная приближённая генеративная поверхность. Скрытая сторона додумывается; у дракона неполная кисть. 60k граней в просмотре.",
+    "orientation": {
+      "mesh_sha256": "af5e2846a8e157efd0b7a0715705f906a86b3775191a291b4e70e478e9726619",
+      "quaternion_xyzw": [
+        0.0,
+        -0.9396926207859083,
+        0.0,
+        0.3420201433256688
+      ],
+      "note": "Display front selected from face/axe or head/wing landmarks; Y-up source."
+    },
+    "extra": null,
+    "mesh_sha256": "af5e2846a8e157efd0b7a0715705f906a86b3775191a291b4e70e478e9726619",
+    "use_status": "retained_baseline"
+  },
+  {
+    "id": "mv-gnome",
+    "objects": [
+      "gnome"
+    ],
+    "title": "Hunyuan MV-Turbo: четыре снимка",
+    "mesh": "models/mv-gnome.glb",
+    "images": [
+      "previews/d165ee893f7c2bf3.png",
+      "previews/65f231ed6b8cdc2b.png"
+    ],
+    "timing": "Гном 178 с + 3,5 с; дракон 151 с + 2,8 с. Готовые маски; peak MLX 4,07 GB.",
+    "note": "Четыре визуально выбранных четверть-оборота. 120k граней. Лицо и кисти всё ещё приближённые; победа над каждым другим методом не доказана.",
+    "orientation": {
+      "mesh_sha256": "50502da32e04a9c85aac8bf1e8dabc598ae04030f00dc412804091fb8b448dcd",
+      "quaternion_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "note": "Display front selected from face/axe or head/wing landmarks; Y-up source."
+    },
+    "extra": null,
+    "mesh_sha256": "50502da32e04a9c85aac8bf1e8dabc598ae04030f00dc412804091fb8b448dcd",
+    "use_status": "current_candidate_not_yolo_validated"
+  },
+  {
+    "id": "mini-dragon",
+    "objects": [
+      "dragon"
+    ],
+    "title": "Hunyuan mini: один снимок",
+    "mesh": "models/mini-dragon.glb",
+    "images": [
+      "previews/1e433adbd14d021c.png"
+    ],
+    "timing": "Гном 82 с + упаковка ≈3 с; дракон 139 с + ≈8 с. Маски и загрузка весов исключены.",
+    "note": "Цельная приближённая генеративная поверхность. Скрытая сторона додумывается; у дракона неполная кисть. 60k граней в просмотре.",
+    "orientation": {
+      "mesh_sha256": "e9b40aaf02f28f16cd106f7fc6a6a844ebf9d045421c1ac0161290cc0fb64617",
+      "quaternion_xyzw": [
+        0.0,
+        0.7071067811865475,
+        0.0,
+        0.7071067811865476
+      ],
+      "note": "Display front selected from face/axe or head/wing landmarks; Y-up source."
+    },
+    "extra": null,
+    "mesh_sha256": "e9b40aaf02f28f16cd106f7fc6a6a844ebf9d045421c1ac0161290cc0fb64617",
+    "use_status": "retained_baseline"
+  },
+  {
+    "id": "mv-dragon",
+    "objects": [
+      "dragon"
+    ],
+    "title": "Hunyuan MV-Turbo: четыре снимка",
+    "mesh": "models/mv-dragon.glb",
+    "images": [
+      "previews/d165ee893f7c2bf3.png",
+      "previews/65f231ed6b8cdc2b.png"
+    ],
+    "timing": "Гном 178 с + 3,5 с; дракон 151 с + 2,8 с. Готовые маски; peak MLX 4,07 GB.",
+    "note": "Четыре визуально выбранных четверть-оборота. 120k граней. Лицо и кисти всё ещё приближённые; победа над каждым другим методом не доказана.",
+    "orientation": {
+      "mesh_sha256": "ff6f482191dea427a479fc4da8193c01cfae713c72c2360499c9c9d1f19f4532",
+      "quaternion_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "note": "Display front selected from face/axe or head/wing landmarks; Y-up source."
+    },
+    "extra": null,
+    "mesh_sha256": "ff6f482191dea427a479fc4da8193c01cfae713c72c2360499c9c9d1f19f4532",
+    "use_status": "current_candidate_not_yolo_validated"
+  },
+  {
+    "id": "photo-mv-dragon",
+    "objects": [
+      "dragon"
+    ],
+    "title": "MV-Turbo: четыре снимка + фототекстура",
+    "mesh": "models/photo-mv-dragon.glb",
+    "images": [
+      "previews/e8e39988530abe62.jpg",
+      "previews/6b7aa5780afa99a6.jpg"
+    ],
+    "timing": "Готовая MV-сетка; камеры и текстура дополнительно 22.0 с CPU. Маски и обучение повторно не запускались.",
+    "note": "Прежняя геометрия 120k, без изменения формы. RGB из 12 fit-кадров полного видео; проверка видимости и согласованное смешивание. Тени запечены; невидимый низ без выдуманных деталей. Серая геометрия доступна переключателем.",
+    "orientation": {
+      "mesh_sha256": "842f02812059dfd75895d6bf4e720ea0dee8c675b750881d133891c31d216649",
+      "quaternion_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "note": "Same geometry and display orientation as mv-dragon; only photo RGB/UV material added."
+    },
+    "extra": null,
+    "mesh_sha256": "842f02812059dfd75895d6bf4e720ea0dee8c675b750881d133891c31d216649",
+    "use_status": "current_candidate_not_yolo_validated"
+  },
+  {
+    "id": "photo-mini",
+    "objects": [
+      "dragon"
+    ],
+    "title": "Hunyuan mini + фототекстура OpenMVS",
+    "mesh": "models/photo-mini.glb",
+    "images": [
+      "previews/f8212b53462a3160.png"
+    ],
+    "timing": "Та же готовая mini-геометрия; фототекстура дополнительно 10,4 с.",
+    "note": "Геометрия полностью совпадает с mini. UV и запечённый RGB не восстанавливают отсутствующие детали. Из-за камер/несовпадения формы возможны смещения текстуры.",
+    "orientation": {
+      "mesh_sha256": "c9d78f93fb05dc61f9c3caef08ed7da940d01b0d40ad7a9bbec34ab5fa19f534",
+      "quaternion_xyzw": [
+        0.0,
+        0.7071067811865475,
+        0.0,
+        0.7071067811865476
+      ],
+      "note": "Display front selected from face/axe or head/wing landmarks; Y-up source."
+    },
+    "extra": null,
+    "mesh_sha256": "c9d78f93fb05dc61f9c3caef08ed7da940d01b0d40ad7a9bbec34ab5fa19f534",
+    "use_status": "retained_baseline"
+  },
+  {
+    "id": "hull",
+    "objects": [
+      "gnome"
+    ],
+    "title": "Наш visual hull128 + OpenMVS фото",
+    "mesh": "models/hull.glb",
+    "images": [
+      "previews/03042fcd271def40.png"
+    ],
+    "timing": "Hull 0,77 с + фото 3,47 с; маски и камеры заранее.",
+    "note": "Силуэтный объём. Сохранён для сравнения: пользователь отклонил пропорции и лишний конус основания. Не считает внутренний рельеф из теней.",
+    "orientation": {
+      "mesh_sha256": "a9b1ce4820b5a4876042c22d770b7416fc79dea6bf9995202f327add5beabcbe",
+      "quaternion_xyzw": [
+        0.0,
+        0.49999999999999994,
+        0.0,
+        0.8660254037844387
+      ],
+      "note": "Display front selected from face/axe or head/wing landmarks; Y-up source."
+    },
+    "extra": null,
+    "mesh_sha256": "a9b1ce4820b5a4876042c22d770b7416fc79dea6bf9995202f327add5beabcbe",
+    "use_status": "retained_baseline"
+  }
+]

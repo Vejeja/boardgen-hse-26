@@ -1,0 +1,2306 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "purpose": "Selected repairs after source-photo and full-material geometry review; diagnostic scores are not independent ground truth.",
+  "previous_generated_objects": [
+    "obj_09",
+    "obj_13",
+    "obj_14",
+    "obj_15",
+    "obj_17",
+    "obj_22",
+    "obj_25"
+  ],
+  "recipes": {
+    "obj_03": {
+      "source_video": "research/3d-quality/videos/obj_03.mp4",
+      "source_video_sha256": "e486a13c3df9bb6d3d90431394083c9bace8c4370e3a6a8d2b88711f2509df1d",
+      "selected_method": "spirula",
+      "candidate": "out/figure-fixes-20261009/obj_03/mesh-repair-v2",
+      "settings": {
+        "iterations": 15000,
+        "cap": 120000,
+        "preset": "control",
+        "training": {
+          "primitive": "3dgs",
+          "floater": "strong",
+          "normal": 0.04,
+          "depth": 0.01,
+          "normal_distortion": 0.01,
+          "underfill": 0.0,
+          "sh": 3
+        },
+        "preset_screen": {
+          "iterations": 4500,
+          "cap": 120000,
+          "scores": {
+            "control": {
+              "fit": {
+                "iou": 0.8953470037685751,
+                "foreground_recall": 0.9122082462822765,
+                "linear_shading_rmse": 0.13159999610250156,
+                "shading_nrmse": 1.2531711610788356,
+                "interior_gradient_correlation": 0.18893260864265543,
+                "diagnostic_loss": 0.3736021698440716
+              },
+              "validation": {
+                "iou": 0.8634661048556694,
+                "foreground_recall": 0.8959508028072299,
+                "linear_shading_rmse": 0.13852375247439266,
+                "shading_nrmse": 1.325502955688333,
+                "interior_gradient_correlation": 0.1850562877200291,
+                "diagnostic_loss": 0.40120852042339594
+              }
+            },
+            "detail": {
+              "fit": {
+                "iou": 0.8608706052465985,
+                "foreground_recall": 0.8830395210717715,
+                "linear_shading_rmse": 0.13804580015249743,
+                "shading_nrmse": 1.3158745749154461,
+                "interior_gradient_correlation": 0.22077390936654812,
+                "diagnostic_loss": 0.396749281947795
+              },
+              "validation": {
+                "iou": 0.8361618560256285,
+                "foreground_recall": 0.8731670525562316,
+                "linear_shading_rmse": 0.1460687375862093,
+                "shading_nrmse": 1.4001168752559623,
+                "interior_gradient_correlation": 0.19637334095868186,
+                "diagnostic_loss": 0.4259212985450729
+              }
+            }
+          },
+          "selected": "control",
+          "assessment": "Two bounded pilot configurations, selected with four validation views; not an exhaustive optimum or an untouched test."
+        },
+        "focal_screen": {
+          "initial_focal_ratio": 1.599999481868552,
+          "trial_initial_focal_px": 995.7184649585755,
+          "selected": "trial",
+          "original": {
+            "camera": {
+              "width": 768,
+              "height": 653,
+              "fx": 708.0662346758536,
+              "cx": 384.0,
+              "cy": 326.5
+            },
+            "retained_points": 3882,
+            "median_reprojection_px": 0.5304845196676564,
+            "p95_reprojection_px": 1.790756258075966
+          },
+          "trial": {
+            "camera": {
+              "width": 768,
+              "height": 653,
+              "fx": 1382.95067919543,
+              "cx": 384.0,
+              "cy": 326.5
+            },
+            "retained_points": 4629,
+            "median_reprojection_px": 0.4082570822275381,
+            "p95_reprojection_px": 1.3949856580635778
+          },
+          "assessment": "Fit-only bounded focal initialization diagnostic. Different accepted track counts; this is not independent geometric ground truth. Final candidates still need silhouette and visual checks."
+        },
+        "mask_size": 1536,
+        "recover_warm": false
+      },
+      "validation": {
+        "iou": 0.912968856920322,
+        "foreground_recall": 0.9398442810292775,
+        "linear_shading_rmse": 0.12106241977838719,
+        "shading_nrmse": 1.1764463668030145,
+        "interior_gradient_correlation": 0.18630277615525573,
+        "diagnostic_loss": 0.35147145297694854
+      },
+      "observations": [
+        "Закрыты малые граничные петли, добавлена 381 грань. Исходные вершины и UV сохранены; контуры рук не заклеены.",
+        "Мелкая шероховатость остаётся; закрытие отверстий является интерполяцией, а не новой измеренной поверхностью."
+      ],
+      "localized_repairs": [
+        {
+          "part": "Spirula_body_native_UV",
+          "added_faces": 381,
+          "max_hole_edges": 40
+        }
+      ]
+    },
+    "obj_05": {
+      "source_video": "research/3d-quality/videos/obj_05.mp4",
+      "source_video_sha256": "85408e371d0064da8e05763c3005e961387165c23c4cd0f7949f3be7171e7872",
+      "selected_method": "spirula",
+      "candidate": "out/figure-fixes-20261009/obj_05/negative-space-v4",
+      "settings": {
+        "iterations": 15000,
+        "cap": 120000,
+        "preset": "coverage",
+        "training": {
+          "primitive": "3dgs",
+          "floater": "mild",
+          "normal": 0.02,
+          "depth": 0.01,
+          "normal_distortion": 0.007,
+          "underfill": 0.25,
+          "sh": 3,
+          "mesh_iso": 0.4,
+          "mesh_carve_k": 8
+        },
+        "preset_screen": null,
+        "focal_screen": null,
+        "mask_size": 2048,
+        "recover_warm": true
+      },
+      "validation": {
+        "iou": 0.9352075901257582,
+        "foreground_recall": 0.9509991308594601,
+        "linear_shading_rmse": 0.10158335772916531,
+        "shading_nrmse": 1.1244465340196264,
+        "interior_gradient_correlation": 0.13815828935021351,
+        "diagnostic_loss": 0.3369904418186006
+      },
+      "observations": [
+        "Удалены 1390 граней лишней поверхности в просвете под одеждой; основание сохранено.",
+        "Сверено с исходным фото: между ногами действительно свисает одежда. Она сохранена; просвет очищен локально, шероховатость остаётся."
+      ],
+      "localized_repairs": [
+        {
+          "part": "Spirula_body_native_UV",
+          "removed_faces": 1390,
+          "reason": "Manually verified empty space above the base in fit photographs"
+        }
+      ],
+      "photographic_negative_space_annotations": [
+        {
+          "view": 0,
+          "polygon": [
+            [
+              270,
+              561
+            ],
+            [
+              296,
+              557
+            ],
+            [
+              331,
+              555
+            ],
+            [
+              324,
+              596
+            ],
+            [
+              285,
+              598
+            ],
+            [
+              261,
+              581
+            ]
+          ],
+          "normalized_height_range": [
+            0.085,
+            0.24
+          ],
+          "photograph_sha256": "90f33fd8b1a209f67d2a88181f12387b86384ea96df8a36bbace788cfdd88029"
+        }
+      ],
+      "depth_regularization": {
+        "free_space_max": 0.07,
+        "min_depth_views": 12,
+        "depth_tol": 0.008,
+        "poisson_depth": 9,
+        "poisson_point_weight": 6,
+        "poisson_samples_per_node": 1.5
+      }
+    },
+    "obj_06": {
+      "source_video": "research/3d-quality/videos/obj_06.mp4",
+      "source_video_sha256": "0b45839b9b57fcbb6a00882ab27cf31dca2d4ea3f32cc2e9c570de4ba14ee28e",
+      "selected_method": "spirula",
+      "candidate": "out/figure-fixes-20261009/obj_06/negative-space-v4",
+      "settings": {
+        "iterations": 15000,
+        "cap": 120000,
+        "preset": "control",
+        "training": {
+          "primitive": "3dgs",
+          "floater": "strong",
+          "normal": 0.04,
+          "depth": 0.01,
+          "normal_distortion": 0.01,
+          "underfill": 0.0,
+          "sh": 3
+        },
+        "preset_screen": {
+          "iterations": 4500,
+          "cap": 120000,
+          "scores": {
+            "control": {
+              "fit": {
+                "iou": 0.47668822375830844,
+                "foreground_recall": 0.4790506072662158,
+                "linear_shading_rmse": 0.06087098794753142,
+                "shading_nrmse": 1.660510063163879,
+                "interior_gradient_correlation": 0.3307212093232684,
+                "diagnostic_loss": 0.6083546021971256
+              },
+              "validation": {
+                "iou": 0.448093673259625,
+                "foreground_recall": 0.45316409431929294,
+                "linear_shading_rmse": 0.06331160500059935,
+                "shading_nrmse": 1.7384970570804643,
+                "interior_gradient_correlation": 0.29904342160077985,
+                "diagnostic_loss": 0.6385575999521649
+              }
+            },
+            "detail": {
+              "fit": {
+                "iou": 0.46418466118449087,
+                "foreground_recall": 0.4681857829196875,
+                "linear_shading_rmse": 0.060713847959586176,
+                "shading_nrmse": 1.6562408858526907,
+                "interior_gradient_correlation": 0.36409609969431456,
+                "diagnostic_loss": 0.6091647027273104
+              },
+              "validation": {
+                "iou": 0.43791897263414736,
+                "foreground_recall": 0.4442869633805216,
+                "linear_shading_rmse": 0.06303944729864697,
+                "shading_nrmse": 1.7309705243250881,
+                "interior_gradient_correlation": 0.32700102343406817,
+                "diagnostic_loss": 0.6383264134679518
+              }
+            }
+          },
+          "selected": "control",
+          "assessment": "Two bounded pilot configurations, selected with four validation views; not an exhaustive optimum or an untouched test."
+        },
+        "focal_screen": null,
+        "mask_size": 1536,
+        "recover_warm": false
+      },
+      "validation": {
+        "iou": 0.9533358565879952,
+        "foreground_recall": 0.9668708432182211,
+        "linear_shading_rmse": 0.04103108942502613,
+        "shading_nrmse": 1.0933109886990928,
+        "interior_gradient_correlation": 0.2011923716720912,
+        "diagnostic_loss": 0.31720861793741134
+      },
+      "observations": [
+        "Удалены 679 граней ложной перемычки под одеждой по исходному красному фото.",
+        "Реальная свисающая деталь сохранена. Тонкий шум и неровности края основания остаются."
+      ],
+      "localized_repairs": [
+        {
+          "part": "Spirula_body_native_UV",
+          "removed_faces": 679,
+          "reason": "Manually verified empty space above the base in fit photographs"
+        }
+      ],
+      "photographic_negative_space_annotations": [
+        {
+          "view": 0,
+          "polygon": [
+            [
+              273,
+              568
+            ],
+            [
+              290,
+              562
+            ],
+            [
+              306,
+              583
+            ],
+            [
+              295,
+              595
+            ],
+            [
+              273,
+              585
+            ]
+          ],
+          "normalized_height_range": [
+            0.085,
+            0.3
+          ],
+          "photograph_sha256": "c85e091e45635f2df791f7f743d91bbfabac71289e9e0495cab4ba79df223547"
+        }
+      ],
+      "depth_regularization": {
+        "free_space_max": 0.07,
+        "min_depth_views": 12,
+        "depth_tol": 0.008,
+        "poisson_depth": 9,
+        "poisson_point_weight": 6,
+        "poisson_samples_per_node": 1.5
+      }
+    },
+    "obj_07": {
+      "source_video": "research/3d-quality/videos/obj_07.mp4",
+      "source_video_sha256": "929d7cf1c129dbf27ad76937a7a9e9142b827c6e384d8aa574e1c49ceb444d40",
+      "selected_method": "paired_observed_surface",
+      "candidate": "out/figure-fixes-20261009/paired/obj_07/candidate",
+      "settings": {
+        "iterations": 15000,
+        "cap": 120000,
+        "preset": "coverage",
+        "training": {
+          "primitive": "3dgs",
+          "floater": "mild",
+          "normal": 0.02,
+          "depth": 0.01,
+          "normal_distortion": 0.007,
+          "underfill": 0.25,
+          "sh": 3,
+          "mesh_iso": 0.4,
+          "mesh_carve_k": 8
+        },
+        "preset_screen": null,
+        "focal_screen": null,
+        "mask_size": 2048,
+        "recover_warm": true,
+        "training_role": "Target Spirula comparison baseline; selected surface reconstructed from the red counterpart",
+        "selected_candidate": {
+          "method": "paired_observed_surface",
+          "source_object": "obj_08",
+          "mesh_sha256": "4fc4bb7ea92c6b47fff0a9fcef100193e4c34f62c5b8fc1d776d524b6cc4fcc7",
+          "source_video_sha256": "5fc04d03a18a9377ada0c0d17d1775290c5f7dc00350feb14088ab790d436cda",
+          "target_video_sha256": "929d7cf1c129dbf27ad76937a7a9e9142b827c6e384d8aa574e1c49ceb444d40"
+        }
+      },
+      "validation": {
+        "iou": 0.8088796296027809,
+        "foreground_recall": 0.849170847121782,
+        "linear_shading_rmse": 0.13277774642236578,
+        "shading_nrmse": 1.4708390850306574,
+        "interior_gradient_correlation": 0.02730719653863338,
+        "diagnostic_loss": 0.46788524551115585
+      },
+      "observations": [
+        "Убрана широкая ложная поверхность под корпусом: ноги и просвет заметно чище в фотопревью и серой геометрии.",
+        "Форма взята из наблюдаемой реконструкции красного Баргеста; текстура из белого видео. Совпадение скульптуры парных фигур — явное предположение. Мелкий шум головы остаётся."
+      ],
+      "template_provenance": {
+        "method": "paired_observed_surface",
+        "source_object": "obj_08",
+        "mesh_sha256": "4fc4bb7ea92c6b47fff0a9fcef100193e4c34f62c5b8fc1d776d524b6cc4fcc7",
+        "source_video_sha256": "5fc04d03a18a9377ada0c0d17d1775290c5f7dc00350feb14088ab790d436cda",
+        "target_video_sha256": "929d7cf1c129dbf27ad76937a7a9e9142b827c6e384d8aa574e1c49ceb444d40"
+      }
+    },
+    "obj_09": {
+      "source_video": "research/3d-quality/videos/obj_09.mp4",
+      "source_video_sha256": "19ac9e1be006b49a89876d10aefedcc6643450534c0d686a5e0aac46bb66025c",
+      "selected_method": "hunyuan_mv",
+      "candidate": "out/figure-fixes-20261009/mv-matte/obj_09/candidate",
+      "settings": {
+        "iterations": 15000,
+        "cap": 120000,
+        "preset": "control",
+        "training": {
+          "primitive": "3dgs",
+          "floater": "strong",
+          "normal": 0.04,
+          "depth": 0.01,
+          "normal_distortion": 0.01,
+          "underfill": 0.0,
+          "sh": 3
+        },
+        "preset_screen": {
+          "iterations": 4500,
+          "cap": 120000,
+          "scores": {
+            "control": {
+              "fit": {
+                "iou": 0.7293936196834521,
+                "foreground_recall": 0.7374355237581245,
+                "linear_shading_rmse": 0.17464968139848125,
+                "shading_nrmse": 2.0,
+                "interior_gradient_correlation": 0.10889807482128791,
+                "diagnostic_loss": 0.5973527446444904
+              },
+              "validation": {
+                "iou": 0.7241016652042087,
+                "foreground_recall": 0.7373360468656123,
+                "linear_shading_rmse": 0.176579325387111,
+                "shading_nrmse": 2.0,
+                "interior_gradient_correlation": 0.1183746156336384,
+                "diagnostic_loss": 0.5985218723549527
+              }
+            },
+            "detail": {
+              "fit": {
+                "iou": 0.7014124412877537,
+                "foreground_recall": 0.7082878997023057,
+                "linear_shading_rmse": 0.18051671740291925,
+                "shading_nrmse": 2.0,
+                "interior_gradient_correlation": 0.04593996336204258,
+                "diagnostic_loss": 0.6148410271486944
+              },
+              "validation": {
+                "iou": 0.7051911015106005,
+                "foreground_recall": 0.7151385450860881,
+                "linear_shading_rmse": 0.18107018142681358,
+                "shading_nrmse": 2.0,
+                "interior_gradient_correlation": 0.045048814634553694,
+                "diagnostic_loss": 0.6134186779323045
+              }
+            }
+          },
+          "selected": "control",
+          "assessment": "Two bounded pilot configurations, selected with four validation views; not an exhaustive optimum or an untouched test."
+        },
+        "focal_screen": null,
+        "mask_size": 2048,
+        "recover_warm": true,
+        "training_role": "Spirula comparison baseline; selected geometry comes from the generated MV candidate described below",
+        "selected_candidate": {
+          "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+          "parameters": {
+            "steps": 8,
+            "resolution": 384,
+            "quantize": 8,
+            "seed": 23,
+            "guidance": 5.0,
+            "query_chunk": 4096,
+            "save_grid": false,
+            "front_only": false,
+            "conditioning_alpha_threshold": 128,
+            "foreground_gain": 0.65
+          },
+          "weights": {
+            "repo": "tencent/Hunyuan3D-2mv",
+            "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+            "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+            "size": 4930777530,
+            "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+            "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+            "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+          },
+          "inputs": [
+            {
+              "tag": "front",
+              "view": 13,
+              "nominal_angle": 0,
+              "sha256": "b389e79dd0f8bba1f7d833c66439294371ef3556901e49c629e95da5fc4f2489"
+            },
+            {
+              "tag": "left",
+              "view": 26,
+              "nominal_angle": 90,
+              "sha256": "5a66128cc655899f7eb11f471a387ad0531e8486054419baeafd8e8c4e1a55ac"
+            },
+            {
+              "tag": "back",
+              "view": 38,
+              "nominal_angle": 180,
+              "sha256": "d4c3023e09e99084798413dd64119cd4735c0a2c89ea5172f7b1d8a27eb9b138"
+            },
+            {
+              "tag": "right",
+              "view": 0,
+              "nominal_angle": 270,
+              "sha256": "35866a613c3aa9d1f74492a7131304ec307f99459c69266d52a220dacdb7e176"
+            }
+          ],
+          "conditioning_photographs": 4,
+          "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82"
+        }
+      },
+      "validation": {
+        "iou": 0.784915559763929,
+        "foreground_recall": 0.9299279596876932,
+        "linear_shading_rmse": 0.10962894646532115,
+        "shading_nrmse": 1.3854476763693273,
+        "interior_gradient_correlation": 0.08430900495394325,
+        "diagnostic_loss": 0.4546924108728996
+      },
+      "observations": [
+        "Вместо одиночного входа успешно использованы четыре fit-фото после удаления слабых alpha-хвостов. Сохранились обе кисти, ноги и капюшон.",
+        "Лицо и пальцы приблизительны; точность скрытой формы не подтверждена."
+      ],
+      "generation_provenance": {
+        "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+        "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82",
+        "weights": {
+          "repo": "tencent/Hunyuan3D-2mv",
+          "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+          "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+          "size": 4930777530,
+          "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+          "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+          "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+        },
+        "config_sha256": "4d9d7b21dd0669efd0a8da6024ecce28619b45a4ca5f3ea1394a54b3d38698f5",
+        "source_video_sha256": "19ac9e1be006b49a89876d10aefedcc6643450534c0d686a5e0aac46bb66025c",
+        "inputs": [
+          {
+            "tag": "front",
+            "view": 13,
+            "nominal_angle": 0,
+            "sha256": "b389e79dd0f8bba1f7d833c66439294371ef3556901e49c629e95da5fc4f2489"
+          },
+          {
+            "tag": "left",
+            "view": 26,
+            "nominal_angle": 90,
+            "sha256": "5a66128cc655899f7eb11f471a387ad0531e8486054419baeafd8e8c4e1a55ac"
+          },
+          {
+            "tag": "back",
+            "view": 38,
+            "nominal_angle": 180,
+            "sha256": "d4c3023e09e99084798413dd64119cd4735c0a2c89ea5172f7b1d8a27eb9b138"
+          },
+          {
+            "tag": "right",
+            "view": 0,
+            "nominal_angle": 270,
+            "sha256": "35866a613c3aa9d1f74492a7131304ec307f99459c69266d52a220dacdb7e176"
+          }
+        ],
+        "selection": "Four fit photographs at calibrated quarter turns; front reordered by visual review of the source figure. Approximate camera phase is not geometric ground truth.",
+        "parameters": {
+          "steps": 8,
+          "resolution": 384,
+          "quantize": 8,
+          "seed": 23,
+          "guidance": 5.0,
+          "query_chunk": 4096,
+          "save_grid": false,
+          "front_only": false,
+          "conditioning_alpha_threshold": 128,
+          "foreground_gain": 0.65
+        },
+        "model_load_seconds": 1.2306173749966547,
+        "generation_seconds": 94.22048608300975,
+        "peak_mlx_bytes": 4322481712,
+        "faces": 799556,
+        "watertight": true,
+        "mesh_sha256": "c1c11300876c4fa27932697bd865d45677bd47b01091c6aac52fa212167e10ea",
+        "total_seconds": 95.68668879100005,
+        "conditioning_inputs": {
+          "front": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_09/generation/conditioning/front.png",
+            "sha256": "8b054b70d29aeb8b736b2fa3c4a4cb5f47d2e9c10e82953f419676c37842f8ab"
+          },
+          "left": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_09/generation/conditioning/left.png",
+            "sha256": "8aac8e1fd566e7bdde2342cee659127f0ed03cf0f1affeab0ac3156513fa41d9"
+          },
+          "back": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_09/generation/conditioning/back.png",
+            "sha256": "afe36dfd1ff255a93ecdab5f091728f4613f445e08f181c552500df9c4b5a0d2"
+          },
+          "right": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_09/generation/conditioning/right.png",
+            "sha256": "995838c99afaeb5c8fc91499d887e759be6b7f34901b5a5f1bde8e2640773f96"
+          }
+        }
+      }
+    },
+    "obj_11": {
+      "source_video": "research/3d-quality/videos/obj_11.mp4",
+      "source_video_sha256": "94712842d83ee7a23490d6f2ae15c752b6ac9eaf91ea76381d6c0ec7fe900d18",
+      "selected_method": "hunyuan_mv",
+      "candidate": "out/figure-fixes-20261009/mv-extra/obj_11/plain-plastic",
+      "settings": {
+        "iterations": 15000,
+        "cap": 120000,
+        "preset": "coverage",
+        "training": {
+          "primitive": "3dgs",
+          "floater": "mild",
+          "normal": 0.02,
+          "depth": 0.01,
+          "normal_distortion": 0.007,
+          "underfill": 0.25,
+          "sh": 3,
+          "mesh_iso": 0.4,
+          "mesh_carve_k": 8
+        },
+        "preset_screen": null,
+        "focal_screen": null,
+        "mask_size": 2048,
+        "recover_warm": true,
+        "training_role": "Spirula comparison baseline; selected geometry comes from the generated MV candidate described below",
+        "selected_candidate": {
+          "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+          "parameters": {
+            "steps": 8,
+            "resolution": 384,
+            "quantize": 8,
+            "seed": 23,
+            "guidance": 5.0,
+            "query_chunk": 4096,
+            "save_grid": false,
+            "front_only": false,
+            "conditioning_alpha_threshold": 128,
+            "foreground_gain": 0.65
+          },
+          "weights": {
+            "repo": "tencent/Hunyuan3D-2mv",
+            "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+            "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+            "size": 4930777530,
+            "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+            "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+            "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+          },
+          "inputs": [
+            {
+              "tag": "front",
+              "view": 63,
+              "nominal_angle": 0,
+              "sha256": "45978a44721c321f3effecba6403780a7839d30fcbbbf9e417945a9d5c4d2643"
+            },
+            {
+              "tag": "left",
+              "view": 15,
+              "nominal_angle": 90,
+              "sha256": "66213f108e6082d43a3be7bd35cc24ddaefd2a152bdb429eb3cfa03926d5fdc5"
+            },
+            {
+              "tag": "back",
+              "view": 95,
+              "nominal_angle": 180,
+              "sha256": "9d2d8bc18579eb82674764d2d89ed40cbddcc884980eecbfe7eae41b2826680c"
+            },
+            {
+              "tag": "right",
+              "view": 48,
+              "nominal_angle": 270,
+              "sha256": "23636f3164d37425c86f54837db643593b155412ddfc4728efc7841ac651e0fd"
+            }
+          ],
+          "conditioning_photographs": 4,
+          "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82"
+        }
+      },
+      "validation": {
+        "iou": 0.825638854822123,
+        "foreground_recall": 0.9294391868586294,
+        "linear_shading_rmse": 0.1224141671362553,
+        "shading_nrmse": 1.2735492601827372,
+        "interior_gradient_correlation": 0.003200731081711982,
+        "diagnostic_loss": 0.42413423699952707
+      },
+      "observations": [
+        "Лапы лучше разделены в новой форме. Искажённая фототекстура заменена однотонным пластиком по цвету четырёх fit-фото; ложные фотографические контуры на брюшке убраны.",
+        "Фотографический рельеф не сохраняется; оригинальная текстура сохранена для сравнения. Геометрия генеративная: мелкие суставы и соединения лап приблизительны."
+      ],
+      "generation_provenance": {
+        "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+        "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82",
+        "weights": {
+          "repo": "tencent/Hunyuan3D-2mv",
+          "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+          "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+          "size": 4930777530,
+          "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+          "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+          "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+        },
+        "config_sha256": "4d9d7b21dd0669efd0a8da6024ecce28619b45a4ca5f3ea1394a54b3d38698f5",
+        "source_video_sha256": "94712842d83ee7a23490d6f2ae15c752b6ac9eaf91ea76381d6c0ec7fe900d18",
+        "inputs": [
+          {
+            "tag": "front",
+            "view": 63,
+            "nominal_angle": 0,
+            "sha256": "45978a44721c321f3effecba6403780a7839d30fcbbbf9e417945a9d5c4d2643"
+          },
+          {
+            "tag": "left",
+            "view": 15,
+            "nominal_angle": 90,
+            "sha256": "66213f108e6082d43a3be7bd35cc24ddaefd2a152bdb429eb3cfa03926d5fdc5"
+          },
+          {
+            "tag": "back",
+            "view": 95,
+            "nominal_angle": 180,
+            "sha256": "9d2d8bc18579eb82674764d2d89ed40cbddcc884980eecbfe7eae41b2826680c"
+          },
+          {
+            "tag": "right",
+            "view": 48,
+            "nominal_angle": 270,
+            "sha256": "23636f3164d37425c86f54837db643593b155412ddfc4728efc7841ac651e0fd"
+          }
+        ],
+        "selection": "Fit-only quarter turns; red spider used as the reference experiment.",
+        "parameters": {
+          "steps": 8,
+          "resolution": 384,
+          "quantize": 8,
+          "seed": 23,
+          "guidance": 5.0,
+          "query_chunk": 4096,
+          "save_grid": false,
+          "front_only": false,
+          "conditioning_alpha_threshold": 128,
+          "foreground_gain": 0.65
+        },
+        "model_load_seconds": 1.2121947089908645,
+        "generation_seconds": 134.4119157080131,
+        "peak_mlx_bytes": 4322481712,
+        "faces": 1665296,
+        "watertight": true,
+        "mesh_sha256": "198717a9c2d350099e147f4596569f3eb82f71355139d14b2b66685600ec986c",
+        "total_seconds": 136.13776208399213,
+        "conditioning_inputs": {
+          "front": {
+            "path": "out/figure-fixes-20261009/mv-extra/obj_11/generation/conditioning/front.png",
+            "sha256": "2f35b887564e40ee2fa4758916951ca73e32d6006b1e2ed40dad3739bd1f7970"
+          },
+          "left": {
+            "path": "out/figure-fixes-20261009/mv-extra/obj_11/generation/conditioning/left.png",
+            "sha256": "2c7fa82caeac37226439305de606c44f440f03b7218e97184c2a03de070ef6e0"
+          },
+          "back": {
+            "path": "out/figure-fixes-20261009/mv-extra/obj_11/generation/conditioning/back.png",
+            "sha256": "d1312fb46d7c992b18767664aca1ed1348edb2d93eca29ee8b5edfd408813ca8"
+          },
+          "right": {
+            "path": "out/figure-fixes-20261009/mv-extra/obj_11/generation/conditioning/right.png",
+            "sha256": "8884a1925b6e94c4442f424a50e6eff6a281ef60bdc07e24526e049f2fc24e5d"
+          }
+        }
+      },
+      "appearance": {
+        "method": "uniform_observed_plastic_colour",
+        "median_srgb": [
+          162,
+          144,
+          118
+        ],
+        "fit_photographs": [
+          {
+            "name": "view_0063.png",
+            "photo_sha256": "6373ab54c4ace754fabb6f1a63f50428c18505584fd6310b3b5bd2c66d901dfb",
+            "mask_sha256": "1af03840281210f04f01b5e6eec70936198280c86329e9ba385657e8cc6f923f"
+          },
+          {
+            "name": "view_0015.png",
+            "photo_sha256": "7d21eead787fae614088a98b3edd44007b8b667c825c240ae31e146106f0a13b",
+            "mask_sha256": "6802bcb94fc830933e539318117803559fd3efc480fcad56f1f6026a1359efba"
+          },
+          {
+            "name": "view_0095.png",
+            "photo_sha256": "7136543f81afc1eee36704b242ca5283c4d89823bee464d1cf64b3edc3322761",
+            "mask_sha256": "5ef06bfc39bfb97606d8b6a42dad848f0b6d74eca7d8094fc40190e94aafc414"
+          },
+          {
+            "name": "view_0048.png",
+            "photo_sha256": "53cbb22dc411ff467ecbd0687cbe14d891c528f602fc11dac1ba81a83646b16e",
+            "mask_sha256": "85ae9bc34f65ac1c34e025d60f372cb275ef8d3116c6a015a6205761da2fde52"
+          }
+        ],
+        "source_mesh_sha256": "9a1f5bace7f5df26cb57e2217d34b61f9f0ad21bba57fa8d46e1620dfd8bfb69",
+        "geometry_unchanged": true,
+        "limitation": "Uniform captured colour, not measured albedo. Photographic detail and baked lighting removed; generated surface detail remains approximate."
+      },
+      "texture_correction": {
+        "mask_margin_pixels": 2,
+        "bright_quantile": 0.92,
+        "source_mesh_sha256": "70fc7c94ca8ce9e6415f2a95b407a4efa29286462ff7ba86a24e29beebc879ff",
+        "geometry_unchanged": true
+      }
+    },
+    "obj_12": {
+      "source_video": "research/3d-quality/videos/obj_12.mp4",
+      "source_video_sha256": "697b23148d3df77438c2342b65ff51d77c597dd66fb5de1a24d32d79044e7302",
+      "selected_method": "hunyuan_mv",
+      "candidate": "out/figure-fixes-20261009/mv-extra/obj_12/texture-clean",
+      "settings": {
+        "iterations": 15000,
+        "cap": 120000,
+        "preset": "control",
+        "training": {
+          "primitive": "3dgs",
+          "floater": "strong",
+          "normal": 0.04,
+          "depth": 0.01,
+          "normal_distortion": 0.01,
+          "underfill": 0.0,
+          "sh": 3
+        },
+        "preset_screen": {
+          "iterations": 4500,
+          "cap": 120000,
+          "scores": {
+            "control": {
+              "fit": {
+                "iou": 0.8890605801178368,
+                "foreground_recall": 0.8921605214992656,
+                "linear_shading_rmse": 0.032179103694321635,
+                "shading_nrmse": 1.0726367898107212,
+                "interior_gradient_correlation": 0.033327432776668234,
+                "diagnostic_loss": 0.3555703826373427
+              },
+              "validation": {
+                "iou": 0.887078668760275,
+                "foreground_recall": 0.8921849276642106,
+                "linear_shading_rmse": 0.032165191600518395,
+                "shading_nrmse": 1.072173053350613,
+                "interior_gradient_correlation": 0.03460123379852247,
+                "diagnostic_loss": 0.35614301978616036
+              }
+            },
+            "detail": {
+              "fit": {
+                "iou": 0.8737884987774579,
+                "foreground_recall": 0.8796409039843422,
+                "linear_shading_rmse": 0.03242409796180979,
+                "shading_nrmse": 1.0808032653936597,
+                "interior_gradient_correlation": 0.03163024944552037,
+                "diagnostic_loss": 0.3634822286231968
+              },
+              "validation": {
+                "iou": 0.8721799388884681,
+                "foreground_recall": 0.8797902184884172,
+                "linear_shading_rmse": 0.03240544969971498,
+                "shading_nrmse": 1.0801816566571663,
+                "interior_gradient_correlation": 0.025092488754209802,
+                "diagnostic_loss": 0.364655106900625
+              }
+            }
+          },
+          "selected": "control",
+          "assessment": "Two bounded pilot configurations, selected with four validation views; not an exhaustive optimum or an untouched test."
+        },
+        "focal_screen": null,
+        "mask_size": 1536,
+        "recover_warm": false,
+        "training_role": "Spirula comparison baseline; selected geometry comes from the generated MV candidate described below",
+        "selected_candidate": {
+          "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+          "parameters": {
+            "steps": 8,
+            "resolution": 384,
+            "quantize": 8,
+            "seed": 23,
+            "guidance": 5.0,
+            "query_chunk": 4096,
+            "save_grid": false,
+            "front_only": false,
+            "conditioning_alpha_threshold": 128,
+            "foreground_gain": 1.0
+          },
+          "weights": {
+            "repo": "tencent/Hunyuan3D-2mv",
+            "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+            "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+            "size": 4930777530,
+            "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+            "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+            "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+          },
+          "inputs": [
+            {
+              "tag": "front",
+              "view": 61,
+              "nominal_angle": 0,
+              "sha256": "ea14c12f9c869e891c1064e76d59413e01cbf42883a56818003db9c40c00a58d"
+            },
+            {
+              "tag": "left",
+              "view": 15,
+              "nominal_angle": 90,
+              "sha256": "b73459b44562835ec72bc79e0ec690abcad564ff0920ad2c38a29f1ede1366c2"
+            },
+            {
+              "tag": "back",
+              "view": 92,
+              "nominal_angle": 180,
+              "sha256": "8df11f09bec114d7591540d90d5e1deed1692a1c16b676831731943fe4d3b70f"
+            },
+            {
+              "tag": "right",
+              "view": 46,
+              "nominal_angle": 270,
+              "sha256": "71f58388b5230853a4bf4ad095bd4432307d410d97fb71a565b37e87bdd188a3"
+            }
+          ],
+          "conditioning_photographs": 4,
+          "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82"
+        }
+      },
+      "validation": {
+        "iou": 0.8865066880290255,
+        "foreground_recall": 0.9492014198627585,
+        "linear_shading_rmse": 0.029129238850755704,
+        "shading_nrmse": 0.9696201902355719,
+        "interior_gradient_correlation": 0.022580439004268475,
+        "diagnostic_loss": 0.33706331893507735
+      },
+      "observations": [
+        "Красная фигурка использована для контрольного эксперимента. В новой форме видны отдельные лапы и просветы; добавлена фильтрация светлого фона при фототекстурировании.",
+        "Форма генеративная: нижние соединения и тонкие лапы остаются приблизительными; точный исходный рельеф не восстановлен."
+      ],
+      "generation_provenance": {
+        "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+        "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82",
+        "weights": {
+          "repo": "tencent/Hunyuan3D-2mv",
+          "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+          "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+          "size": 4930777530,
+          "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+          "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+          "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+        },
+        "config_sha256": "4d9d7b21dd0669efd0a8da6024ecce28619b45a4ca5f3ea1394a54b3d38698f5",
+        "source_video_sha256": "697b23148d3df77438c2342b65ff51d77c597dd66fb5de1a24d32d79044e7302",
+        "inputs": [
+          {
+            "tag": "front",
+            "view": 61,
+            "nominal_angle": 0,
+            "sha256": "ea14c12f9c869e891c1064e76d59413e01cbf42883a56818003db9c40c00a58d"
+          },
+          {
+            "tag": "left",
+            "view": 15,
+            "nominal_angle": 90,
+            "sha256": "b73459b44562835ec72bc79e0ec690abcad564ff0920ad2c38a29f1ede1366c2"
+          },
+          {
+            "tag": "back",
+            "view": 92,
+            "nominal_angle": 180,
+            "sha256": "8df11f09bec114d7591540d90d5e1deed1692a1c16b676831731943fe4d3b70f"
+          },
+          {
+            "tag": "right",
+            "view": 46,
+            "nominal_angle": 270,
+            "sha256": "71f58388b5230853a4bf4ad095bd4432307d410d97fb71a565b37e87bdd188a3"
+          }
+        ],
+        "selection": "Fit-only quarter turns; red spider used as the reference experiment.",
+        "parameters": {
+          "steps": 8,
+          "resolution": 384,
+          "quantize": 8,
+          "seed": 23,
+          "guidance": 5.0,
+          "query_chunk": 4096,
+          "save_grid": false,
+          "front_only": false,
+          "conditioning_alpha_threshold": 128,
+          "foreground_gain": 1.0
+        },
+        "model_load_seconds": 1.2542417499935254,
+        "generation_seconds": 151.25707508300547,
+        "peak_mlx_bytes": 4322481712,
+        "faces": 1797921,
+        "watertight": false,
+        "mesh_sha256": "0acc513bbefce539c103bdb0198857d0ce63d3987cd723c0afbe936625bb2015",
+        "total_seconds": 153.1655145830009,
+        "conditioning_inputs": {
+          "front": {
+            "path": "out/figure-fixes-20261009/mv-extra/obj_12/generation/conditioning/front.png",
+            "sha256": "b533d6be93dbd2b0f4370a275997d34155144d3c16be9db078f061ef4d252e07"
+          },
+          "left": {
+            "path": "out/figure-fixes-20261009/mv-extra/obj_12/generation/conditioning/left.png",
+            "sha256": "cf16fc0824ab6f8efa889f9597712309ebf43f165a73f615f2f8a309cf967323"
+          },
+          "back": {
+            "path": "out/figure-fixes-20261009/mv-extra/obj_12/generation/conditioning/back.png",
+            "sha256": "3508f4972bb71c483444cc58528ebaa69f8c2ff7a2d663f757b0147e620eaad3"
+          },
+          "right": {
+            "path": "out/figure-fixes-20261009/mv-extra/obj_12/generation/conditioning/right.png",
+            "sha256": "73c414e2d1b685cc5f3b2d81719bd77cc44d02f1af04e52ef40f601346e3fe8f"
+          }
+        }
+      },
+      "texture_correction": {
+        "mask_margin_pixels": 2,
+        "bright_quantile": 0.92,
+        "source_mesh_sha256": "4baf5977440865fbcdaecae8eb835b0a915a1ad95f785cfc5aed229d3a5ebfdd",
+        "geometry_unchanged": true
+      }
+    },
+    "obj_13": {
+      "source_video": "research/3d-quality/videos/obj_13.mp4",
+      "source_video_sha256": "34424d4c4554d44acc1f5156c8955b5bcedb76aa197abbd9afedae24ee26fa0d",
+      "selected_method": "hunyuan_mv",
+      "candidate": "out/figure-fixes-20261009/mv-matte/obj_13/candidate",
+      "settings": {
+        "iterations": 15000,
+        "cap": 120000,
+        "preset": "coverage",
+        "training": {
+          "primitive": "3dgs",
+          "floater": "mild",
+          "normal": 0.02,
+          "depth": 0.01,
+          "normal_distortion": 0.007,
+          "underfill": 0.25,
+          "sh": 3,
+          "mesh_iso": 0.4,
+          "mesh_carve_k": 8
+        },
+        "preset_screen": null,
+        "focal_screen": null,
+        "mask_size": 2048,
+        "recover_warm": true,
+        "selected_candidate": {
+          "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+          "parameters": {
+            "steps": 8,
+            "resolution": 384,
+            "quantize": 8,
+            "seed": 23,
+            "guidance": 5.0,
+            "query_chunk": 4096,
+            "save_grid": false,
+            "front_only": false,
+            "conditioning_alpha_threshold": 128,
+            "foreground_gain": 0.65
+          },
+          "weights": {
+            "repo": "tencent/Hunyuan3D-2mv",
+            "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+            "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+            "size": 4930777530,
+            "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+            "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+            "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+          },
+          "inputs": [
+            {
+              "tag": "front",
+              "view": 38,
+              "nominal_angle": 0,
+              "sha256": "1af720a3fec4f07dc1579fdda63cdf25ebcd0ccd02f3e47f27f24fe9c1021d05"
+            },
+            {
+              "tag": "left",
+              "view": 0,
+              "nominal_angle": 90,
+              "sha256": "bf1e1d460c9cabe11114d0fd0642c7bbc89a7a57fc10f63d45a9753fd2b7e967"
+            },
+            {
+              "tag": "back",
+              "view": 13,
+              "nominal_angle": 180,
+              "sha256": "87a7d89a226de4e15e7d35fb2fbd5fdd9ab9367150c59256b07a4620a7edc4f0"
+            },
+            {
+              "tag": "right",
+              "view": 26,
+              "nominal_angle": 270,
+              "sha256": "5ab0e19d3de7e33d0c878bf990737f670f784ebdd8bc59f04c5f82109e81e5a4"
+            }
+          ],
+          "conditioning_photographs": 4,
+          "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82"
+        },
+        "training_role": "Spirula comparison baseline; selected geometry comes from the generated MV candidate described below"
+      },
+      "validation": {
+        "iou": 0.830656579895682,
+        "foreground_recall": 0.9398764997036848,
+        "linear_shading_rmse": 0.11017585686866001,
+        "shading_nrmse": 1.2550896714274766,
+        "interior_gradient_correlation": 0.06907519430536599,
+        "diagnostic_loss": 0.411847782896686
+      },
+      "observations": [
+        "Новая четырёхвидовая форма после alpha-порогования и уменьшения яркости входа: тело, поднятая рука, волосы и завиток хлыста связаны заметно лучше.",
+        "Лицо, пальцы и тонкие окончания хлыста сглажены; генеративное происхождение сохранено."
+      ],
+      "generation_provenance": {
+        "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+        "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82",
+        "weights": {
+          "repo": "tencent/Hunyuan3D-2mv",
+          "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+          "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+          "size": 4930777530,
+          "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+          "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+          "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+        },
+        "config_sha256": "4d9d7b21dd0669efd0a8da6024ecce28619b45a4ca5f3ea1394a54b3d38698f5",
+        "source_video_sha256": "34424d4c4554d44acc1f5156c8955b5bcedb76aa197abbd9afedae24ee26fa0d",
+        "inputs": [
+          {
+            "tag": "front",
+            "view": 38,
+            "nominal_angle": 0,
+            "sha256": "1af720a3fec4f07dc1579fdda63cdf25ebcd0ccd02f3e47f27f24fe9c1021d05"
+          },
+          {
+            "tag": "left",
+            "view": 0,
+            "nominal_angle": 90,
+            "sha256": "bf1e1d460c9cabe11114d0fd0642c7bbc89a7a57fc10f63d45a9753fd2b7e967"
+          },
+          {
+            "tag": "back",
+            "view": 13,
+            "nominal_angle": 180,
+            "sha256": "87a7d89a226de4e15e7d35fb2fbd5fdd9ab9367150c59256b07a4620a7edc4f0"
+          },
+          {
+            "tag": "right",
+            "view": 26,
+            "nominal_angle": 270,
+            "sha256": "5ab0e19d3de7e33d0c878bf990737f670f784ebdd8bc59f04c5f82109e81e5a4"
+          }
+        ],
+        "selection": "Four fit photographs at calibrated quarter turns; front reordered by visual review of the source figure. Approximate camera phase is not geometric ground truth.",
+        "parameters": {
+          "steps": 8,
+          "resolution": 384,
+          "quantize": 8,
+          "seed": 23,
+          "guidance": 5.0,
+          "query_chunk": 4096,
+          "save_grid": false,
+          "front_only": false,
+          "conditioning_alpha_threshold": 128,
+          "foreground_gain": 0.65
+        },
+        "model_load_seconds": 1.2365947910002433,
+        "generation_seconds": 101.65480324998498,
+        "peak_mlx_bytes": 4322481712,
+        "faces": 1144262,
+        "watertight": true,
+        "mesh_sha256": "fb64b53a1c7d53a057ab7d1fe44742155083e7c59e408387265c9480e13002b3",
+        "total_seconds": 103.26319591599167,
+        "conditioning_inputs": {
+          "front": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_13/generation/conditioning/front.png",
+            "sha256": "1eb32aca557882df56a769054cb6a82852a0c2b39a3dd0f33c74e4ae3b75aa6c"
+          },
+          "left": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_13/generation/conditioning/left.png",
+            "sha256": "e46021a145aebb9b5f6849f55ed6433d1215ca82e2142a9053d7dc1f6a90ed5a"
+          },
+          "back": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_13/generation/conditioning/back.png",
+            "sha256": "ed54621175822e59db476579a77580895f690160301b6823f84dc841af326540"
+          },
+          "right": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_13/generation/conditioning/right.png",
+            "sha256": "c980533c66b3f9a341074b0059bc99b11d62137770861ac9c34d5dafd9913c2f"
+          }
+        }
+      }
+    },
+    "obj_14": {
+      "source_video": "research/3d-quality/videos/obj_14.mp4",
+      "source_video_sha256": "5ca7317b1cb0c3b207aabb05341a2c09fff7fd8b0648aaa4e543a1492e1d1fd0",
+      "selected_method": "hunyuan_mv",
+      "candidate": "out/figure-fixes-20261009/mv-matte/obj_14/candidate",
+      "settings": {
+        "iterations": 15000,
+        "cap": 120000,
+        "preset": "control",
+        "training": {
+          "primitive": "3dgs",
+          "floater": "strong",
+          "normal": 0.04,
+          "depth": 0.01,
+          "normal_distortion": 0.01,
+          "underfill": 0.0,
+          "sh": 3
+        },
+        "preset_screen": {
+          "iterations": 4500,
+          "cap": 120000,
+          "scores": {
+            "control": {
+              "fit": {
+                "iou": 0.7916999234762028,
+                "foreground_recall": 0.8028841935595052,
+                "linear_shading_rmse": 0.03767100491689044,
+                "shading_nrmse": 1.2117548460513052,
+                "interior_gradient_correlation": 0.028827710291427437,
+                "diagnostic_loss": 0.42278822879063716
+              },
+              "validation": {
+                "iou": 0.7770997705916391,
+                "foreground_recall": 0.7941825076177316,
+                "linear_shading_rmse": 0.037972694876599336,
+                "shading_nrmse": 1.235167339481484,
+                "interior_gradient_correlation": 0.044267845949041276,
+                "diagnostic_loss": 0.43176677506473704
+              }
+            },
+            "detail": {
+              "fit": {
+                "iou": 0.6408565291346247,
+                "foreground_recall": 0.6471973147778232,
+                "linear_shading_rmse": 0.04084865198705727,
+                "shading_nrmse": 1.3143497305251175,
+                "interior_gradient_correlation": -0.0014443153732382123,
+                "diagnostic_loss": 0.5066717659884976
+              },
+              "validation": {
+                "iou": 0.6332195584506102,
+                "foreground_recall": 0.642253278998743,
+                "linear_shading_rmse": 0.04127763167876765,
+                "shading_nrmse": 1.3432264335225124,
+                "interior_gradient_correlation": -0.03153908365352713,
+                "diagnostic_loss": 0.5185113716896111
+              }
+            }
+          },
+          "selected": "control",
+          "assessment": "Two bounded pilot configurations, selected with four validation views; not an exhaustive optimum or an untouched test."
+        },
+        "focal_screen": null,
+        "mask_size": 1536,
+        "recover_warm": false,
+        "training_role": "Spirula comparison baseline; selected geometry comes from the generated MV candidate described below",
+        "selected_candidate": {
+          "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+          "parameters": {
+            "steps": 8,
+            "resolution": 384,
+            "quantize": 8,
+            "seed": 23,
+            "guidance": 5.0,
+            "query_chunk": 4096,
+            "save_grid": false,
+            "front_only": false,
+            "conditioning_alpha_threshold": 128,
+            "foreground_gain": 1.0
+          },
+          "weights": {
+            "repo": "tencent/Hunyuan3D-2mv",
+            "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+            "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+            "size": 4930777530,
+            "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+            "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+            "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+          },
+          "inputs": [
+            {
+              "tag": "front",
+              "view": 0,
+              "nominal_angle": 0,
+              "sha256": "18e036ad83c84a8cdcb5cbe99b674a573253d4a03fa8438c0f09449837a1e501"
+            },
+            {
+              "tag": "left",
+              "view": 12,
+              "nominal_angle": 90,
+              "sha256": "e32d3b9af559c85da91e5f459c5cd43aba2c260cd5f7158b3b1bf3d704caa159"
+            },
+            {
+              "tag": "back",
+              "view": 73,
+              "nominal_angle": 180,
+              "sha256": "80289126f5284ef5bd7fcd81898a10d54fdaa3b3ca739512ba5e575a49f3ff30"
+            },
+            {
+              "tag": "right",
+              "view": 36,
+              "nominal_angle": 270,
+              "sha256": "1282b7329fa537f44dcf25f8999d0b944eeaca1df5b84f3ba926c740ac609f9d"
+            }
+          ],
+          "conditioning_photographs": 4,
+          "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82"
+        }
+      },
+      "validation": {
+        "iou": 0.799249963825547,
+        "foreground_recall": 0.9123088184264638,
+        "linear_shading_rmse": 0.03445780257734335,
+        "shading_nrmse": 1.1055397636584563,
+        "interior_gradient_correlation": 0.04902121327614473,
+        "diagnostic_loss": 0.39650584587385806
+      },
+      "observations": [
+        "Перестроена парная красная демоница: связность тела и поднятой руки проверена, открытые участки около хлыста сохранены.",
+        "IoU немного ниже прежнего; выбрано по полной форме и просмотру. Лицо и тонкие детали хлыста приблизительны."
+      ],
+      "generation_provenance": {
+        "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+        "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82",
+        "weights": {
+          "repo": "tencent/Hunyuan3D-2mv",
+          "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+          "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+          "size": 4930777530,
+          "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+          "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+          "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+        },
+        "config_sha256": "4d9d7b21dd0669efd0a8da6024ecce28619b45a4ca5f3ea1394a54b3d38698f5",
+        "source_video_sha256": "5ca7317b1cb0c3b207aabb05341a2c09fff7fd8b0648aaa4e543a1492e1d1fd0",
+        "inputs": [
+          {
+            "tag": "front",
+            "view": 0,
+            "nominal_angle": 0,
+            "sha256": "18e036ad83c84a8cdcb5cbe99b674a573253d4a03fa8438c0f09449837a1e501"
+          },
+          {
+            "tag": "left",
+            "view": 12,
+            "nominal_angle": 90,
+            "sha256": "e32d3b9af559c85da91e5f459c5cd43aba2c260cd5f7158b3b1bf3d704caa159"
+          },
+          {
+            "tag": "back",
+            "view": 73,
+            "nominal_angle": 180,
+            "sha256": "80289126f5284ef5bd7fcd81898a10d54fdaa3b3ca739512ba5e575a49f3ff30"
+          },
+          {
+            "tag": "right",
+            "view": 36,
+            "nominal_angle": 270,
+            "sha256": "1282b7329fa537f44dcf25f8999d0b944eeaca1df5b84f3ba926c740ac609f9d"
+          }
+        ],
+        "selection": "Fit-only quarter turns from calibrated orbit; front is first-view gauge, physical front is not asserted. Inputs visually reviewed as a four-view set.",
+        "parameters": {
+          "steps": 8,
+          "resolution": 384,
+          "quantize": 8,
+          "seed": 23,
+          "guidance": 5.0,
+          "query_chunk": 4096,
+          "save_grid": false,
+          "front_only": false,
+          "conditioning_alpha_threshold": 128,
+          "foreground_gain": 1.0
+        },
+        "model_load_seconds": 1.2369746249751188,
+        "generation_seconds": 104.24779962500907,
+        "peak_mlx_bytes": 4322481712,
+        "faces": 1143892,
+        "watertight": true,
+        "mesh_sha256": "000bf2a6f7e87458f57dda5081313278f94dd4ee9ad62a1e41c3ddf7e7e81e70",
+        "total_seconds": 105.86112008299096,
+        "conditioning_inputs": {
+          "front": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_14/generation/conditioning/front.png",
+            "sha256": "96e70a1f15b9c0f761228c75c33d64ba6d457cb6a060c8e75ba9d53ad94abd99"
+          },
+          "left": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_14/generation/conditioning/left.png",
+            "sha256": "906ff593794dc69f4e5ba3457ea3fb2a22607c08f2aca40ded22fe8dc6f6964b"
+          },
+          "back": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_14/generation/conditioning/back.png",
+            "sha256": "5c89fe5babb3fbb3abad2a217689f6e5b85ef6def5c9bd9acc359ce338b0a197"
+          },
+          "right": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_14/generation/conditioning/right.png",
+            "sha256": "104f3925d00fc5ed48dc354c5391a5bb95a09567f5490e23f72aa70e4b4d9d24"
+          }
+        }
+      }
+    },
+    "obj_15": {
+      "source_video": "research/3d-quality/videos/obj_15.mp4",
+      "source_video_sha256": "402d81c9346861e1a41e3cd2b84af757fae418bcccc3e4b23d5041cfe42eb15c",
+      "selected_method": "hunyuan_mv",
+      "candidate": "out/figure-fixes-20261009/mv-matte/obj_15/candidate",
+      "settings": {
+        "iterations": 15000,
+        "cap": 120000,
+        "preset": "coverage",
+        "training": {
+          "primitive": "3dgs",
+          "floater": "mild",
+          "normal": 0.02,
+          "depth": 0.01,
+          "normal_distortion": 0.007,
+          "underfill": 0.25,
+          "sh": 3,
+          "mesh_iso": 0.4,
+          "mesh_carve_k": 8
+        },
+        "preset_screen": null,
+        "focal_screen": null,
+        "mask_size": 2048,
+        "recover_warm": true,
+        "selected_candidate": {
+          "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+          "parameters": {
+            "steps": 8,
+            "resolution": 384,
+            "quantize": 8,
+            "seed": 23,
+            "guidance": 5.0,
+            "query_chunk": 4096,
+            "save_grid": false,
+            "front_only": false,
+            "conditioning_alpha_threshold": 128,
+            "foreground_gain": 0.65
+          },
+          "weights": {
+            "repo": "tencent/Hunyuan3D-2mv",
+            "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+            "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+            "size": 4930777530,
+            "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+            "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+            "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+          },
+          "inputs": [
+            {
+              "tag": "front",
+              "view": 0,
+              "nominal_angle": 0,
+              "sha256": "5a25e10a18ad97ffe6ffb2a512e7d9860851ea50921c2c9257663673ea516f38"
+            },
+            {
+              "tag": "left",
+              "view": 13,
+              "nominal_angle": 90,
+              "sha256": "28eb30b1f446b4e03242093088be8ff28f5d09b0478f8fdfcd9366294c6b2b59"
+            },
+            {
+              "tag": "back",
+              "view": 26,
+              "nominal_angle": 180,
+              "sha256": "a318192705b8da088f9eab7f86b559e9d4a480ca594dfb55902279d7795e907a"
+            },
+            {
+              "tag": "right",
+              "view": 38,
+              "nominal_angle": 270,
+              "sha256": "701b6552c1389020955e73908846f7201a256419d058454f92fa8624aabce567"
+            }
+          ],
+          "conditioning_photographs": 4,
+          "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82"
+        },
+        "training_role": "Spirula comparison baseline; selected geometry comes from the generated MV candidate described below"
+      },
+      "validation": {
+        "iou": 0.8356906259775817,
+        "foreground_recall": 0.9111982173708137,
+        "linear_shading_rmse": 0.11475305317956802,
+        "shading_nrmse": 1.4287265946397405,
+        "interior_gradient_correlation": 0.11081433156848065,
+        "diagnostic_loss": 0.4403876353800674
+      },
+      "observations": [
+        "Сохранены цельный корпус, обе ноги, рога и контур лука. Перенос наблюдаемой красной пары отклонён: давал отверстия и более разрушенную поверхность.",
+        "Тетива отсутствует. Её восстановление и точность лица остаются нерешёнными; форма генеративная."
+      ],
+      "generation_provenance": {
+        "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+        "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82",
+        "weights": {
+          "repo": "tencent/Hunyuan3D-2mv",
+          "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+          "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+          "size": 4930777530,
+          "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+          "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+          "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+        },
+        "config_sha256": "4d9d7b21dd0669efd0a8da6024ecce28619b45a4ca5f3ea1394a54b3d38698f5",
+        "source_video_sha256": "402d81c9346861e1a41e3cd2b84af757fae418bcccc3e4b23d5041cfe42eb15c",
+        "inputs": [
+          {
+            "tag": "front",
+            "view": 0,
+            "nominal_angle": 0,
+            "sha256": "5a25e10a18ad97ffe6ffb2a512e7d9860851ea50921c2c9257663673ea516f38"
+          },
+          {
+            "tag": "left",
+            "view": 13,
+            "nominal_angle": 90,
+            "sha256": "28eb30b1f446b4e03242093088be8ff28f5d09b0478f8fdfcd9366294c6b2b59"
+          },
+          {
+            "tag": "back",
+            "view": 26,
+            "nominal_angle": 180,
+            "sha256": "a318192705b8da088f9eab7f86b559e9d4a480ca594dfb55902279d7795e907a"
+          },
+          {
+            "tag": "right",
+            "view": 38,
+            "nominal_angle": 270,
+            "sha256": "701b6552c1389020955e73908846f7201a256419d058454f92fa8624aabce567"
+          }
+        ],
+        "selection": "Fit-only quarter turns from calibrated orbit; front is first-view gauge, physical front is not asserted. Inputs visually reviewed as a four-view set.",
+        "parameters": {
+          "steps": 8,
+          "resolution": 384,
+          "quantize": 8,
+          "seed": 23,
+          "guidance": 5.0,
+          "query_chunk": 4096,
+          "save_grid": false,
+          "front_only": false,
+          "conditioning_alpha_threshold": 128,
+          "foreground_gain": 0.65
+        },
+        "model_load_seconds": 1.1850255419849418,
+        "generation_seconds": 104.97431154199876,
+        "peak_mlx_bytes": 4322481712,
+        "faces": 997136,
+        "watertight": true,
+        "mesh_sha256": "47e72615d294a725fbbec130d8591d743216e2d21fc6128847c2fa295f154512",
+        "total_seconds": 106.47464541697991,
+        "conditioning_inputs": {
+          "front": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_15/generation/conditioning/front.png",
+            "sha256": "17cc49df77840c3249add4db969762f3ee858b89607c3de4bc39bc624d761a5b"
+          },
+          "left": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_15/generation/conditioning/left.png",
+            "sha256": "7faa568b69f4a2d38bdf5bb9214ad8eb73c02035c4da35d2ccf45c7db2f00572"
+          },
+          "back": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_15/generation/conditioning/back.png",
+            "sha256": "d14e8b8bf7f3e1e3ce7d137aa98b7bd6d09c905b1fe33e8b99239fe72ad48774"
+          },
+          "right": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_15/generation/conditioning/right.png",
+            "sha256": "83fc9a3d66922037c7c36318513de5abdc8ebe01cf7f5aff2c2d3254d9ff8034"
+          }
+        }
+      }
+    },
+    "obj_17": {
+      "source_video": "research/3d-quality/videos/obj_17.mp4",
+      "source_video_sha256": "2d8c97b4248c907e82f2c11b54631d730dc47159f07889a5040e47b083d05cbf",
+      "selected_method": "hunyuan_mv",
+      "candidate": "out/figure-fixes-20261009/mv-matte/obj_17/candidate",
+      "settings": {
+        "iterations": 15000,
+        "cap": 120000,
+        "preset": "coverage",
+        "training": {
+          "primitive": "3dgs",
+          "floater": "mild",
+          "normal": 0.02,
+          "depth": 0.01,
+          "normal_distortion": 0.007,
+          "underfill": 0.25,
+          "sh": 3,
+          "mesh_iso": 0.4,
+          "mesh_carve_k": 8
+        },
+        "preset_screen": null,
+        "focal_screen": null,
+        "mask_size": 2048,
+        "recover_warm": false,
+        "selected_candidate": {
+          "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+          "parameters": {
+            "steps": 8,
+            "resolution": 384,
+            "quantize": 8,
+            "seed": 23,
+            "guidance": 5.0,
+            "query_chunk": 4096,
+            "save_grid": false,
+            "front_only": false,
+            "conditioning_alpha_threshold": 128,
+            "foreground_gain": 1.0
+          },
+          "weights": {
+            "repo": "tencent/Hunyuan3D-2mv",
+            "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+            "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+            "size": 4930777530,
+            "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+            "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+            "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+          },
+          "inputs": [
+            {
+              "tag": "front",
+              "view": 12,
+              "nominal_angle": 0,
+              "sha256": "b19bbcb9a8c83acf67e4c5fd61ea7fb1504ec397fa2e49b314d1a94bc83ffc86"
+            },
+            {
+              "tag": "left",
+              "view": 25,
+              "nominal_angle": 90,
+              "sha256": "9779a91b828a589dc27f7954480f78ca9fbfe4a60fa6f279db5c2bb94f149cf5"
+            },
+            {
+              "tag": "back",
+              "view": 37,
+              "nominal_angle": 180,
+              "sha256": "5863d2f5988e84b3df03b00a1f72675a1c532e866d9d26603f48674aaf411de1"
+            },
+            {
+              "tag": "right",
+              "view": 0,
+              "nominal_angle": 270,
+              "sha256": "7a950d0c2d1affd089c2a6d6ee75e131586f4885667faa2ba1c4e486c36b8f03"
+            }
+          ],
+          "conditioning_photographs": 4,
+          "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82"
+        },
+        "training_role": "Spirula comparison baseline; selected geometry comes from the generated MV candidate described below"
+      },
+      "validation": {
+        "iou": 0.793679959253575,
+        "foreground_recall": 0.9316926118281614,
+        "linear_shading_rmse": 0.04673983121260776,
+        "shading_nrmse": 1.0483488333917048,
+        "interior_gradient_correlation": 0.06756272738831559,
+        "diagnostic_loss": 0.3854415102380794
+      },
+      "observations": [
+        "Улучшены общий корпус, голова, хвост и оружие; IoU и полнота выше прежнего варианта. Перенос красной пары отклонён из-за потери оружия и большого расхождения.",
+        "Кисти, наконечник и скрытая поверхность приблизительны."
+      ],
+      "generation_provenance": {
+        "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+        "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82",
+        "weights": {
+          "repo": "tencent/Hunyuan3D-2mv",
+          "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+          "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+          "size": 4930777530,
+          "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+          "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+          "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+        },
+        "config_sha256": "4d9d7b21dd0669efd0a8da6024ecce28619b45a4ca5f3ea1394a54b3d38698f5",
+        "source_video_sha256": "2d8c97b4248c907e82f2c11b54631d730dc47159f07889a5040e47b083d05cbf",
+        "inputs": [
+          {
+            "tag": "front",
+            "view": 12,
+            "nominal_angle": 0,
+            "sha256": "b19bbcb9a8c83acf67e4c5fd61ea7fb1504ec397fa2e49b314d1a94bc83ffc86"
+          },
+          {
+            "tag": "left",
+            "view": 25,
+            "nominal_angle": 90,
+            "sha256": "9779a91b828a589dc27f7954480f78ca9fbfe4a60fa6f279db5c2bb94f149cf5"
+          },
+          {
+            "tag": "back",
+            "view": 37,
+            "nominal_angle": 180,
+            "sha256": "5863d2f5988e84b3df03b00a1f72675a1c532e866d9d26603f48674aaf411de1"
+          },
+          {
+            "tag": "right",
+            "view": 0,
+            "nominal_angle": 270,
+            "sha256": "7a950d0c2d1affd089c2a6d6ee75e131586f4885667faa2ba1c4e486c36b8f03"
+          }
+        ],
+        "selection": "Four fit photographs at calibrated quarter turns; front reordered by visual review of the source figure. Approximate camera phase is not geometric ground truth.",
+        "parameters": {
+          "steps": 8,
+          "resolution": 384,
+          "quantize": 8,
+          "seed": 23,
+          "guidance": 5.0,
+          "query_chunk": 4096,
+          "save_grid": false,
+          "front_only": false,
+          "conditioning_alpha_threshold": 128,
+          "foreground_gain": 1.0
+        },
+        "model_load_seconds": 1.3683474999852479,
+        "generation_seconds": 93.52416870801244,
+        "peak_mlx_bytes": 4322481712,
+        "faces": 715832,
+        "watertight": true,
+        "mesh_sha256": "1fe81ca0bb9dae1c169b6fb220c038acd0bd0b69a9cb56ea415ceb80d1fd6677",
+        "total_seconds": 95.09268345800228,
+        "conditioning_inputs": {
+          "front": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_17/generation/conditioning/front.png",
+            "sha256": "1b0966796f1f873a8f7a8d4165739b009d6e2a5c2e365984f62a33cb6859f98f"
+          },
+          "left": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_17/generation/conditioning/left.png",
+            "sha256": "7cce2b6b9cd786a022d9b9ad8e8d29586231d7739a674d0d8c36e0c2ffdd8ba2"
+          },
+          "back": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_17/generation/conditioning/back.png",
+            "sha256": "a1e3e09c555a1e8f3b3ea219ba238ff2b60e8b51b1a6e4b11f9a21a85d58b7fc"
+          },
+          "right": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_17/generation/conditioning/right.png",
+            "sha256": "13b6653a76b9ed48241adf8dc012718dafbc5d5cac79c33428383602307b47fd"
+          }
+        }
+      }
+    },
+    "obj_22": {
+      "source_video": "research/3d-quality/videos/obj_22.mp4",
+      "source_video_sha256": "8597f971d8995dd686d7b43952a30499e83c375880d29d788fc7ce3d960e639d",
+      "selected_method": "hunyuan_mv",
+      "candidate": "out/figure-fixes-20261009/mv-matte/obj_22/candidate",
+      "settings": {
+        "iterations": 15000,
+        "cap": 120000,
+        "preset": "control",
+        "training": {
+          "primitive": "3dgs",
+          "floater": "strong",
+          "normal": 0.04,
+          "depth": 0.01,
+          "normal_distortion": 0.01,
+          "underfill": 0.0,
+          "sh": 3
+        },
+        "preset_screen": {
+          "iterations": 4500,
+          "cap": 120000,
+          "scores": {
+            "control": {
+              "fit": {
+                "iou": 0.837656570142307,
+                "foreground_recall": 0.8541568348834093,
+                "linear_shading_rmse": 0.04742900250221903,
+                "shading_nrmse": 1.1875607440996152,
+                "interior_gradient_correlation": 0.11401010027110034,
+                "diagnostic_loss": 0.3910485107358902
+              },
+              "validation": {
+                "iou": 0.8360668081111653,
+                "foreground_recall": 0.849810221415978,
+                "linear_shading_rmse": 0.04704707236532362,
+                "shading_nrmse": 1.1900491356858083,
+                "interior_gradient_correlation": 0.13734006419072245,
+                "diagnostic_loss": 0.3898490974736233
+              }
+            },
+            "detail": {
+              "fit": {
+                "iou": 0.8060444242809234,
+                "foreground_recall": 0.8230626387041936,
+                "linear_shading_rmse": 0.04859027591322389,
+                "shading_nrmse": 1.2168518620075797,
+                "interior_gradient_correlation": 0.11093538255044562,
+                "diagnostic_loss": 0.409859064434102
+              },
+              "validation": {
+                "iou": 0.8070850718222147,
+                "foreground_recall": 0.8210315449254888,
+                "linear_shading_rmse": 0.048175284882941635,
+                "shading_nrmse": 1.2189336680857519,
+                "interior_gradient_correlation": 0.11120540780300296,
+                "diagnostic_loss": 0.4098321641079642
+              }
+            }
+          },
+          "selected": "control",
+          "assessment": "Two bounded pilot configurations, selected with four validation views; not an exhaustive optimum or an untouched test."
+        },
+        "focal_screen": null,
+        "mask_size": 1536,
+        "recover_warm": false,
+        "training_role": "Spirula comparison baseline; selected geometry comes from the generated MV candidate described below",
+        "selected_candidate": {
+          "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+          "parameters": {
+            "steps": 8,
+            "resolution": 384,
+            "quantize": 8,
+            "seed": 23,
+            "guidance": 5.0,
+            "query_chunk": 4096,
+            "save_grid": false,
+            "front_only": false,
+            "conditioning_alpha_threshold": 128,
+            "foreground_gain": 1.0
+          },
+          "weights": {
+            "repo": "tencent/Hunyuan3D-2mv",
+            "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+            "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+            "size": 4930777530,
+            "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+            "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+            "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+          },
+          "inputs": [
+            {
+              "tag": "front",
+              "view": 33,
+              "nominal_angle": 0,
+              "sha256": "35e4b4da92fc35cbde3cee363b852231edebba7ed1fa9f8761916aec73b75d26"
+            },
+            {
+              "tag": "left",
+              "view": 50,
+              "nominal_angle": 90,
+              "sha256": "817df5462a9bee9ede59ebeec48ee898276077a244f195759527396049df75a8"
+            },
+            {
+              "tag": "back",
+              "view": 0,
+              "nominal_angle": 180,
+              "sha256": "0e2f6342ae3e7eadfbffb163fc47f16389c28ab51d23848a8853198c2802f378"
+            },
+            {
+              "tag": "right",
+              "view": 17,
+              "nominal_angle": 270,
+              "sha256": "38fefe684c6344b15707d69b891a68bab94761ba412ca77ddb446395ad4ecf4f"
+            }
+          ],
+          "conditioning_photographs": 4,
+          "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82"
+        }
+      },
+      "validation": {
+        "iou": 0.7508499160436313,
+        "foreground_recall": 0.9261395822996493,
+        "linear_shading_rmse": 0.04469681998907847,
+        "shading_nrmse": 1.1409582528523496,
+        "interior_gradient_correlation": 0.030084409093751003,
+        "diagnostic_loss": 0.4248432432436423
+      },
+      "observations": [
+        "Проверены весь лук с тетивой, плащ, обе руки и ноги. Выбран новый цельный вариант с более читаемыми складками.",
+        "IoU и полнота немного ниже прежнего; точное лицо и толщина тонких деталей не подтверждены."
+      ],
+      "generation_provenance": {
+        "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+        "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82",
+        "weights": {
+          "repo": "tencent/Hunyuan3D-2mv",
+          "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+          "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+          "size": 4930777530,
+          "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+          "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+          "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+        },
+        "config_sha256": "4d9d7b21dd0669efd0a8da6024ecce28619b45a4ca5f3ea1394a54b3d38698f5",
+        "source_video_sha256": "8597f971d8995dd686d7b43952a30499e83c375880d29d788fc7ce3d960e639d",
+        "inputs": [
+          {
+            "tag": "front",
+            "view": 33,
+            "nominal_angle": 0,
+            "sha256": "35e4b4da92fc35cbde3cee363b852231edebba7ed1fa9f8761916aec73b75d26"
+          },
+          {
+            "tag": "left",
+            "view": 50,
+            "nominal_angle": 90,
+            "sha256": "817df5462a9bee9ede59ebeec48ee898276077a244f195759527396049df75a8"
+          },
+          {
+            "tag": "back",
+            "view": 0,
+            "nominal_angle": 180,
+            "sha256": "0e2f6342ae3e7eadfbffb163fc47f16389c28ab51d23848a8853198c2802f378"
+          },
+          {
+            "tag": "right",
+            "view": 17,
+            "nominal_angle": 270,
+            "sha256": "38fefe684c6344b15707d69b891a68bab94761ba412ca77ddb446395ad4ecf4f"
+          }
+        ],
+        "selection": "Four fit photographs at calibrated quarter turns; front reordered by visual review of the source figure. Approximate camera phase is not geometric ground truth.",
+        "parameters": {
+          "steps": 8,
+          "resolution": 384,
+          "quantize": 8,
+          "seed": 23,
+          "guidance": 5.0,
+          "query_chunk": 4096,
+          "save_grid": false,
+          "front_only": false,
+          "conditioning_alpha_threshold": 128,
+          "foreground_gain": 1.0
+        },
+        "model_load_seconds": 1.1841560830071103,
+        "generation_seconds": 98.08826537500136,
+        "peak_mlx_bytes": 4322481712,
+        "faces": 852156,
+        "watertight": true,
+        "mesh_sha256": "13d8cf5ee3b01f8d77ff7856b1c19566fe86f324a20ab65516aa4b41f5df2f22",
+        "total_seconds": 99.55566883302527,
+        "conditioning_inputs": {
+          "front": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_22/generation/conditioning/front.png",
+            "sha256": "f1708a3ffe824771edb3b081f82e4f4de1ed88e031a3bffc64aefb8acbaae8f1"
+          },
+          "left": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_22/generation/conditioning/left.png",
+            "sha256": "ae0aca2a9c8cb0adeabe9519d4b94cf5bd97c3525ac389b09d85514b0773f7cd"
+          },
+          "back": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_22/generation/conditioning/back.png",
+            "sha256": "5fdad4b4bc2fdeaf39d6db7a10e3ad7df9124b0d266e88d91a4092fac830012e"
+          },
+          "right": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_22/generation/conditioning/right.png",
+            "sha256": "60736d90986f0bf13ecb418e598d4972f064b73cee09e59119aba7eec860ae68"
+          }
+        }
+      }
+    },
+    "obj_25": {
+      "source_video": "research/3d-quality/videos/obj_25.mp4",
+      "source_video_sha256": "ef2dbc79aaf4013df13b64446dd83934ffe5d53ee04ef0238e3c8746f166444b",
+      "selected_method": "hunyuan_mv",
+      "candidate": "out/figure-fixes-20261009/mv-matte/obj_25/candidate",
+      "settings": {
+        "iterations": 15000,
+        "cap": 120000,
+        "preset": "coverage",
+        "training": {
+          "primitive": "3dgs",
+          "floater": "mild",
+          "normal": 0.02,
+          "depth": 0.01,
+          "normal_distortion": 0.007,
+          "underfill": 0.25,
+          "sh": 3,
+          "mesh_iso": 0.4,
+          "mesh_carve_k": 8
+        },
+        "preset_screen": null,
+        "focal_screen": null,
+        "mask_size": 2048,
+        "recover_warm": false,
+        "training_role": "Spirula comparison baseline; selected geometry comes from the generated MV candidate described below",
+        "selected_candidate": {
+          "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+          "parameters": {
+            "steps": 8,
+            "resolution": 384,
+            "quantize": 8,
+            "seed": 23,
+            "guidance": 5.0,
+            "query_chunk": 4096,
+            "save_grid": false,
+            "front_only": false,
+            "conditioning_alpha_threshold": 128,
+            "foreground_gain": 1.0
+          },
+          "weights": {
+            "repo": "tencent/Hunyuan3D-2mv",
+            "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+            "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+            "size": 4930777530,
+            "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+            "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+            "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+          },
+          "inputs": [
+            {
+              "tag": "front",
+              "view": 0,
+              "nominal_angle": 0,
+              "sha256": "873c59ea3bf86e1f824495b063d9ea9462c2375935072c8652b9f6e54841d572"
+            },
+            {
+              "tag": "left",
+              "view": 13,
+              "nominal_angle": 90,
+              "sha256": "3469379436f7cf99a99b1d8dd7dd190b6a5e73cb7c088e86f2d95aa780b2a1bb"
+            },
+            {
+              "tag": "back",
+              "view": 26,
+              "nominal_angle": 180,
+              "sha256": "e8235bd394ca8f33dad7805e8a0f5500731923e026be9876c30cbb2c3ee60377"
+            },
+            {
+              "tag": "right",
+              "view": 92,
+              "nominal_angle": 270,
+              "sha256": "dae4ab7690a2859acf2b22fb7e38bc4e0c2c74187f8135e042c6120873949c54"
+            }
+          ],
+          "conditioning_photographs": 4,
+          "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82"
+        }
+      },
+      "validation": {
+        "iou": 0.7915315405273045,
+        "foreground_recall": 0.9199412962490365,
+        "linear_shading_rmse": 0.050094042601824346,
+        "shading_nrmse": 1.1112584870452182,
+        "interior_gradient_correlation": 0.09239686338389894,
+        "diagnostic_loss": 0.3963993948597321
+      },
+      "observations": [
+        "Сохранились полный меч, щит, обе ноги и плащ; новая форма и фактура просмотрены целиком.",
+        "IoU немного ниже прежнего; лицо, пальцы и края оружия остаются приблизительными."
+      ],
+      "generation_provenance": {
+        "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+        "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82",
+        "weights": {
+          "repo": "tencent/Hunyuan3D-2mv",
+          "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+          "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+          "size": 4930777530,
+          "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+          "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+          "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+        },
+        "config_sha256": "4d9d7b21dd0669efd0a8da6024ecce28619b45a4ca5f3ea1394a54b3d38698f5",
+        "source_video_sha256": "ef2dbc79aaf4013df13b64446dd83934ffe5d53ee04ef0238e3c8746f166444b",
+        "inputs": [
+          {
+            "tag": "front",
+            "view": 0,
+            "nominal_angle": 0,
+            "sha256": "873c59ea3bf86e1f824495b063d9ea9462c2375935072c8652b9f6e54841d572"
+          },
+          {
+            "tag": "left",
+            "view": 13,
+            "nominal_angle": 90,
+            "sha256": "3469379436f7cf99a99b1d8dd7dd190b6a5e73cb7c088e86f2d95aa780b2a1bb"
+          },
+          {
+            "tag": "back",
+            "view": 26,
+            "nominal_angle": 180,
+            "sha256": "e8235bd394ca8f33dad7805e8a0f5500731923e026be9876c30cbb2c3ee60377"
+          },
+          {
+            "tag": "right",
+            "view": 92,
+            "nominal_angle": 270,
+            "sha256": "dae4ab7690a2859acf2b22fb7e38bc4e0c2c74187f8135e042c6120873949c54"
+          }
+        ],
+        "selection": "Fit-only quarter turns from calibrated orbit; front is first-view gauge, physical front is not asserted. Inputs visually reviewed as a four-view set.",
+        "parameters": {
+          "steps": 8,
+          "resolution": 384,
+          "quantize": 8,
+          "seed": 23,
+          "guidance": 5.0,
+          "query_chunk": 4096,
+          "save_grid": false,
+          "front_only": false,
+          "conditioning_alpha_threshold": 128,
+          "foreground_gain": 1.0
+        },
+        "model_load_seconds": 1.3311213330016471,
+        "generation_seconds": 90.74652099999366,
+        "peak_mlx_bytes": 4322481712,
+        "faces": 626146,
+        "watertight": true,
+        "mesh_sha256": "0393901ad802244967801d6fdbda61e5648560b6483ef2935ade9a7a76baa4f2",
+        "total_seconds": 92.2511857499776,
+        "conditioning_inputs": {
+          "front": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_25/generation/conditioning/front.png",
+            "sha256": "1e99e8a3d4625749441e196c62e28a60512a25d2965e8d9f84dc21f2f447f9d6"
+          },
+          "left": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_25/generation/conditioning/left.png",
+            "sha256": "39360d100cfaf91b62f6aedc87250ac8e759224c093dd06db196bc5835215765"
+          },
+          "back": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_25/generation/conditioning/back.png",
+            "sha256": "cec3aa4361ad6330f96c94452af4442395856d7975ad777c244c708798468ba5"
+          },
+          "right": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_25/generation/conditioning/right.png",
+            "sha256": "1fb1335125be99e157150f04d329e1e722e24f38d3369d5748d9f1f21383da7c"
+          }
+        }
+      }
+    },
+    "obj_26": {
+      "source_video": "research/3d-quality/videos/obj_26.mp4",
+      "source_video_sha256": "ccf4eedd22d01090d328e1c973da2859494dbf9aa9cfa9c807077e19f33a18fe",
+      "selected_method": "hunyuan_mv",
+      "candidate": "out/figure-fixes-20261009/mv-matte/obj_26/candidate",
+      "settings": {
+        "iterations": 15000,
+        "cap": 120000,
+        "preset": "control",
+        "training": {
+          "primitive": "3dgs",
+          "floater": "strong",
+          "normal": 0.04,
+          "depth": 0.01,
+          "normal_distortion": 0.01,
+          "underfill": 0.0,
+          "sh": 3
+        },
+        "preset_screen": null,
+        "focal_screen": null,
+        "mask_size": 1536,
+        "recover_warm": false,
+        "training_role": "Spirula comparison baseline; selected geometry comes from the generated MV candidate described below",
+        "selected_candidate": {
+          "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+          "parameters": {
+            "steps": 8,
+            "resolution": 384,
+            "quantize": 8,
+            "seed": 23,
+            "guidance": 5.0,
+            "query_chunk": 4096,
+            "save_grid": false,
+            "front_only": false,
+            "conditioning_alpha_threshold": 128,
+            "foreground_gain": 1.0
+          },
+          "weights": {
+            "repo": "tencent/Hunyuan3D-2mv",
+            "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+            "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+            "size": 4930777530,
+            "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+            "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+            "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+          },
+          "inputs": [
+            {
+              "tag": "front",
+              "view": 78,
+              "nominal_angle": 0,
+              "sha256": "f17b04b5115534ed3a18606d101a76b5b3b32d8821ce244907e70ef91c54cf69"
+            },
+            {
+              "tag": "left",
+              "view": 31,
+              "nominal_angle": 90,
+              "sha256": "174abf6d17f247b2cd1da6c1cf0d0ea5382c1b658ed3f05fe2d5f0b610ac6dc7"
+            },
+            {
+              "tag": "back",
+              "view": 47,
+              "nominal_angle": 180,
+              "sha256": "200530e6ecd9afc42d6b6fa43e29b77295dabc457787a2ab0bf232703e628b73"
+            },
+            {
+              "tag": "right",
+              "view": 62,
+              "nominal_angle": 270,
+              "sha256": "75f84a2be411144d13164a08b9eb910b9c39a4952396b43ed4e0570900dbc34f"
+            }
+          ],
+          "conditioning_photographs": 4,
+          "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82"
+        }
+      },
+      "validation": {
+        "iou": 0.8718589368602807,
+        "foreground_recall": 0.9613037931506095,
+        "linear_shading_rmse": 0.03722334597886866,
+        "shading_nrmse": 1.0556064024647394,
+        "interior_gradient_correlation": 0.16357909330580345,
+        "diagnostic_loss": 0.3460197964182553
+      },
+      "observations": [
+        "Восстановлены поднятая кисть и выступающий палец; обе руки и одежда видны целиком на полной фотосетке и серой геометрии.",
+        "Выбрана генеративная форма: IoU ниже прежней сетки, полнота выше. Это восстановление отсутствующей руки, но не точный измеренный скан пальцев. Локальное наблюдаемое дополнение отклонено: кисть оставалась разорванной."
+      ],
+      "generation_provenance": {
+        "method": "Hunyuan3D-2mv-turbo; MLX MV conditioner adaptation",
+        "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82",
+        "weights": {
+          "repo": "tencent/Hunyuan3D-2mv",
+          "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+          "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+          "size": 4930777530,
+          "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+          "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+          "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+        },
+        "config_sha256": "4d9d7b21dd0669efd0a8da6024ecce28619b45a4ca5f3ea1394a54b3d38698f5",
+        "source_video_sha256": "ccf4eedd22d01090d328e1c973da2859494dbf9aa9cfa9c807077e19f33a18fe",
+        "inputs": [
+          {
+            "tag": "front",
+            "view": 78,
+            "nominal_angle": 0,
+            "sha256": "f17b04b5115534ed3a18606d101a76b5b3b32d8821ce244907e70ef91c54cf69"
+          },
+          {
+            "tag": "left",
+            "view": 31,
+            "nominal_angle": 90,
+            "sha256": "174abf6d17f247b2cd1da6c1cf0d0ea5382c1b658ed3f05fe2d5f0b610ac6dc7"
+          },
+          {
+            "tag": "back",
+            "view": 47,
+            "nominal_angle": 180,
+            "sha256": "200530e6ecd9afc42d6b6fa43e29b77295dabc457787a2ab0bf232703e628b73"
+          },
+          {
+            "tag": "right",
+            "view": 62,
+            "nominal_angle": 270,
+            "sha256": "75f84a2be411144d13164a08b9eb910b9c39a4952396b43ed4e0570900dbc34f"
+          }
+        ],
+        "selection": "Four fit photos from calibrated orbit; chosen to include the raised hand clearly.",
+        "parameters": {
+          "steps": 8,
+          "resolution": 384,
+          "quantize": 8,
+          "seed": 23,
+          "guidance": 5.0,
+          "query_chunk": 4096,
+          "save_grid": false,
+          "front_only": false,
+          "conditioning_alpha_threshold": 128,
+          "foreground_gain": 1.0
+        },
+        "model_load_seconds": 1.2198064170079306,
+        "generation_seconds": 101.74128587500309,
+        "peak_mlx_bytes": 4322481712,
+        "faces": 985256,
+        "watertight": true,
+        "mesh_sha256": "40fec136ee28ea42b2174afa45383137d539c69b33f1a84c87e90a61791914c1",
+        "total_seconds": 103.23051399999531,
+        "conditioning_inputs": {
+          "front": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_26/generation/conditioning/front.png",
+            "sha256": "dbd158597a758b374f78c0cca15af40552cee40e36cca8660a66d5abd5779973"
+          },
+          "left": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_26/generation/conditioning/left.png",
+            "sha256": "206e1cb364529bec66b15860a0237cea4806abf538180e7d184e5ea06dc55565"
+          },
+          "back": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_26/generation/conditioning/back.png",
+            "sha256": "b11a3f2747051894cfcbc206750a14a7b084aad98d738dd67f124b1e200ab1d5"
+          },
+          "right": {
+            "path": "out/figure-fixes-20261009/mv-matte/obj_26/generation/conditioning/right.png",
+            "sha256": "d9dda99283b4003b57bf7733a53fd875da5d34b242ef418683f8f22e1f625dc4"
+          }
+        }
+      }
+    }
+  }
+}

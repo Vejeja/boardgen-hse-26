@@ -1,0 +1,2092 @@
+{
+  "schema": 1,
+  "status": "best tested candidates, not globally optimized or validated for real YOLO",
+  "spirula_corrected_orbit": {
+    "training": {
+      "preset": "meshing",
+      "primitive": "3dgs",
+      "num_iterations": 15000,
+      "cap_max": 120000,
+      "sh_degree": 3,
+      "floater_suppression": "strong",
+      "normal_reg_weight": 0.04,
+      "depth_distortion_reg": 0.01,
+      "normal_distortion_reg": 0.01,
+      "alpha_loss_weight_under": 0,
+      "train_resolution_divisor": 0,
+      "use_bilateral_grid": false,
+      "use_ppisp": false,
+      "apply_loss_for_mask": true,
+      "normal_reg_warmup": 1000,
+      "distortion_reg_warmup": 1000,
+      "alpha_reg_warmup": 1000,
+      "refine_stop_num_iter": 500,
+      "refine_stop_iter": 15000
+    },
+    "full_configs": [
+      "clouds/gnome-orbit-15000/config.json",
+      "clouds/dragon-orbit-15000/config.json"
+    ],
+    "native_extraction": {
+      "grid": 256,
+      "texture_size": 2048,
+      "gnome": {
+        "iso": 0.5,
+        "carve_k": 2
+      },
+      "dragon": {
+        "iso": 0.4,
+        "carve_k": 5,
+        "floater_min_faces": 150
+      }
+    },
+    "depth_fusion": {
+      "views": 32,
+      "occupancy_iso": 0.5,
+      "alpha_min": 0.7,
+      "stride": 2,
+      "voxel_fraction": 0.002,
+      "poisson_depth": 8,
+      "pointweight": 2,
+      "samplespernode": 3,
+      "face_cap": 100000
+    },
+    "consistent_point_filter": {
+      "fit_mask_support": 0.94,
+      "mask_padding_px": 1,
+      "min_valid_depth_views": 8,
+      "max_free_space_violation_fraction": 0.2,
+      "depth_tolerance_height_fraction": 0.015
+    },
+    "local_hull": {
+      "grid": 192,
+      "angular_fit_views_max": 32,
+      "consensus": 0.97,
+      "minimum_missing_contour_views": 2,
+      "patch_colour": "median plastic RGB; separate surface, not Boolean union"
+    },
+    "selected": {
+      "gnome": {
+        "dataset": "obj19-full-100-orbit-v2-2026-10-07",
+        "primary_source": "obj19-full-100-orbit-v2-2026-10-07/runs/spirula-control-15000/depth-fusion-consistent-v2/local-hull/photo.glb",
+        "native_alternative_source": "obj19-full-100-orbit-v2-2026-10-07/runs/spirula-control-15000/local-hull-welded/photo.glb",
+        "export": "quality-review-spirula-2026-10-07/gnome/photo.glb",
+        "sha256": "ca9076f4a2c6ac2a3eebd36e546bfb6e437ad570d434196b6e01e9d16a59b1ab",
+        "native_sha256": "87ffb5fcb871863c61e8cabe812a596082e6d0ffbd18f8f1e320639add0f2b98",
+        "faces": {
+          "seconds": 3.4971848749846686,
+          "body": "/Users/slavik/Documents/boardgen/out/benchmark3d/obj19-full-100-orbit-v2-2026-10-07/runs/spirula-control-15000/depth-fusion-consistent-v2/constrained.glb",
+          "body_sha256": "5bf94aef538f3a2399f6e921237f64611d680e68ef8928d80398bcd4babce8a5",
+          "body_faces": 34136,
+          "patch_faces": 5607,
+          "body_vertices_unchanged_before_uniform_normalization": true,
+          "grid": 192,
+          "consensus": 0.97,
+          "views": [
+            "view_0001.png",
+            "view_0011.png",
+            "view_0015.png",
+            "view_0017.png",
+            "view_0021.png",
+            "view_0025.png",
+            "view_0027.png",
+            "view_0030.png",
+            "view_0032.png",
+            "view_0036.png",
+            "view_0038.png",
+            "view_0040.png",
+            "view_0042.png",
+            "view_0043.png",
+            "view_0046.png",
+            "view_0048.png",
+            "view_0050.png",
+            "view_0052.png",
+            "view_0055.png",
+            "view_0056.png",
+            "view_0058.png",
+            "view_0060.png",
+            "view_0062.png",
+            "view_0066.png",
+            "view_0068.png",
+            "view_0070.png",
+            "view_0072.png",
+            "view_0076.png",
+            "view_0082.png",
+            "view_0086.png",
+            "view_0092.png",
+            "view_0098.png"
+          ],
+          "hull_boundaries": [
+            [
+              -0.05527590550482273,
+              0.06146361269056797
+            ],
+            [
+              -0.07210502468049526,
+              0.09425938569009304
+            ],
+            [
+              -0.05869121666997671,
+              0.0686346646770835
+            ]
+          ],
+          "minimum_missing_contour_views": 2,
+          "patch_colour_rgb": [
+            75,
+            69,
+            63
+          ],
+          "patch_colour_note": "Plain median plastic colour, not recovered photographic texture; native body UV/photo preserved",
+          "transform": [
+            [
+              6.2030937055511375,
+              0.0,
+              0.0,
+              -0.019191463747844917
+            ],
+            [
+              0.0,
+              6.2030937055511375,
+              0.0,
+              0.44727424368301594
+            ],
+            [
+              0.0,
+              0.0,
+              6.2030937055511375,
+              -0.03135212724146129
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "photo_sha256": "ca9076f4a2c6ac2a3eebd36e546bfb6e437ad570d434196b6e01e9d16a59b1ab",
+          "faces": 39743,
+          "assessment": "Localized contour supplementation only; concavities, gaps and original surface preserved. Patch is a separate surface, not a watertight Boolean union. No floor flattening or axis stretching."
+        },
+        "seconds": {
+          "prepare_frames_and_neural_mattes": 162.31780408300256,
+          "sift_tracks_original_cached_cost": 6.345828000004985,
+          "orbit_fit": 2.220569292025175,
+          "training_15000": 461.2135638750042,
+          "native_depth_export_and_first_fusion": 9.122334709012648,
+          "consistent_point_filter_and_poisson": 0.7505178340070415,
+          "phototexture_and_fit_mask_culling": 2.6732132080069277,
+          "local_hull_and_export": 3.4971848749846686,
+          "successful_stages_total": 648.1410158760482
+        },
+        "validation_body": {
+          "iou": 0.9285142910172346,
+          "foreground_recall": 0.9410087032817338,
+          "linear_shading_rmse": 0.04483551638606946,
+          "shading_nrmse": 1.087559006510729,
+          "interior_gradient_correlation": 0.11972687687406657,
+          "diagnostic_loss": 0.3341333972078453
+        },
+        "accounting": "Sum of recorded successful stages, including previously cached full matte preparation and original SIFT/SfM cost. Weights/binaries already installed; parameter screening, rejected/aborted trials, coding, scoring and previews excluded. Not one measured cold-start wall-clock run."
+      },
+      "dragon": {
+        "dataset": "obj02-full-80-orbit-v2-2026-10-07",
+        "primary_source": "obj02-full-80-orbit-v2-2026-10-07/runs/spirula-control-15000/depth-fusion-consistent-v2/local-hull/photo.glb",
+        "native_alternative_source": "obj02-full-80-orbit-v2-2026-10-07/runs/spirula-control-15000/mesh-soft/local-hull/photo.glb",
+        "export": "quality-review-spirula-2026-10-07/dragon/photo.glb",
+        "sha256": "f3766558c893a0d068936b034e0fb7d401f18327797b8754c543213a0c98f9de",
+        "native_sha256": "8b6a5a27cf7abaf1c85adafea35aac145ad62a4e8a75eccdad86bbe8205dbc01",
+        "faces": {
+          "seconds": 4.294620957982261,
+          "body": "/Users/slavik/Documents/boardgen/out/benchmark3d/obj02-full-80-orbit-v2-2026-10-07/runs/spirula-control-15000/depth-fusion-consistent-v2/constrained.glb",
+          "body_sha256": "30a17ec0ae8ed0348077233d648a60f546519c3590424766a227082bcc459849",
+          "body_faces": 94539,
+          "patch_faces": 635,
+          "body_vertices_unchanged_before_uniform_normalization": true,
+          "grid": 192,
+          "consensus": 0.97,
+          "views": [
+            "view_0000.png",
+            "view_0003.png",
+            "view_0005.png",
+            "view_0006.png",
+            "view_0012.png",
+            "view_0015.png",
+            "view_0018.png",
+            "view_0020.png",
+            "view_0023.png",
+            "view_0025.png",
+            "view_0026.png",
+            "view_0031.png",
+            "view_0032.png",
+            "view_0033.png",
+            "view_0035.png",
+            "view_0037.png",
+            "view_0038.png",
+            "view_0040.png",
+            "view_0042.png",
+            "view_0043.png",
+            "view_0045.png",
+            "view_0046.png",
+            "view_0048.png",
+            "view_0051.png",
+            "view_0057.png",
+            "view_0058.png",
+            "view_0060.png",
+            "view_0063.png",
+            "view_0066.png",
+            "view_0071.png",
+            "view_0077.png",
+            "view_0078.png"
+          ],
+          "hull_boundaries": [
+            [
+              -0.1339579763263464,
+              0.13533372603356839
+            ],
+            [
+              -0.15106458611786366,
+              0.20386188872158528
+            ],
+            [
+              -0.1644938699901104,
+              0.201609056442976
+            ]
+          ],
+          "minimum_missing_contour_views": 2,
+          "patch_colour_rgb": [
+            120,
+            42,
+            50
+          ],
+          "patch_colour_note": "Plain median plastic colour, not recovered photographic texture; native body UV/photo preserved",
+          "transform": [
+            [
+              2.9127621855869346,
+              0.0,
+              0.0,
+              -0.002003615862014247
+            ],
+            [
+              0.0,
+              2.9127621855869346,
+              0.0,
+              0.4400152242252859
+            ],
+            [
+              0.0,
+              0.0,
+              2.9127621855869346,
+              -0.0540538558054577
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "photo_sha256": "f3766558c893a0d068936b034e0fb7d401f18327797b8754c543213a0c98f9de",
+          "faces": 95174,
+          "assessment": "Localized contour supplementation only; concavities, gaps and original surface preserved. Patch is a separate surface, not a watertight Boolean union. No floor flattening or axis stretching."
+        },
+        "seconds": {
+          "prepare_frames_and_neural_mattes": 175.72498458299378,
+          "sift_tracks_original_cached_cost": 5.898444332997315,
+          "orbit_fit": 3.4280364160076715,
+          "training_15000": 353.0089038340084,
+          "native_depth_export_and_first_fusion": 10.42449466601829,
+          "consistent_point_filter_and_poisson": 4.558305624988861,
+          "phototexture_and_fit_mask_culling": 6.856311125011416,
+          "local_hull_and_export": 4.294620957982261,
+          "successful_stages_total": 564.194101540008
+        },
+        "validation_body": {
+          "iou": 0.8944699255018503,
+          "foreground_recall": 0.9140990237892941,
+          "linear_shading_rmse": 0.04847948685129294,
+          "shading_nrmse": 1.1570722739425017,
+          "interior_gradient_correlation": 0.19151234143032023,
+          "diagnostic_loss": 0.3544752504447282
+        },
+        "accounting": "Sum of recorded successful stages, including previously cached full matte preparation and original SIFT/SfM cost. Weights/binaries already installed; parameter screening, rejected/aborted trials, coding, scoring and previews excluded. Not one measured cold-start wall-clock run."
+      }
+    }
+  },
+  "hunyuan_mv_turbo": {
+    "gnome": {
+      "parameters": {
+        "steps": 8,
+        "resolution": 256,
+        "quantize": 8,
+        "seed": 23,
+        "guidance": 5.0,
+        "query_chunk": 4096
+      },
+      "inputs": [
+        {
+          "tag": "front",
+          "view": 52,
+          "angle_source": "manual visual approximation; not calibrated",
+          "nominal_angle": 0,
+          "sha256": "3404a9d376c286a570a156732c96e9815b8723647fd38746d0a3dfc66f4aa0f2"
+        },
+        {
+          "tag": "left",
+          "view": 67,
+          "angle_source": "manual visual approximation; not calibrated",
+          "nominal_angle": 90,
+          "sha256": "ad531bf9b6c91e115ebcf75b9e61afb8030e4f3b224ace3da263572e2065f642"
+        },
+        {
+          "tag": "back",
+          "view": 82,
+          "angle_source": "manual visual approximation; not calibrated",
+          "nominal_angle": 180,
+          "sha256": "c1d4326e76ce55cacd6ee8b965c3d49a3378fdac002065d115117a595b729e74"
+        },
+        {
+          "tag": "right",
+          "view": 97,
+          "angle_source": "manual visual approximation; not calibrated",
+          "nominal_angle": 270,
+          "sha256": "b990af5a26ec005ded29bcf96b9b29b6895c470fbbd8c1c6e9204d2cd68cc660"
+        }
+      ],
+      "weights": {
+        "repo": "tencent/Hunyuan3D-2mv",
+        "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+        "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+        "size": 4930777530,
+        "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+        "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+        "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+      },
+      "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82",
+      "source_video_sha256": "534ea75da96c2f20ae09745e757d9ca4dca193f3d7c4c820ed4973581c035f5c",
+      "timing_scope": "Model load, generation and full mesh export; reuses previously prepared masks. One-time checkpoint download and dataset preparation excluded.",
+      "total_seconds": 177.90347520800424,
+      "peak_mlx_bytes": 4072933108
+    },
+    "dragon": {
+      "parameters": {
+        "steps": 8,
+        "resolution": 256,
+        "quantize": 8,
+        "seed": 23,
+        "guidance": 5.0,
+        "query_chunk": 4096
+      },
+      "inputs": [
+        {
+          "tag": "front",
+          "view": 40,
+          "angle": 0.0,
+          "error": 0.0,
+          "sha256": "e7ad0841ea93280e8e6221203c86f1c435ce3b04c1fa331f41140b59d8a04b3c"
+        },
+        {
+          "tag": "left",
+          "view": 48,
+          "angle": 89.36104567115058,
+          "error": 0.6389543288494224,
+          "sha256": "321915b77369b63c8290cad0f59e71d48668f1987ccd1a72319e8fb4a7d2ee17"
+        },
+        {
+          "tag": "back",
+          "view": 61,
+          "angle": 178.43138329999178,
+          "error": 1.5686167000082207,
+          "sha256": "397c4d0a7df3eee05cdc914077564c7fede8abbce48d9fcf498032ad5a048794"
+        },
+        {
+          "tag": "right",
+          "view": 75,
+          "angle": -90.95622611588307,
+          "error": 0.9562261158830552,
+          "sha256": "0dc19ba131c79eb124938362cccb311972ac14b49e905f11011376ce75389226"
+        }
+      ],
+      "weights": {
+        "repo": "tencent/Hunyuan3D-2mv",
+        "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+        "hf_revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+        "size": 4930777530,
+        "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45",
+        "modelscope_revision": "0b674f56a7d9ec9b4cd8635323bb0a9035a56594",
+        "url": "https://modelscope.cn/api/v1/models/Tencent-Hunyuan/Hunyuan3D-2mv/repo?Revision=0b674f56a7d9ec9b4cd8635323bb0a9035a56594&FilePath=hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+      },
+      "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82",
+      "source_video_sha256": "f98eba58c24449b58582c56ffb144e67488458470fa575758f15e7ae3387e756",
+      "timing_scope": "Model load, generation and full mesh export; reuses previously prepared masks. One-time checkpoint download and dataset preparation excluded.",
+      "total_seconds": 154.44694720799453,
+      "peak_mlx_bytes": 4072933108
+    }
+  },
+  "hunyuan_mini": {
+    "gnome": {
+      "parameters": {
+        "steps": 30,
+        "resolution": 256,
+        "quantize": 0,
+        "seed": 23,
+        "guidance": 5.0,
+        "octree_decode": true,
+        "query_chunk": 10000,
+        "dtype": "float16"
+      },
+      "input_view": 32,
+      "weight_sha256": "3cc66f3bea33e4062b7dbc875ffe1d70c4888914aec3e91b60f94e9bd01b522b",
+      "weights_revision_hf": "b7536809d38ad13fe6a9b7769a41fd5d42e520df",
+      "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82",
+      "source_video_sha256": "534ea75da96c2f20ae09745e757d9ca4dca193f3d7c4c820ed4973581c035f5c",
+      "total_seconds": 81.84068574999401,
+      "peak_mlx_bytes": 5027762966
+    },
+    "dragon": {
+      "parameters": {
+        "steps": 30,
+        "resolution": 384,
+        "quantize": 0,
+        "seed": 23,
+        "guidance": 5.0,
+        "octree_decode": true,
+        "query_chunk": 10000,
+        "dtype": "float16"
+      },
+      "input_view": 8,
+      "weight_sha256": "3cc66f3bea33e4062b7dbc875ffe1d70c4888914aec3e91b60f94e9bd01b522b",
+      "weights_revision_hf": "b7536809d38ad13fe6a9b7769a41fd5d42e520df",
+      "port_commit": "292331f4d26ddb80b9dcea6bcb5629ff82f12b82",
+      "source_video_sha256": "f98eba58c24449b58582c56ffb144e67488458470fa575758f15e7ae3387e756",
+      "total_seconds": 138.63040008400276,
+      "peak_mlx_bytes": 5037249302
+    }
+  },
+  "photo_texture": {
+    "frozen_mv_shape": true,
+    "old_mv_incidence_power": 10,
+    "corrected_gnome_incidence_power": 24,
+    "gnome_face_pilot": "eight manual landmarks; texture-only local warp, not an automatic production method",
+    "openmvs_seams": "global/local seam leveling disabled in these pilots; see exact TextureMesh command records"
+  },
+  "other_tested_methods": "Exact command/settings records in provenance; consult report for rejected/diagnostic status. No optimal real-object recipe established for stereo/OpenMVS/Brush/3DGUT.",
+  "tested_alternatives": {
+    "spirula_legacy_gnome": {
+      "source_record": "provenance/obj19-square-ba/runs/spirula-camera-12000/config.json",
+      "training": {
+        "preset": "meshing",
+        "primitive": "mip",
+        "num_iterations": 12000,
+        "cap_max": 120000,
+        "sh_degree": 0,
+        "floater_suppression": "strong",
+        "normal_reg_weight": 0.04,
+        "depth_distortion_reg": 0.03,
+        "normal_distortion_reg": 0.01,
+        "alpha_loss_weight_under": 0,
+        "train_resolution_divisor": 0,
+        "use_bilateral_grid": false,
+        "use_ppisp": false,
+        "apply_loss_for_mask": true,
+        "normal_reg_warmup": 1000,
+        "distortion_reg_warmup": 1000,
+        "alpha_reg_warmup": 1000,
+        "refine_stop_num_iter": 2500,
+        "refine_stop_iter": 14000
+      },
+      "status": "historical candidate with old cameras; not the current recommended recipe"
+    },
+    "spirula_legacy_dragon": {
+      "source_record": "provenance/obj02-square-sift/runs/spirula-dragon-12000/config.json",
+      "training": {
+        "preset": "meshing",
+        "primitive": "mip",
+        "num_iterations": 12000,
+        "cap_max": 120000,
+        "sh_degree": 0,
+        "floater_suppression": "strong",
+        "normal_reg_weight": 0.04,
+        "depth_distortion_reg": 0.03,
+        "normal_distortion_reg": 0.01,
+        "alpha_loss_weight_under": 0,
+        "train_resolution_divisor": 2,
+        "use_bilateral_grid": false,
+        "use_ppisp": false,
+        "apply_loss_for_mask": true,
+        "normal_reg_warmup": 1000,
+        "distortion_reg_warmup": 1000,
+        "alpha_reg_warmup": 1000,
+        "refine_stop_num_iter": 2500,
+        "refine_stop_iter": 14000
+      },
+      "status": "historical candidate with old cameras; not the current recommended recipe"
+    },
+    "spirula_3dgut_gnome": {
+      "source_record": "provenance/obj19-square-ba/runs/spirula-3dgut-9000/config.json",
+      "training": {
+        "preset": "meshing",
+        "primitive": "3dgut",
+        "num_iterations": 9000,
+        "cap_max": 120000,
+        "sh_degree": 2,
+        "floater_suppression": "mild",
+        "normal_reg_weight": 0.02,
+        "depth_distortion_reg": 0.01,
+        "normal_distortion_reg": 0.005,
+        "alpha_loss_weight_under": 0.5,
+        "train_resolution_divisor": 0,
+        "use_bilateral_grid": false,
+        "use_ppisp": false,
+        "apply_loss_for_mask": true,
+        "normal_reg_warmup": 1000,
+        "distortion_reg_warmup": 1000,
+        "alpha_reg_warmup": 1000,
+        "refine_stop_num_iter": 2500,
+        "refine_stop_iter": 14000
+      },
+      "status": "historical candidate with old cameras; not the current recommended recipe"
+    },
+    "rt_igev_gnome": {
+      "source_record": "provenance/obj19-stereo-32/result.json",
+      "used_settings_and_results": {
+        "seconds": 26.271239042005618,
+        "pairs": [
+          {
+            "left": "view_0000.png",
+            "right": "view_0001.png",
+            "points": 2407,
+            "mask_pixels": 39978,
+            "lr_consistent_pixels": 31922,
+            "consensus_pixels": 11958,
+            "seconds": 0.9353732500021579
+          },
+          {
+            "left": "view_0002.png",
+            "right": "view_0003.png",
+            "points": 2731,
+            "mask_pixels": 40769,
+            "lr_consistent_pixels": 32916,
+            "consensus_pixels": 13320,
+            "seconds": 0.7061027500021737
+          },
+          {
+            "left": "view_0006.png",
+            "right": "view_0007.png",
+            "points": 2246,
+            "mask_pixels": 35820,
+            "lr_consistent_pixels": 29504,
+            "consensus_pixels": 11127,
+            "seconds": 0.6880771249998361
+          },
+          {
+            "left": "view_0008.png",
+            "right": "view_0010.png",
+            "points": 1183,
+            "mask_pixels": 23443,
+            "lr_consistent_pixels": 16708,
+            "consensus_pixels": 6444,
+            "seconds": 0.6826670419977745
+          },
+          {
+            "left": "view_0012.png",
+            "right": "view_0013.png",
+            "points": 1338,
+            "mask_pixels": 22701,
+            "lr_consistent_pixels": 14988,
+            "consensus_pixels": 6904,
+            "seconds": 0.6822837910003727
+          },
+          {
+            "left": "view_0015.png",
+            "right": "view_0016.png",
+            "points": 1841,
+            "mask_pixels": 36755,
+            "lr_consistent_pixels": 30023,
+            "consensus_pixels": 9468,
+            "seconds": 0.6890598339959979
+          },
+          {
+            "left": "view_0018.png",
+            "right": "view_0020.png",
+            "points": 1826,
+            "mask_pixels": 32367,
+            "lr_consistent_pixels": 23132,
+            "consensus_pixels": 9150,
+            "seconds": 0.6957627499941736
+          },
+          {
+            "left": "view_0021.png",
+            "right": "view_0022.png",
+            "points": 3400,
+            "mask_pixels": 39845,
+            "lr_consistent_pixels": 35171,
+            "consensus_pixels": 16013,
+            "seconds": 0.697667583997827
+          },
+          {
+            "left": "view_0025.png",
+            "right": "view_0026.png",
+            "points": 2316,
+            "mask_pixels": 50241,
+            "lr_consistent_pixels": 41932,
+            "consensus_pixels": 11468,
+            "seconds": 0.7033084169961512
+          },
+          {
+            "left": "view_0027.png",
+            "right": "view_0028.png",
+            "points": 828,
+            "mask_pixels": 40472,
+            "lr_consistent_pixels": 34844,
+            "consensus_pixels": 4844,
+            "seconds": 0.6947618750054971
+          },
+          {
+            "left": "view_0032.png",
+            "right": "view_0031.png",
+            "points": 0,
+            "mask_pixels": 0,
+            "lr_consistent_pixels": 0,
+            "consensus_pixels": 0,
+            "seconds": 0.6643258330004755
+          },
+          {
+            "left": "view_0033.png",
+            "right": "view_0035.png",
+            "points": 1681,
+            "mask_pixels": 40217,
+            "lr_consistent_pixels": 26556,
+            "consensus_pixels": 8912,
+            "seconds": 0.7560840840014862
+          },
+          {
+            "left": "view_0037.png",
+            "right": "view_0038.png",
+            "points": 1804,
+            "mask_pixels": 38120,
+            "lr_consistent_pixels": 31066,
+            "consensus_pixels": 9751,
+            "seconds": 0.7002625409950269
+          },
+          {
+            "left": "view_0040.png",
+            "right": "view_0041.png",
+            "points": 1724,
+            "mask_pixels": 34752,
+            "lr_consistent_pixels": 30952,
+            "consensus_pixels": 8263,
+            "seconds": 0.6983785829943372
+          },
+          {
+            "left": "view_0043.png",
+            "right": "view_0045.png",
+            "points": 711,
+            "mask_pixels": 23342,
+            "lr_consistent_pixels": 17095,
+            "consensus_pixels": 4015,
+            "seconds": 0.6830774999980349
+          },
+          {
+            "left": "view_0046.png",
+            "right": "view_0047.png",
+            "points": 1821,
+            "mask_pixels": 44569,
+            "lr_consistent_pixels": 37431,
+            "consensus_pixels": 9484,
+            "seconds": 0.6919698749989038
+          },
+          {
+            "left": "view_0050.png",
+            "right": "view_0051.png",
+            "points": 2498,
+            "mask_pixels": 44738,
+            "lr_consistent_pixels": 39783,
+            "consensus_pixels": 12011,
+            "seconds": 0.7017926249973243
+          },
+          {
+            "left": "view_0052.png",
+            "right": "view_0053.png",
+            "points": 1881,
+            "mask_pixels": 47012,
+            "lr_consistent_pixels": 36466,
+            "consensus_pixels": 9496,
+            "seconds": 0.704281667000032
+          },
+          {
+            "left": "view_0056.png",
+            "right": "view_0057.png",
+            "points": 1712,
+            "mask_pixels": 39243,
+            "lr_consistent_pixels": 32414,
+            "consensus_pixels": 8892,
+            "seconds": 0.7030737079985556
+          },
+          {
+            "left": "view_0058.png",
+            "right": "view_0060.png",
+            "points": 1109,
+            "mask_pixels": 29864,
+            "lr_consistent_pixels": 23199,
+            "consensus_pixels": 6135,
+            "seconds": 0.6854628750006668
+          },
+          {
+            "left": "view_0062.png",
+            "right": "view_0063.png",
+            "points": 2378,
+            "mask_pixels": 37887,
+            "lr_consistent_pixels": 31774,
+            "consensus_pixels": 11565,
+            "seconds": 0.6930138750030892
+          },
+          {
+            "left": "view_0065.png",
+            "right": "view_0066.png",
+            "points": 3030,
+            "mask_pixels": 42702,
+            "lr_consistent_pixels": 36629,
+            "consensus_pixels": 14978,
+            "seconds": 0.7046212499990361
+          },
+          {
+            "left": "view_0068.png",
+            "right": "view_0070.png",
+            "points": 1342,
+            "mask_pixels": 27759,
+            "lr_consistent_pixels": 19727,
+            "consensus_pixels": 7100,
+            "seconds": 0.6823934170024586
+          },
+          {
+            "left": "view_0071.png",
+            "right": "view_0072.png",
+            "points": 1907,
+            "mask_pixels": 34396,
+            "lr_consistent_pixels": 26868,
+            "consensus_pixels": 9903,
+            "seconds": 0.6953707499997108
+          },
+          {
+            "left": "view_0075.png",
+            "right": "view_0076.png",
+            "points": 2281,
+            "mask_pixels": 30639,
+            "lr_consistent_pixels": 26772,
+            "consensus_pixels": 11123,
+            "seconds": 0.7046041250068811
+          },
+          {
+            "left": "view_0077.png",
+            "right": "view_0078.png",
+            "points": 2811,
+            "mask_pixels": 36591,
+            "lr_consistent_pixels": 29701,
+            "consensus_pixels": 13543,
+            "seconds": 0.6941795830061892
+          },
+          {
+            "left": "view_0081.png",
+            "right": "view_0082.png",
+            "points": 2226,
+            "mask_pixels": 28862,
+            "lr_consistent_pixels": 25184,
+            "consensus_pixels": 10789,
+            "seconds": 0.6919014160012011
+          },
+          {
+            "left": "view_0083.png",
+            "right": "view_0085.png",
+            "points": 2278,
+            "mask_pixels": 26752,
+            "lr_consistent_pixels": 21230,
+            "consensus_pixels": 10555,
+            "seconds": 0.6872081249966868
+          },
+          {
+            "left": "view_0087.png",
+            "right": "view_0088.png",
+            "points": 3017,
+            "mask_pixels": 37680,
+            "lr_consistent_pixels": 31550,
+            "consensus_pixels": 14312,
+            "seconds": 0.6956381670024712
+          },
+          {
+            "left": "view_0090.png",
+            "right": "view_0091.png",
+            "points": 594,
+            "mask_pixels": 21300,
+            "lr_consistent_pixels": 17713,
+            "consensus_pixels": 3351,
+            "seconds": 0.6914422910049325
+          },
+          {
+            "left": "view_0093.png",
+            "right": "view_0095.png",
+            "points": 574,
+            "mask_pixels": 39306,
+            "lr_consistent_pixels": 29283,
+            "consensus_pixels": 3252,
+            "seconds": 0.6905447919998551
+          },
+          {
+            "left": "view_0097.png",
+            "right": "view_0098.png",
+            "points": 560,
+            "mask_pixels": 47228,
+            "lr_consistent_pixels": 37682,
+            "consensus_pixels": 3740,
+            "seconds": 0.6971092079984373
+          }
+        ],
+        "points": 57778,
+        "faces": 59999,
+        "device": "mps",
+        "weights_sha256": "7b7b6ac42d51dbc357a4f7fde3f9278c0da9d2128d1f09ce6c20fd3dcbaa9209",
+        "source_commit": "099dec97989780d151700459c682df1cc2c18e88",
+        "settings": {
+          "hidden_dim": 96,
+          "corr_levels": 2,
+          "corr_radius": 4,
+          "n_downsample": 2,
+          "n_gru_layers": 3,
+          "max_disp": 192,
+          "mixed_precision": false,
+          "precision_dtype": "float32"
+        },
+        "silhouette_consensus": 0.9,
+        "lr_threshold_px": 1.5,
+        "assessment": "Original RGB stereo, fit-only; neural depth and SfM are estimates, not ground truth."
+      },
+      "status": "diagnostic surface not selected; old camera estimates"
+    },
+    "igev_plusplus_gnome": {
+      "source_record": "provenance/obj19-stereo-plusplus-32/result.json",
+      "used_settings_and_results": {
+        "seconds": 175.72850549999566,
+        "pairs": [
+          {
+            "left": "view_0000.png",
+            "right": "view_0001.png",
+            "points": 2099,
+            "mask_pixels": 39978,
+            "lr_consistent_pixels": 30654,
+            "consensus_pixels": 10744,
+            "seconds": 7.02251116700063
+          },
+          {
+            "left": "view_0002.png",
+            "right": "view_0003.png",
+            "points": 2921,
+            "mask_pixels": 40769,
+            "lr_consistent_pixels": 36712,
+            "consensus_pixels": 14210,
+            "seconds": 4.056901374999143
+          },
+          {
+            "left": "view_0006.png",
+            "right": "view_0007.png",
+            "points": 1690,
+            "mask_pixels": 35820,
+            "lr_consistent_pixels": 29525,
+            "consensus_pixels": 8681,
+            "seconds": 3.9705683329957537
+          },
+          {
+            "left": "view_0008.png",
+            "right": "view_0010.png",
+            "points": 1469,
+            "mask_pixels": 23443,
+            "lr_consistent_pixels": 16751,
+            "consensus_pixels": 7373,
+            "seconds": 3.8943638749988168
+          },
+          {
+            "left": "view_0012.png",
+            "right": "view_0013.png",
+            "points": 1483,
+            "mask_pixels": 22701,
+            "lr_consistent_pixels": 15618,
+            "consensus_pixels": 7429,
+            "seconds": 3.856806207993941
+          },
+          {
+            "left": "view_0015.png",
+            "right": "view_0016.png",
+            "points": 1729,
+            "mask_pixels": 36755,
+            "lr_consistent_pixels": 23516,
+            "consensus_pixels": 8894,
+            "seconds": 3.8309725409999373
+          },
+          {
+            "left": "view_0018.png",
+            "right": "view_0020.png",
+            "points": 1887,
+            "mask_pixels": 32367,
+            "lr_consistent_pixels": 22301,
+            "consensus_pixels": 9561,
+            "seconds": 3.8466131669993047
+          },
+          {
+            "left": "view_0021.png",
+            "right": "view_0022.png",
+            "points": 3344,
+            "mask_pixels": 39845,
+            "lr_consistent_pixels": 34717,
+            "consensus_pixels": 15565,
+            "seconds": 3.8748076250049053
+          },
+          {
+            "left": "view_0025.png",
+            "right": "view_0026.png",
+            "points": 2527,
+            "mask_pixels": 50241,
+            "lr_consistent_pixels": 40627,
+            "consensus_pixels": 12546,
+            "seconds": 3.945603749998554
+          },
+          {
+            "left": "view_0027.png",
+            "right": "view_0028.png",
+            "points": 969,
+            "mask_pixels": 40472,
+            "lr_consistent_pixels": 35315,
+            "consensus_pixels": 5416,
+            "seconds": 3.9469775000034133
+          },
+          {
+            "left": "view_0032.png",
+            "right": "view_0031.png",
+            "points": 0,
+            "mask_pixels": 0,
+            "lr_consistent_pixels": 0,
+            "consensus_pixels": 0,
+            "seconds": 3.932630584000435
+          },
+          {
+            "left": "view_0033.png",
+            "right": "view_0035.png",
+            "points": 1162,
+            "mask_pixels": 40217,
+            "lr_consistent_pixels": 23718,
+            "consensus_pixels": 6428,
+            "seconds": 3.8788558330052183
+          },
+          {
+            "left": "view_0037.png",
+            "right": "view_0038.png",
+            "points": 2672,
+            "mask_pixels": 38120,
+            "lr_consistent_pixels": 28908,
+            "consensus_pixels": 12865,
+            "seconds": 3.9009046249993844
+          },
+          {
+            "left": "view_0040.png",
+            "right": "view_0041.png",
+            "points": 1430,
+            "mask_pixels": 34752,
+            "lr_consistent_pixels": 32308,
+            "consensus_pixels": 6954,
+            "seconds": 3.8749697499952163
+          },
+          {
+            "left": "view_0043.png",
+            "right": "view_0045.png",
+            "points": 840,
+            "mask_pixels": 23342,
+            "lr_consistent_pixels": 17314,
+            "consensus_pixels": 4488,
+            "seconds": 3.8847144579995074
+          },
+          {
+            "left": "view_0046.png",
+            "right": "view_0047.png",
+            "points": 2222,
+            "mask_pixels": 44569,
+            "lr_consistent_pixels": 38157,
+            "consensus_pixels": 10946,
+            "seconds": 3.930853040998045
+          },
+          {
+            "left": "view_0050.png",
+            "right": "view_0051.png",
+            "points": 2835,
+            "mask_pixels": 44738,
+            "lr_consistent_pixels": 40329,
+            "consensus_pixels": 13663,
+            "seconds": 3.8745318750006845
+          },
+          {
+            "left": "view_0052.png",
+            "right": "view_0053.png",
+            "points": 1520,
+            "mask_pixels": 47012,
+            "lr_consistent_pixels": 36059,
+            "consensus_pixels": 7873,
+            "seconds": 3.8591257499938365
+          },
+          {
+            "left": "view_0056.png",
+            "right": "view_0057.png",
+            "points": 1969,
+            "mask_pixels": 39243,
+            "lr_consistent_pixels": 31292,
+            "consensus_pixels": 10361,
+            "seconds": 3.847223707998637
+          },
+          {
+            "left": "view_0058.png",
+            "right": "view_0060.png",
+            "points": 1600,
+            "mask_pixels": 29864,
+            "lr_consistent_pixels": 22111,
+            "consensus_pixels": 8099,
+            "seconds": 4.091921624996758
+          },
+          {
+            "left": "view_0062.png",
+            "right": "view_0063.png",
+            "points": 2500,
+            "mask_pixels": 37887,
+            "lr_consistent_pixels": 30802,
+            "consensus_pixels": 11963,
+            "seconds": 7.3014055419989745
+          },
+          {
+            "left": "view_0065.png",
+            "right": "view_0066.png",
+            "points": 3116,
+            "mask_pixels": 42702,
+            "lr_consistent_pixels": 36862,
+            "consensus_pixels": 15313,
+            "seconds": 7.18620416700287
+          },
+          {
+            "left": "view_0068.png",
+            "right": "view_0070.png",
+            "points": 1410,
+            "mask_pixels": 27759,
+            "lr_consistent_pixels": 18670,
+            "consensus_pixels": 7532,
+            "seconds": 7.1459585830016294
+          },
+          {
+            "left": "view_0071.png",
+            "right": "view_0072.png",
+            "points": 1748,
+            "mask_pixels": 34396,
+            "lr_consistent_pixels": 23309,
+            "consensus_pixels": 9268,
+            "seconds": 7.2260292079954525
+          },
+          {
+            "left": "view_0075.png",
+            "right": "view_0076.png",
+            "points": 2332,
+            "mask_pixels": 30639,
+            "lr_consistent_pixels": 27830,
+            "consensus_pixels": 11644,
+            "seconds": 7.09859462500026
+          },
+          {
+            "left": "view_0077.png",
+            "right": "view_0078.png",
+            "points": 1885,
+            "mask_pixels": 36591,
+            "lr_consistent_pixels": 26488,
+            "consensus_pixels": 9737,
+            "seconds": 7.335613499999454
+          },
+          {
+            "left": "view_0081.png",
+            "right": "view_0082.png",
+            "points": 1665,
+            "mask_pixels": 28862,
+            "lr_consistent_pixels": 23824,
+            "consensus_pixels": 8559,
+            "seconds": 7.0129091659982805
+          },
+          {
+            "left": "view_0083.png",
+            "right": "view_0085.png",
+            "points": 1475,
+            "mask_pixels": 26752,
+            "lr_consistent_pixels": 16016,
+            "consensus_pixels": 7526,
+            "seconds": 7.774432375001197
+          },
+          {
+            "left": "view_0087.png",
+            "right": "view_0088.png",
+            "points": 3684,
+            "mask_pixels": 37680,
+            "lr_consistent_pixels": 34377,
+            "consensus_pixels": 17198,
+            "seconds": 7.595125833002385
+          },
+          {
+            "left": "view_0090.png",
+            "right": "view_0091.png",
+            "points": 723,
+            "mask_pixels": 21300,
+            "lr_consistent_pixels": 18773,
+            "consensus_pixels": 3932,
+            "seconds": 7.6681109170021955
+          },
+          {
+            "left": "view_0093.png",
+            "right": "view_0095.png",
+            "points": 522,
+            "mask_pixels": 39306,
+            "lr_consistent_pixels": 25385,
+            "consensus_pixels": 3170,
+            "seconds": 7.677832750006928
+          },
+          {
+            "left": "view_0097.png",
+            "right": "view_0098.png",
+            "points": 536,
+            "mask_pixels": 47228,
+            "lr_consistent_pixels": 40296,
+            "consensus_pixels": 3312,
+            "seconds": 7.861204707995057
+          }
+        ],
+        "points": 57747,
+        "faces": 59999,
+        "device": "mps",
+        "weights_sha256": "550227fb7b73cbe038149ab2c86884866e68af51db7e438e2485da7da3cff433",
+        "source_commit": "099dec97989780d151700459c682df1cc2c18e88",
+        "settings": {
+          "hidden_dim": 96,
+          "corr_levels": 2,
+          "corr_radius": 4,
+          "n_downsample": 2,
+          "n_gru_layers": 3,
+          "max_disp": 768,
+          "mixed_precision": false,
+          "precision_dtype": "float32",
+          "hidden_dims": [
+            128,
+            128,
+            128
+          ],
+          "s_disp_range": 48,
+          "m_disp_range": 96,
+          "l_disp_range": 192,
+          "s_disp_interval": 1,
+          "m_disp_interval": 2,
+          "l_disp_interval": 4
+        },
+        "model": "plusplus",
+        "pair_step": 1,
+        "iterations": 32,
+        "silhouette_consensus": 0.9,
+        "lr_threshold_px": 1.5,
+        "assessment": "Original RGB stereo, fit-only; neural depth and SfM are estimates, not ground truth."
+      },
+      "status": "diagnostic surface not selected; old camera estimates"
+    },
+    "igev_plusplus_dragon": {
+      "source_record": "provenance/obj02-stereo-plusplus-32/result.json",
+      "used_settings_and_results": {
+        "seconds": 226.01813204199425,
+        "pairs": [
+          {
+            "left": "view_0000.png",
+            "right": "view_0001.png",
+            "points": 11842,
+            "mask_pixels": 91319,
+            "lr_consistent_pixels": 77478,
+            "consensus_pixels": 52270,
+            "seconds": 8.523043709006743
+          },
+          {
+            "left": "view_0002.png",
+            "right": "view_0003.png",
+            "points": 11524,
+            "mask_pixels": 89424,
+            "lr_consistent_pixels": 74058,
+            "consensus_pixels": 50279,
+            "seconds": 6.6968014589947416
+          },
+          {
+            "left": "view_0005.png",
+            "right": "view_0006.png",
+            "points": 12283,
+            "mask_pixels": 93462,
+            "lr_consistent_pixels": 79194,
+            "consensus_pixels": 54098,
+            "seconds": 6.701702291000402
+          },
+          {
+            "left": "view_0007.png",
+            "right": "view_0008.png",
+            "points": 13863,
+            "mask_pixels": 102524,
+            "lr_consistent_pixels": 89132,
+            "consensus_pixels": 60738,
+            "seconds": 6.670486582996091
+          },
+          {
+            "left": "view_0010.png",
+            "right": "view_0011.png",
+            "points": 10535,
+            "mask_pixels": 93391,
+            "lr_consistent_pixels": 76172,
+            "consensus_pixels": 47599,
+            "seconds": 6.620388167008059
+          },
+          {
+            "left": "view_0012.png",
+            "right": "view_0013.png",
+            "points": 7761,
+            "mask_pixels": 79281,
+            "lr_consistent_pixels": 63641,
+            "consensus_pixels": 36011,
+            "seconds": 6.638007666013436
+          },
+          {
+            "left": "view_0015.png",
+            "right": "view_0016.png",
+            "points": 5597,
+            "mask_pixels": 68639,
+            "lr_consistent_pixels": 52634,
+            "consensus_pixels": 26559,
+            "seconds": 6.669708041998092
+          },
+          {
+            "left": "view_0017.png",
+            "right": "view_0018.png",
+            "points": 6580,
+            "mask_pixels": 66656,
+            "lr_consistent_pixels": 55679,
+            "consensus_pixels": 30685,
+            "seconds": 6.6849432089948095
+          },
+          {
+            "left": "view_0020.png",
+            "right": "view_0021.png",
+            "points": 6948,
+            "mask_pixels": 70446,
+            "lr_consistent_pixels": 54812,
+            "consensus_pixels": 32215,
+            "seconds": 6.678940792000503
+          },
+          {
+            "left": "view_0022.png",
+            "right": "view_0023.png",
+            "points": 9527,
+            "mask_pixels": 83995,
+            "lr_consistent_pixels": 74446,
+            "consensus_pixels": 42500,
+            "seconds": 6.693431249994319
+          },
+          {
+            "left": "view_0025.png",
+            "right": "view_0026.png",
+            "points": 10108,
+            "mask_pixels": 94924,
+            "lr_consistent_pixels": 80178,
+            "consensus_pixels": 44434,
+            "seconds": 6.6959198330005165
+          },
+          {
+            "left": "view_0027.png",
+            "right": "view_0028.png",
+            "points": 12511,
+            "mask_pixels": 94006,
+            "lr_consistent_pixels": 88010,
+            "consensus_pixels": 53838,
+            "seconds": 6.713710500000161
+          },
+          {
+            "left": "view_0030.png",
+            "right": "view_0031.png",
+            "points": 10769,
+            "mask_pixels": 92441,
+            "lr_consistent_pixels": 87024,
+            "consensus_pixels": 46809,
+            "seconds": 6.7012895829975605
+          },
+          {
+            "left": "view_0032.png",
+            "right": "view_0033.png",
+            "points": 8801,
+            "mask_pixels": 96884,
+            "lr_consistent_pixels": 81717,
+            "consensus_pixels": 39423,
+            "seconds": 6.698202750005294
+          },
+          {
+            "left": "view_0035.png",
+            "right": "view_0036.png",
+            "points": 9899,
+            "mask_pixels": 98199,
+            "lr_consistent_pixels": 88028,
+            "consensus_pixels": 43657,
+            "seconds": 6.703005542003666
+          },
+          {
+            "left": "view_0037.png",
+            "right": "view_0038.png",
+            "points": 8051,
+            "mask_pixels": 86335,
+            "lr_consistent_pixels": 77380,
+            "consensus_pixels": 36165,
+            "seconds": 6.693261124994024
+          },
+          {
+            "left": "view_0040.png",
+            "right": "view_0041.png",
+            "points": 3066,
+            "mask_pixels": 59959,
+            "lr_consistent_pixels": 43582,
+            "consensus_pixels": 14942,
+            "seconds": 6.6783141670021
+          },
+          {
+            "left": "view_0042.png",
+            "right": "view_0043.png",
+            "points": 2747,
+            "mask_pixels": 49827,
+            "lr_consistent_pixels": 38292,
+            "consensus_pixels": 13083,
+            "seconds": 6.6709025830059545
+          },
+          {
+            "left": "view_0045.png",
+            "right": "view_0046.png",
+            "points": 7132,
+            "mask_pixels": 68718,
+            "lr_consistent_pixels": 56019,
+            "consensus_pixels": 33179,
+            "seconds": 6.687340750009753
+          },
+          {
+            "left": "view_0047.png",
+            "right": "view_0048.png",
+            "points": 9226,
+            "mask_pixels": 78898,
+            "lr_consistent_pixels": 65230,
+            "consensus_pixels": 41528,
+            "seconds": 6.69609133299673
+          },
+          {
+            "left": "view_0050.png",
+            "right": "view_0051.png",
+            "points": 10573,
+            "mask_pixels": 87614,
+            "lr_consistent_pixels": 72194,
+            "consensus_pixels": 47165,
+            "seconds": 6.707117500001914
+          },
+          {
+            "left": "view_0052.png",
+            "right": "view_0053.png",
+            "points": 13451,
+            "mask_pixels": 94776,
+            "lr_consistent_pixels": 84834,
+            "consensus_pixels": 59257,
+            "seconds": 6.708512750003138
+          },
+          {
+            "left": "view_0055.png",
+            "right": "view_0056.png",
+            "points": 12803,
+            "mask_pixels": 95479,
+            "lr_consistent_pixels": 82450,
+            "consensus_pixels": 56637,
+            "seconds": 6.707579624999198
+          },
+          {
+            "left": "view_0057.png",
+            "right": "view_0058.png",
+            "points": 12718,
+            "mask_pixels": 96182,
+            "lr_consistent_pixels": 82347,
+            "consensus_pixels": 56065,
+            "seconds": 6.7031862499861745
+          },
+          {
+            "left": "view_0060.png",
+            "right": "view_0061.png",
+            "points": 9580,
+            "mask_pixels": 83590,
+            "lr_consistent_pixels": 69452,
+            "consensus_pixels": 43507,
+            "seconds": 6.698276041992358
+          },
+          {
+            "left": "view_0062.png",
+            "right": "view_0063.png",
+            "points": 6156,
+            "mask_pixels": 69542,
+            "lr_consistent_pixels": 53554,
+            "consensus_pixels": 28386,
+            "seconds": 6.679618833004497
+          },
+          {
+            "left": "view_0065.png",
+            "right": "view_0066.png",
+            "points": 6833,
+            "mask_pixels": 69784,
+            "lr_consistent_pixels": 56634,
+            "consensus_pixels": 31964,
+            "seconds": 6.684105166990776
+          },
+          {
+            "left": "view_0067.png",
+            "right": "view_0068.png",
+            "points": 5812,
+            "mask_pixels": 60920,
+            "lr_consistent_pixels": 51179,
+            "consensus_pixels": 27425,
+            "seconds": 6.678588041002513
+          },
+          {
+            "left": "view_0070.png",
+            "right": "view_0071.png",
+            "points": 8637,
+            "mask_pixels": 81925,
+            "lr_consistent_pixels": 73857,
+            "consensus_pixels": 39717,
+            "seconds": 6.694086749994312
+          },
+          {
+            "left": "view_0072.png",
+            "right": "view_0073.png",
+            "points": 9846,
+            "mask_pixels": 91866,
+            "lr_consistent_pixels": 78302,
+            "consensus_pixels": 43645,
+            "seconds": 6.704972916006227
+          },
+          {
+            "left": "view_0075.png",
+            "right": "view_0076.png",
+            "points": 11941,
+            "mask_pixels": 95281,
+            "lr_consistent_pixels": 84143,
+            "consensus_pixels": 52406,
+            "seconds": 6.706196291997912
+          },
+          {
+            "left": "view_0077.png",
+            "right": "view_0078.png",
+            "points": 11160,
+            "mask_pixels": 98531,
+            "lr_consistent_pixels": 82654,
+            "consensus_pixels": 49024,
+            "seconds": 6.699812209000811
+          }
+        ],
+        "points": 289972,
+        "faces": 59999,
+        "device": "mps",
+        "weights_sha256": "550227fb7b73cbe038149ab2c86884866e68af51db7e438e2485da7da3cff433",
+        "source_commit": "099dec97989780d151700459c682df1cc2c18e88",
+        "settings": {
+          "hidden_dim": 96,
+          "corr_levels": 2,
+          "corr_radius": 4,
+          "n_downsample": 2,
+          "n_gru_layers": 3,
+          "max_disp": 768,
+          "mixed_precision": false,
+          "precision_dtype": "float32",
+          "hidden_dims": [
+            128,
+            128,
+            128
+          ],
+          "s_disp_range": 48,
+          "m_disp_range": 96,
+          "l_disp_range": 192,
+          "s_disp_interval": 1,
+          "m_disp_interval": 2,
+          "l_disp_interval": 4
+        },
+        "model": "plusplus",
+        "pair_step": 1,
+        "iterations": 32,
+        "silhouette_consensus": 0.9,
+        "lr_threshold_px": 1.5,
+        "assessment": "Original RGB stereo, fit-only; neural depth and SfM are estimates, not ground truth."
+      },
+      "status": "diagnostic surface not selected; old camera estimates"
+    },
+    "openmvs_native_dragon": {
+      "source_record": "provenance/obj02-mvs-fullresolution/result.json",
+      "commands": {
+        "import": [
+          "/Users/slavik/Documents/boardgen/tmp/benchmark_tools/openmvs/InterfaceCOLMAP",
+          "-w",
+          "/Users/slavik/Documents/boardgen/out/benchmark3d/obj02-mvs-fullresolution",
+          "--max-threads",
+          "6",
+          "-i",
+          "/Users/slavik/Documents/boardgen/out/benchmark3d/obj02-mvs-fullresolution/colmap",
+          "-o",
+          "/Users/slavik/Documents/boardgen/out/benchmark3d/obj02-mvs-fullresolution/scene.mvs",
+          "--image-folder",
+          "/Users/slavik/Documents/boardgen/out/benchmark3d/obj02-mvs-fullresolution/colmap/images"
+        ],
+        "dense": [
+          "/Users/slavik/Documents/boardgen/tmp/benchmark_tools/openmvs/DensifyPointCloud",
+          "-w",
+          "/Users/slavik/Documents/boardgen/out/benchmark3d/obj02-mvs-fullresolution",
+          "--max-threads",
+          "6",
+          "-i",
+          "/Users/slavik/Documents/boardgen/out/benchmark3d/obj02-mvs-fullresolution/scene.mvs",
+          "-o",
+          "/Users/slavik/Documents/boardgen/out/benchmark3d/obj02-mvs-fullresolution/dense.mvs",
+          "--resolution-level",
+          "0",
+          "--max-resolution",
+          "1648",
+          "--min-resolution",
+          "256",
+          "--number-views",
+          "10",
+          "--number-views-fuse",
+          "3",
+          "--iters",
+          "5",
+          "--geometric-iters",
+          "3",
+          "--ignore-mask-label",
+          "0",
+          "--mask-path",
+          "/Users/slavik/Documents/boardgen/out/benchmark3d/obj02-mvs-fullresolution/colmap/images",
+          "--tower-mode",
+          "0"
+        ],
+        "mesh": [
+          "/Users/slavik/Documents/boardgen/tmp/benchmark_tools/openmvs/ReconstructMesh",
+          "-w",
+          "/Users/slavik/Documents/boardgen/out/benchmark3d/obj02-mvs-fullresolution",
+          "--max-threads",
+          "6",
+          "-i",
+          "/Users/slavik/Documents/boardgen/out/benchmark3d/obj02-mvs-fullresolution/dense.mvs",
+          "-p",
+          "/Users/slavik/Documents/boardgen/out/benchmark3d/obj02-mvs-fullresolution/dense.ply",
+          "-o",
+          "/Users/slavik/Documents/boardgen/out/benchmark3d/obj02-mvs-fullresolution/mesh.mvs",
+          "--target-face-num",
+          "60000",
+          "--close-holes",
+          "0"
+        ]
+      },
+      "status": "diagnostic surface not selected; over 15min when full matte prep included"
+    },
+    "brush_synthetic_wedge": {
+      "training_command": [
+        "tmp/benchmark_tools/brush/brush-app-aarch64-apple-darwin/brush_app",
+        "/Users/slavik/Documents/boardgen/out/benchmark3d/simple-wedge/train",
+        "--total-steps",
+        "1500",
+        "--max-splats",
+        "40000",
+        "--growth-stop-iter",
+        "1200",
+        "--max-resolution",
+        "512",
+        "--export-every",
+        "1500",
+        "--export-path",
+        "/Users/slavik/Documents/boardgen/out/benchmark3d/simple-wedge/runs/brush-1500",
+        "--sh-degree",
+        "0"
+      ],
+      "meshing_command": [
+        "tmp/benchmark_tools/Spirula Studio.app/Contents/MacOS/spirula",
+        "--lang",
+        "en",
+        "mesh",
+        "/Users/slavik/Documents/boardgen/out/benchmark3d/simple-wedge/runs/brush-1500/export_1500.ply",
+        "--data",
+        "/Users/slavik/Documents/boardgen/out/benchmark3d/simple-wedge/train",
+        "--output",
+        "/Users/slavik/Documents/boardgen/out/benchmark3d/simple-wedge/runs/brush-1500/mesh",
+        "--format",
+        "glb",
+        "--color",
+        "texture",
+        "--texture-size",
+        "1024",
+        "--max-grid-res",
+        "128",
+        "--num-threads",
+        "6"
+      ],
+      "status": "synthetic known-camera fixture only, no optimized real-figure recipe"
+    }
+  },
+  "generative_rgba_inputs": [
+    {
+      "object": "gnome",
+      "view": 32,
+      "path": "inputs/gnome/view_0032.png",
+      "sha256": "8a4e07d86069c00a792c446c36f7fcd71988c2c75410be7216fcc2b9836fe156"
+    },
+    {
+      "object": "gnome",
+      "view": 52,
+      "path": "inputs/gnome/view_0052.png",
+      "sha256": "3404a9d376c286a570a156732c96e9815b8723647fd38746d0a3dfc66f4aa0f2"
+    },
+    {
+      "object": "gnome",
+      "view": 67,
+      "path": "inputs/gnome/view_0067.png",
+      "sha256": "ad531bf9b6c91e115ebcf75b9e61afb8030e4f3b224ace3da263572e2065f642"
+    },
+    {
+      "object": "gnome",
+      "view": 82,
+      "path": "inputs/gnome/view_0082.png",
+      "sha256": "c1d4326e76ce55cacd6ee8b965c3d49a3378fdac002065d115117a595b729e74"
+    },
+    {
+      "object": "gnome",
+      "view": 97,
+      "path": "inputs/gnome/view_0097.png",
+      "sha256": "b990af5a26ec005ded29bcf96b9b29b6895c470fbbd8c1c6e9204d2cd68cc660"
+    },
+    {
+      "object": "dragon",
+      "view": 8,
+      "path": "inputs/dragon/view_0008.png",
+      "sha256": "cd28628aaa4b9065085b4ac3f4093854df5f7748556ff72767e2a9f8ebdfca0b"
+    },
+    {
+      "object": "dragon",
+      "view": 40,
+      "path": "inputs/dragon/view_0040.png",
+      "sha256": "e7ad0841ea93280e8e6221203c86f1c435ce3b04c1fa331f41140b59d8a04b3c"
+    },
+    {
+      "object": "dragon",
+      "view": 48,
+      "path": "inputs/dragon/view_0048.png",
+      "sha256": "321915b77369b63c8290cad0f59e71d48668f1987ccd1a72319e8fb4a7d2ee17"
+    },
+    {
+      "object": "dragon",
+      "view": 61,
+      "path": "inputs/dragon/view_0061.png",
+      "sha256": "397c4d0a7df3eee05cdc914077564c7fede8abbce48d9fcf498032ad5a048794"
+    },
+    {
+      "object": "dragon",
+      "view": 75,
+      "path": "inputs/dragon/view_0075.png",
+      "sha256": "0dc19ba131c79eb124938362cccb311972ac14b49e905f11011376ce75389226"
+    }
+  ],
+  "source_videos": [
+    {
+      "class_id": 0,
+      "class_name": "obj_01_mp4",
+      "filename": "obj_01.mp4",
+      "bytes": 6600275,
+      "sha256": "97673fb5130570695022a7e7a6ad418bad852f8a88149c49d1f7ac2c2b528e9a",
+      "duration_seconds": 25.666667,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1540",
+      "path": "videos/obj_01.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 1,
+      "class_name": "obj_02_mp4",
+      "filename": "obj_02.mp4",
+      "bytes": 9197852,
+      "sha256": "f98eba58c24449b58582c56ffb144e67488458470fa575758f15e7ae3387e756",
+      "duration_seconds": 25.522,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1531",
+      "path": "videos/obj_02.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming",
+      "object": "dragon",
+      "dataset_record": "provenance/obj02-full-80/dataset.json",
+      "sampling": "full clip including repeated views"
+    },
+    {
+      "class_id": 2,
+      "class_name": "obj_03_mp4",
+      "filename": "obj_03.mp4",
+      "bytes": 7128414,
+      "sha256": "e486a13c3df9bb6d3d90431394083c9bace8c4370e3a6a8d2b88711f2509df1d",
+      "duration_seconds": 25.333333,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1520",
+      "path": "videos/obj_03.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 3,
+      "class_name": "obj_04_mp4",
+      "filename": "obj_04.mp4",
+      "bytes": 8785330,
+      "sha256": "881517fd711ccdff2024597897656cefa3cb04c929b72361fb742b792ca79a63",
+      "duration_seconds": 25.35,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1521",
+      "path": "videos/obj_04.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 4,
+      "class_name": "obj_05_mp4",
+      "filename": "obj_05.mp4",
+      "bytes": 5314721,
+      "sha256": "85408e371d0064da8e05763c3005e961387165c23c4cd0f7949f3be7171e7872",
+      "duration_seconds": 25.351,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1520",
+      "path": "videos/obj_05.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 5,
+      "class_name": "obj_06_mp4",
+      "filename": "obj_06.mp4",
+      "bytes": 6820175,
+      "sha256": "0b45839b9b57fcbb6a00882ab27cf31dca2d4ea3f32cc2e9c570de4ba14ee28e",
+      "duration_seconds": 25.261,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1513",
+      "path": "videos/obj_06.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 6,
+      "class_name": "obj_07_mp4",
+      "filename": "obj_07.mp4",
+      "bytes": 5096754,
+      "sha256": "929d7cf1c129dbf27ad76937a7a9e9142b827c6e384d8aa574e1c49ceb444d40",
+      "duration_seconds": 25.3,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1518",
+      "path": "videos/obj_07.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 7,
+      "class_name": "obj_08_mp4",
+      "filename": "obj_08.mp4",
+      "bytes": 5744506,
+      "sha256": "5fc04d03a18a9377ada0c0d17d1775290c5f7dc00350feb14088ab790d436cda",
+      "duration_seconds": 25.573,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1534",
+      "path": "videos/obj_08.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 8,
+      "class_name": "obj_09_mp4",
+      "filename": "obj_09.mp4",
+      "bytes": 4048326,
+      "sha256": "19ac9e1be006b49a89876d10aefedcc6643450534c0d686a5e0aac46bb66025c",
+      "duration_seconds": 25.178,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1510",
+      "path": "videos/obj_09.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 9,
+      "class_name": "obj_10_mp4",
+      "filename": "obj_10.mp4",
+      "bytes": 4750070,
+      "sha256": "1780a8d25850daeb0f48ff6b4aa5bcb43a002694bed81b39931468cd1535f290",
+      "duration_seconds": 25.203,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1512",
+      "path": "videos/obj_10.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 10,
+      "class_name": "obj_11_mp4",
+      "filename": "obj_11.mp4",
+      "bytes": 4416411,
+      "sha256": "94712842d83ee7a23490d6f2ae15c752b6ac9eaf91ea76381d6c0ec7fe900d18",
+      "duration_seconds": 25.35,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1521",
+      "path": "videos/obj_11.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 11,
+      "class_name": "obj_12_mp4",
+      "filename": "obj_12.mp4",
+      "bytes": 5053003,
+      "sha256": "697b23148d3df77438c2342b65ff51d77c597dd66fb5de1a24d32d79044e7302",
+      "duration_seconds": 25.216,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1512",
+      "path": "videos/obj_12.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 12,
+      "class_name": "obj_13_mp4",
+      "filename": "obj_13.mp4",
+      "bytes": 4552209,
+      "sha256": "34424d4c4554d44acc1f5156c8955b5bcedb76aa197abbd9afedae24ee26fa0d",
+      "duration_seconds": 25.4,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1524",
+      "path": "videos/obj_13.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 13,
+      "class_name": "obj_14_mp4",
+      "filename": "obj_14.mp4",
+      "bytes": 5283406,
+      "sha256": "5ca7317b1cb0c3b207aabb05341a2c09fff7fd8b0648aaa4e543a1492e1d1fd0",
+      "duration_seconds": 25.67,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1539",
+      "path": "videos/obj_14.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 14,
+      "class_name": "obj_15_mp4",
+      "filename": "obj_15.mp4",
+      "bytes": 4243933,
+      "sha256": "402d81c9346861e1a41e3cd2b84af757fae418bcccc3e4b23d5041cfe42eb15c",
+      "duration_seconds": 25.516016,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1530",
+      "path": "videos/obj_15.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 15,
+      "class_name": "obj_16_mp4",
+      "filename": "obj_16.mp4",
+      "bytes": 4777971,
+      "sha256": "d50e995632be526218befb3a58c057310d5b758aae0fd24ad195339290b7c49f",
+      "duration_seconds": 25.55,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1533",
+      "path": "videos/obj_16.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 16,
+      "class_name": "obj_17_mp4",
+      "filename": "obj_17.mp4",
+      "bytes": 8018540,
+      "sha256": "2d8c97b4248c907e82f2c11b54631d730dc47159f07889a5040e47b083d05cbf",
+      "duration_seconds": 25.2,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1512",
+      "path": "videos/obj_17.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 17,
+      "class_name": "obj_18_mp4",
+      "filename": "obj_18.mp4",
+      "bytes": 6870804,
+      "sha256": "792cd1de00123909d75794b87d57b016a936688a3598b2ca58f05e7e7057905a",
+      "duration_seconds": 25.558,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1533",
+      "path": "videos/obj_18.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 18,
+      "class_name": "obj_19_mp4",
+      "filename": "obj_19.mp4",
+      "bytes": 5477776,
+      "sha256": "534ea75da96c2f20ae09745e757d9ca4dca193f3d7c4c820ed4973581c035f5c",
+      "duration_seconds": 28.906,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1734",
+      "path": "videos/obj_19.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming",
+      "object": "gnome",
+      "dataset_record": "provenance/obj19-full-100/dataset.json",
+      "sampling": "full clip including repeated views"
+    },
+    {
+      "class_id": 19,
+      "class_name": "obj_20_mp4",
+      "filename": "obj_20.mp4",
+      "bytes": 5163817,
+      "sha256": "da821485756c3229e69209aef2095f021a6f4f202da4f5220bebbc5300093982",
+      "duration_seconds": 25.65,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1539",
+      "path": "videos/obj_20.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 20,
+      "class_name": "obj_21_mp4",
+      "filename": "obj_21.mp4",
+      "bytes": 6543126,
+      "sha256": "e2e11051ebe08b45237dc72b9308c9409ac1b0e99f9652a56445103dc8563f23",
+      "duration_seconds": 28.356,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1701",
+      "path": "videos/obj_21.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 21,
+      "class_name": "obj_22_mp4",
+      "filename": "obj_22.mp4",
+      "bytes": 4766555,
+      "sha256": "8597f971d8995dd686d7b43952a30499e83c375880d29d788fc7ce3d960e639d",
+      "duration_seconds": 25.65,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1539",
+      "path": "videos/obj_22.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 22,
+      "class_name": "obj_23_mp4",
+      "filename": "obj_23.mp4",
+      "bytes": 4822339,
+      "sha256": "f7ffc9071beafeeeb4509709e13e9cf968d2be766f2b0e7217b90d6124936667",
+      "duration_seconds": 25.666667,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1540",
+      "path": "videos/obj_23.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 23,
+      "class_name": "obj_24_mp4",
+      "filename": "obj_24.mp4",
+      "bytes": 4927641,
+      "sha256": "1cbf94a20231a31d3255ee82705630be8ea9a9e97ae48ee49e6c522c147442a5",
+      "duration_seconds": 25.6,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1536",
+      "path": "videos/obj_24.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 24,
+      "class_name": "obj_25_mp4",
+      "filename": "obj_25.mp4",
+      "bytes": 5959558,
+      "sha256": "ef2dbc79aaf4013df13b64446dd83934ffe5d53ee04ef0238e3c8746f166444b",
+      "duration_seconds": 31.5,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1890",
+      "path": "videos/obj_25.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    },
+    {
+      "class_id": 25,
+      "class_name": "obj_26_mp4",
+      "filename": "obj_26.mp4",
+      "bytes": 4585194,
+      "sha256": "ccf4eedd22d01090d328e1c973da2859494dbf9aa9cfa9c807077e19f33a18fe",
+      "duration_seconds": 26.35,
+      "codec_name": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60/1",
+      "nb_frames": "1581",
+      "path": "videos/obj_26.mp4",
+      "encoding": "existing compressed HEVC source; copied without re-encoding or trimming"
+    }
+  ]
+}

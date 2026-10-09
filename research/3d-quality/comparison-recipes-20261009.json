@@ -1,0 +1,1188 @@
+{
+  "obj_01": {
+    "dataset": "out/all-figures-3d-models-20261008/obj_01/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_01/asset/photo.glb",
+        "provenance": "out/figure-comparison-20261009/base-fixes/obj_01/candidate/result.json",
+        "label": "Spirula: выбранная форма · плоское дно",
+        "note": "Наблюдаемая форма с сохранённой фототекстурой. Мелкий шум и неточности тонких деталей остаются. Убрано продолжение основания вниз; неровности кромки сохранены.",
+        "metrics": {
+          "iou": 0.9297687073490329,
+          "foreground_recall": 0.9472540064890835,
+          "linear_shading_rmse": 0.10771869674856208,
+          "shading_nrmse": 1.1978400467604453,
+          "interior_gradient_correlation": 0.18280579120729373,
+          "diagnostic_loss": 0.3493799472917465
+        },
+        "method": "spirula",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "aa11d17033bb4c94f7f4a27873bdf0c6d812ff63b44641998933bc568818585d",
+        "coordinate_provenance_sha256": "1b927747a85a701f05d5205a9f38eaf4b5918f2b42fd09b6aa61fb95faa21f82"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_01/asset/native.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_01/native-local-hull/result.json",
+        "label": "Spirula: native",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9281950732909247,
+          "foreground_recall": 0.9406593380666742,
+          "linear_shading_rmse": 0.11124862225719027,
+          "shading_nrmse": 1.237396586458047,
+          "interior_gradient_correlation": 0.19474847337045126,
+          "diagnostic_loss": 0.3567264406381945
+        },
+        "method": "spirula",
+        "default": true,
+        "mesh_sha256": "7b10d4066e4ba81cf7da5afebf9e5f7d12416b0c5f086052675695c6c0a8aa48",
+        "coordinate_provenance_sha256": "02cca9eb95e81e5e8e20380bdcba1037136ef9279e44c23175fed9d34e158064"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_01/asset/fusion.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_01/fusion-local-hull/result.json",
+        "label": "Spirula: depth fusion",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9285784088710629,
+          "foreground_recall": 0.9455546134481936,
+          "linear_shading_rmse": 0.10844288744062303,
+          "shading_nrmse": 1.2059906316063973,
+          "interior_gradient_correlation": 0.18733400193692706,
+          "diagnostic_loss": 0.35103336257916157
+        },
+        "method": "spirula",
+        "default": false,
+        "mesh_sha256": "29dc610bf7770a51f6109194a31b89b0da9e84a6018646676d905598636a09dc",
+        "coordinate_provenance_sha256": "fd22349f100e3d1e16d8b9fb89ad0b8fbe0d4ba54568e2a99611cc86043b0c44"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 17,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_03": {
+    "dataset": "out/all-figures-3d-calibrated-models-20261008/obj_03/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_03/asset/photo.glb",
+        "provenance": "out/figure-comparison-20261009/base-fixes/obj_03/candidate/result.json",
+        "label": "Spirula: выбранная форма · плоское дно",
+        "note": "Наблюдаемая форма с сохранённой фототекстурой. Мелкий шум и неточности тонких деталей остаются. Убрано продолжение основания вниз; неровности кромки сохранены.",
+        "metrics": {
+          "iou": 0.9121404486962441,
+          "foreground_recall": 0.9389087294350513,
+          "linear_shading_rmse": 0.12138070836342205,
+          "shading_nrmse": 1.1796082424493552,
+          "interior_gradient_correlation": 0.18649900527011598,
+          "diagnostic_loss": 0.35241556848436184
+        },
+        "method": "spirula",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "6253b1e306eb2b22b92a977e6c48d9a2ff6e922ed6aa7f8d7cda7063242e36e9",
+        "coordinate_provenance_sha256": "43c1f282406481032458bff83c79f9db6779bf5a7e207024b8c7b4bffea8d734"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_03/asset/native.glb",
+        "provenance": "out/all-figures-3d-calibrated-models-20261008/obj_03/native-local-hull/result.json",
+        "label": "Spirula: native",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9096048221244145,
+          "foreground_recall": 0.9320209995580908,
+          "linear_shading_rmse": 0.12332810565503961,
+          "shading_nrmse": 1.1985597284871656,
+          "interior_gradient_correlation": 0.19447438548210444,
+          "diagnostic_loss": 0.3564225782994569
+        },
+        "method": "spirula",
+        "default": true,
+        "mesh_sha256": "c1d8f6aa4f7d1f0624d46eb34b93ff4e680cedaaa1ad2d8d3daefce2adbcf857",
+        "coordinate_provenance_sha256": "a45307ccbe593b29d1adba231ecc878a98c4e803371ca4a9abc86e03c9b38ea5"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_03/asset/fusion.glb",
+        "provenance": "out/all-figures-3d-calibrated-models-20261008/obj_03/fusion-local-hull/result.json",
+        "label": "Spirula: depth fusion",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9091842666586836,
+          "foreground_recall": 0.9356048828535324,
+          "linear_shading_rmse": 0.1229665004707455,
+          "shading_nrmse": 1.1951767514397362,
+          "interior_gradient_correlation": 0.1837105398962554,
+          "diagnostic_loss": 0.3569905896348483
+        },
+        "method": "spirula",
+        "default": false,
+        "mesh_sha256": "250048be866eef050e5212c0fee9c751abcb612b9307a7e62df076e40954ad51",
+        "coordinate_provenance_sha256": "c6ad94eccf814a326284099f7390a30cc6f5d4718237df9dac661033d7b1173b"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 36,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_04": {
+    "dataset": "out/all-figures-3d-models-20261008/obj_04/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_04/asset/photo.glb",
+        "provenance": "out/figure-comparison-20261009/base-fixes/obj_04/candidate/result.json",
+        "label": "Spirula: выбранная форма · плоское дно",
+        "note": "Наблюдаемая форма с сохранённой фототекстурой. Мелкий шум и неточности тонких деталей остаются. Убрано продолжение основания вниз; неровности кромки сохранены.",
+        "metrics": {
+          "iou": 0.9531301114243671,
+          "foreground_recall": 0.9640715327252389,
+          "linear_shading_rmse": 0.04274829710338553,
+          "shading_nrmse": 1.0769740128444338,
+          "interior_gradient_correlation": 0.17012848175539186,
+          "diagnostic_loss": 0.31712990982360073
+        },
+        "method": "spirula",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "a00551ab2da211a0b6cf82ac32456f19c574791074a8707fa1fa11dc06177844",
+        "coordinate_provenance_sha256": "19420a46c4e87f01ffbff872aa647eb2ed283900458cc526732460a7e7ebf528"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_04/asset/native.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_04/native-local-hull/result.json",
+        "label": "Spirula: native",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9446001312740503,
+          "foreground_recall": 0.9534620478551178,
+          "linear_shading_rmse": 0.04335021661517105,
+          "shading_nrmse": 1.092098646741854,
+          "interior_gradient_correlation": 0.16477147997699212,
+          "diagnostic_loss": 0.3241025288410515
+        },
+        "method": "spirula",
+        "default": true,
+        "mesh_sha256": "c842c54036e8fe44fb77078d9b752d23997929518e83076c4f87ec061ce66f16",
+        "coordinate_provenance_sha256": "6ccb1edb376f1bfeff05e0a8c598f8f5de8ec49af19ee0351448b04bd5a135e8"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_04/asset/fusion.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_04/fusion-local-hull/result.json",
+        "label": "Spirula: depth fusion",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9515660392551079,
+          "foreground_recall": 0.9624625398876115,
+          "linear_shading_rmse": 0.0429305428207255,
+          "shading_nrmse": 1.0815920422436625,
+          "interior_gradient_correlation": 0.17397798245594068,
+          "diagnostic_loss": 0.31829419450109525
+        },
+        "method": "spirula",
+        "default": false,
+        "mesh_sha256": "0779801324eb0e239ff6ea44fa7ee07b5e4038c5ac6ea0767d379f481aa8a65e",
+        "coordinate_provenance_sha256": "4c3609ea536e1bb592f9640af5cc2030b7d7f93bc76ae9848a3ff3182e67969e"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 17,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_05": {
+    "dataset": "out/all-figures-3d-principal-models-20261009/obj_05/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_05/asset/photo.glb",
+        "provenance": "out/figure-comparison-20261009/base-fixes/obj_05/candidate/result.json",
+        "label": "Spirula: выбранная форма · плоское дно",
+        "note": "Наблюдаемая форма с сохранённой фототекстурой. Мелкий шум и неточности тонких деталей остаются. Убрано продолжение основания вниз; неровности кромки сохранены.",
+        "metrics": {
+          "iou": 0.93391491786205,
+          "foreground_recall": 0.9490248802788811,
+          "linear_shading_rmse": 0.1023699203032404,
+          "shading_nrmse": 1.1333427067216515,
+          "interior_gradient_correlation": 0.13732678418510136,
+          "diagnostic_loss": 0.33936989578100013
+        },
+        "method": "spirula",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "028de1aad76f13d3f89e3de7da0d5975b97eb71d4dbfd11e25522e192c54f98f",
+        "coordinate_provenance_sha256": "7aa2d687f9fe06b592202681f8da584e93686442e03f5817bad08f9d16e59fa5"
+      },
+      {
+        "mesh": "out/figure-fixes-20261009/mv-extra/obj_05/candidate/photo.glb",
+        "provenance": "out/figure-fixes-20261009/mv-extra/obj_05/candidate/result.json",
+        "label": "MV: цельная форма",
+        "note": "Генеративное приближение по четырём фотографиям. Сглажены мелкие детали; просвет под одеждой сравнивайте с исходным фото.",
+        "metrics": {
+          "iou": 0.8705991659675066,
+          "foreground_recall": 0.9510141786179797,
+          "linear_shading_rmse": 0.10860781419999564,
+          "shading_nrmse": 1.2044668752212457,
+          "interior_gradient_correlation": 0.11608390226465486,
+          "diagnostic_loss": 0.381045318430781
+        },
+        "method": "hunyuan_mv",
+        "default": true,
+        "mesh_sha256": "2400d0c6cd1f636e3047eecafcfb85ee70eb0aec061175c81d05af8f62a2c061",
+        "coordinate_provenance_sha256": "756631c4193068dfa146f1b5d517e7565776de8e3de1bb105048e3ad72df379f"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 70,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_06": {
+    "dataset": "out/all-figures-3d-models-20261008/obj_06/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_06/asset/photo.glb",
+        "provenance": "out/figure-comparison-20261009/base-fixes/obj_06/candidate/result.json",
+        "label": "Spirula: выбранная форма · плоское дно",
+        "note": "Наблюдаемая форма с сохранённой фототекстурой. Мелкий шум и неточности тонких деталей остаются. Убрано продолжение основания вниз; неровности кромки сохранены.",
+        "metrics": {
+          "iou": 0.9529958714155966,
+          "foreground_recall": 0.9664150111281039,
+          "linear_shading_rmse": 0.04112186095870954,
+          "shading_nrmse": 1.095778682715571,
+          "interior_gradient_correlation": 0.20198931254286104,
+          "diagnostic_loss": 0.3177584567225895
+        },
+        "method": "spirula",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "9cf732bc82b40d0bb33b76b104c7ed7789b66e0b6e4470be370fb1da91b5300d",
+        "coordinate_provenance_sha256": "3fbb2aa6ffaa053ca1fb7e2a7eaec29e195bf921db1ecaa7f7f447e5e506b063"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_06/asset/native.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_06/native-local-hull/result.json",
+        "label": "Spirula: native",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9453738071565485,
+          "foreground_recall": 0.9553404195027285,
+          "linear_shading_rmse": 0.04140375143085649,
+          "shading_nrmse": 1.1031880879897602,
+          "interior_gradient_correlation": 0.24013871053379163,
+          "diagnostic_loss": 0.31847422368195355
+        },
+        "method": "spirula",
+        "default": true,
+        "mesh_sha256": "3e895adfd8460b1f8a2de46ffcbc4d3c8790188fe1cfc928a93410b466f2e1b7",
+        "coordinate_provenance_sha256": "c9b4bf13a8bba1d5ce42b5b2310794d9a2ef7e14c07c94a19fcbf4900ce87188"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_06/asset/fusion.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_06/fusion-local-hull/result.json",
+        "label": "Spirula: depth fusion",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9451168132077958,
+          "foreground_recall": 0.9615189766992482,
+          "linear_shading_rmse": 0.0414666244802009,
+          "shading_nrmse": 1.1050392066401273,
+          "interior_gradient_correlation": 0.2051563195326157,
+          "diagnostic_loss": 0.3224454840916456
+        },
+        "method": "spirula",
+        "default": false,
+        "mesh_sha256": "2ede3eeaf7f23cc07fe9a958b9ae86b558699fb6d04b2eb1af12891842046527",
+        "coordinate_provenance_sha256": "b370890d292fdde3f246894d6edc818f76ea9b3cdf1c9c9e66a90aae17a98a0c"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 26,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_07": {
+    "dataset": "out/all-figures-3d-principal-models-20261009/obj_07/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_07/asset/photo.glb",
+        "provenance": "out/figure-fixes-20261009/paired/obj_07/candidate/result.json",
+        "label": "Форма красной пары",
+        "note": "Форма восстановлена по красной паре, материал — по белой. Одинаковая скульптура пары является предположением.",
+        "metrics": {
+          "iou": 0.8088796296027809,
+          "foreground_recall": 0.849170847121782,
+          "linear_shading_rmse": 0.13277774642236578,
+          "shading_nrmse": 1.4708390850306574,
+          "interior_gradient_correlation": 0.02730719653863338,
+          "diagnostic_loss": 0.46788524551115585
+        },
+        "method": "paired_observed_surface",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "f4b811a517f5a016b77e2a2614e4f21eb3cb13ea93ae37217f5bb324f7f29269",
+        "coordinate_provenance_sha256": "340c2e7c97b15e6c0e4fef094e503fc878c576a4e562733253b04dfb35ad6f61"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 61,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_08": {
+    "dataset": "out/all-figures-3d-recovery-models-20261009/obj_08/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_08/asset/photo.glb",
+        "provenance": "out/figure-comparison-20261009/base-fixes/obj_08/candidate/result.json",
+        "label": "Spirula: выбранная форма · плоское дно",
+        "note": "Наблюдаемая форма с сохранённой фототекстурой. Мелкий шум и неточности тонких деталей остаются. Убрано продолжение основания вниз; неровности кромки сохранены.",
+        "metrics": {
+          "iou": 0.91841100390192,
+          "foreground_recall": 0.9329974749463277,
+          "linear_shading_rmse": 0.03419314548681385,
+          "shading_nrmse": 1.0991327420148806,
+          "interior_gradient_correlation": 0.14908933880569236,
+          "diagnostic_loss": 0.33755321296163887
+        },
+        "method": "spirula",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "95d0dc638800aae15f9e7552fea364442ec814bf602928f949e1f0f7eb3dac86",
+        "coordinate_provenance_sha256": "5ad51d95ba4a3f5844d90a4db3e56472795d1aa1248519d2e20b1c1fcc8cdcb6"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_08/asset/native.glb",
+        "provenance": "out/all-figures-3d-recovery-models-20261009/obj_08/native-local-hull/result.json",
+        "label": "Spirula: native",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9181702704253942,
+          "foreground_recall": 0.9321310641331757,
+          "linear_shading_rmse": 0.034279525795047776,
+          "shading_nrmse": 1.102021115444603,
+          "interior_gradient_correlation": 0.13982340514094235,
+          "diagnostic_loss": 0.33915377440466865
+        },
+        "method": "spirula",
+        "default": true,
+        "mesh_sha256": "a8fd6fca478d2bf902c58b1c55e43a05c2048cee934946040d19ff0f3376ec5a",
+        "coordinate_provenance_sha256": "7140016f64f63f889ea1188bdccbb0f81c8b86e0eee8a401ee3c37a7cb023489"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 17,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_09": {
+    "dataset": "out/all-figures-3d-recovery-models-20261009/obj_09/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_09/asset/photo.glb",
+        "provenance": "out/figure-fixes-20261009/mv-matte/obj_09/candidate/result.json",
+        "label": "MV: генеративная форма",
+        "note": "Выбранное генеративное приближение по четырём фото. Лица, кисти и невидимые поверхности приблизительны.",
+        "metrics": {
+          "iou": 0.784915559763929,
+          "foreground_recall": 0.9299279596876932,
+          "linear_shading_rmse": 0.10962894646532115,
+          "shading_nrmse": 1.3854476763693273,
+          "interior_gradient_correlation": 0.08430900495394325,
+          "diagnostic_loss": 0.4546924108728996
+        },
+        "method": "hunyuan_mv",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "2a509c9d954960dda10939229d7ae1ce36fc9255136a1c34d6d14d8a366b679b",
+        "coordinate_provenance_sha256": "2e9be6eb117d1225dedfb44ce90c4afc57b4a99fc220407e1e990c68c8bbf8fd"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 53,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_10": {
+    "dataset": "out/all-figures-3d-recovery-models-20261009/obj_10/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_10/asset/photo.glb",
+        "provenance": "out/figure-comparison-20261009/base-fixes/obj_10/candidate/result.json",
+        "label": "Spirula: выбранная форма · плоское дно",
+        "note": "Наблюдаемая форма с сохранённой фототекстурой. Мелкий шум и неточности тонких деталей остаются. Убрано продолжение основания вниз; неровности кромки сохранены.",
+        "metrics": {
+          "iou": 0.9438385205087414,
+          "foreground_recall": 0.9581791501617496,
+          "linear_shading_rmse": 0.047344986959428625,
+          "shading_nrmse": 1.1374785486909829,
+          "interior_gradient_correlation": 0.3883058900955999,
+          "diagnostic_loss": 0.31112971252514
+        },
+        "method": "spirula",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "f199db54c3588cc76fcb370265a8d22cc22958d79d4390f043444ab2d9de5d2a",
+        "coordinate_provenance_sha256": "dbb362d80832aaa4bcd2b850c7757457f39a41f869e276ba1fc65dfd89580242"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_10/asset/native.glb",
+        "provenance": "out/all-figures-3d-recovery-models-20261009/obj_10/native-local-hull/result.json",
+        "label": "Spirula: native",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9424415414230358,
+          "foreground_recall": 0.9566691715176564,
+          "linear_shading_rmse": 0.04729835565823712,
+          "shading_nrmse": 1.136312573559161,
+          "interior_gradient_correlation": 0.36638597911626414,
+          "diagnostic_loss": 0.31364730023099147
+        },
+        "method": "spirula",
+        "default": true,
+        "mesh_sha256": "94cb53cfca1c9a135ce32c84f806b5e60825d896c4db49aba8d1116ae54524cd",
+        "coordinate_provenance_sha256": "9c6d071c960d47f56f4e0f5b6333707b9c4d555caccecb7d90939c707cd2f3a6"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 17,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_11": {
+    "dataset": "out/all-figures-3d-principal-models-20261009/obj_11/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_11/asset/photo.glb",
+        "provenance": "out/figure-fixes-20261009/mv-extra/obj_11/plain-plastic/result.json",
+        "label": "MV: генеративная форма",
+        "note": "Выбранное генеративное приближение по четырём фото. Лица, кисти и невидимые поверхности приблизительны.",
+        "metrics": {
+          "iou": 0.825638854822123,
+          "foreground_recall": 0.9294391868586294,
+          "linear_shading_rmse": 0.1224141671362553,
+          "shading_nrmse": 1.2735492601827372,
+          "interior_gradient_correlation": 0.003200731081711982,
+          "diagnostic_loss": 0.42413423699952707
+        },
+        "method": "hunyuan_mv",
+        "default": true,
+        "appearance_method": "uniform_observed_plastic_colour",
+        "mesh_sha256": "6e6018b9614c306859e68e40ad7f7fb4c52749c403768f57d0613300402d2fcb",
+        "coordinate_provenance_sha256": "b0ed10617df94bb2a0b3a1ca2f354c316d31df138014f4aefc918bfb8da682ea"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_11/asset/photographic-original.glb",
+        "provenance": "out/figure-fixes-20261009/mv-extra/obj_11/texture-clean/result.json",
+        "label": "MV: фототекстура",
+        "note": "Та же геометрия с исходной фототекстурой. Искажения атласа на лапах мешают оценке; сравните также серую геометрию.",
+        "metrics": {
+          "iou": 0.825638854822123,
+          "foreground_recall": 0.9294391868586294,
+          "linear_shading_rmse": 0.1224141671362553,
+          "shading_nrmse": 1.2735492601827372,
+          "interior_gradient_correlation": 0.003200731081711982,
+          "diagnostic_loss": 0.42413423699952707
+        },
+        "method": "hunyuan_mv",
+        "default": true,
+        "mesh_sha256": "9a1f5bace7f5df26cb57e2217d34b61f9f0ad21bba57fa8d46e1620dfd8bfb69",
+        "coordinate_provenance_sha256": "f7245f69392418d09b00577affc360796489ff6151db2d3a1809a78ce756f5c8"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 62,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_12": {
+    "dataset": "out/all-figures-3d-models-20261008/obj_12/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_12/asset/photo.glb",
+        "provenance": "out/figure-fixes-20261009/mv-extra/obj_12/texture-clean/result.json",
+        "label": "MV: генеративная форма",
+        "note": "Выбранное генеративное приближение по четырём фото. Лица, кисти и невидимые поверхности приблизительны.",
+        "metrics": {
+          "iou": 0.8865066880290255,
+          "foreground_recall": 0.9492014198627585,
+          "linear_shading_rmse": 0.029129238850755704,
+          "shading_nrmse": 0.9696201902355719,
+          "interior_gradient_correlation": 0.022580439004268475,
+          "diagnostic_loss": 0.33706331893507735
+        },
+        "method": "hunyuan_mv",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "f99d011e17eae196f6b8c70588c0aeb87dd8ec293b9760fc8fce9f07285e8396",
+        "coordinate_provenance_sha256": "a165fa3c1d7c981fe5de02ea6adae85fd1dc146ef325a8233bf356f67c30f9c4"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 31,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_13": {
+    "dataset": "out/all-figures-3d-principal-models-20261009/obj_13/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_13/asset/photo.glb",
+        "provenance": "out/figure-fixes-20261009/mv-matte/obj_13/candidate/result.json",
+        "label": "MV: генеративная форма",
+        "note": "Выбранное генеративное приближение по четырём фото. Лица, кисти и невидимые поверхности приблизительны.",
+        "metrics": {
+          "iou": 0.830656579895682,
+          "foreground_recall": 0.9398764997036848,
+          "linear_shading_rmse": 0.11017585686866001,
+          "shading_nrmse": 1.2550896714274766,
+          "interior_gradient_correlation": 0.06907519430536599,
+          "diagnostic_loss": 0.411847782896686
+        },
+        "method": "hunyuan_mv",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "6ead32e16a5b30444493e3e66f5581e423d6a216c0f0b5db575178fac69b057a",
+        "coordinate_provenance_sha256": "1270a3b9553f1014a57878fb3054e65791dfd26ffd885bec6b457968da0672a0"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 37,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_14": {
+    "dataset": "out/all-figures-3d-recovery-models-20261009/obj_14/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_14/asset/photo.glb",
+        "provenance": "out/figure-fixes-20261009/mv-matte/obj_14/candidate/result.json",
+        "label": "MV: генеративная форма",
+        "note": "Выбранное генеративное приближение по четырём фото. Лица, кисти и невидимые поверхности приблизительны.",
+        "metrics": {
+          "iou": 0.799249963825547,
+          "foreground_recall": 0.9123088184264638,
+          "linear_shading_rmse": 0.03445780257734335,
+          "shading_nrmse": 1.1055397636584563,
+          "interior_gradient_correlation": 0.04902121327614473,
+          "diagnostic_loss": 0.39650584587385806
+        },
+        "method": "hunyuan_mv",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "4024b3d0fad09509d5acdd6c353566eba7da79a0eef8b28a93b0305ebdf0fdc2",
+        "coordinate_provenance_sha256": "7a0f95d951db6d5282f6ebf06d1f67842a3a89cfc1472937c17fa75a1db46b87"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 41,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_15": {
+    "dataset": "out/all-figures-3d-principal-models-20261009/obj_15/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_15/asset/photo.glb",
+        "provenance": "out/figure-fixes-20261009/mv-matte/obj_15/candidate/result.json",
+        "label": "MV: генеративная форма",
+        "note": "Выбранное генеративное приближение по четырём фото. Лица, кисти и невидимые поверхности приблизительны.",
+        "metrics": {
+          "iou": 0.8356906259775817,
+          "foreground_recall": 0.9111982173708137,
+          "linear_shading_rmse": 0.11475305317956802,
+          "shading_nrmse": 1.4287265946397405,
+          "interior_gradient_correlation": 0.11081433156848065,
+          "diagnostic_loss": 0.4403876353800674
+        },
+        "method": "hunyuan_mv",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "08b418b3f78421c06301bd068774aa0b3d6455e8d955e8200feb292c9fe1b0fe",
+        "coordinate_provenance_sha256": "35ed79e228d9cc0a91825823e034076ae43dec6a03aa579fca888bf7a347e1fd"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 41,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_16": {
+    "dataset": "out/all-figures-3d-models-20261008/obj_16/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_16/asset/photo.glb",
+        "provenance": "out/figure-comparison-20261009/base-fixes/obj_16/candidate/result.json",
+        "label": "Spirula: выбранная форма · плоское дно",
+        "note": "Наблюдаемая форма с сохранённой фототекстурой. Мелкий шум и неточности тонких деталей остаются. Убрано продолжение основания вниз; неровности кромки сохранены.",
+        "metrics": {
+          "iou": 0.9555119005611084,
+          "foreground_recall": 0.9665808934739695,
+          "linear_shading_rmse": 0.029398723067439028,
+          "shading_nrmse": 0.9797741958526908,
+          "interior_gradient_correlation": 0.2353746203949122,
+          "diagnostic_loss": 0.2902126169066036
+        },
+        "method": "spirula",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "628c4690399e047deafeb5e2949f097a9d3a02e034943ebaff5fc31b5efa82ee",
+        "coordinate_provenance_sha256": "4fa89bb6eee64e38a1c928c60f9b732a9588b7e35ff9756401e913500f126cb2"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_16/asset/native.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_16/native-local-hull/result.json",
+        "label": "Spirula: native",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9531947199479756,
+          "foreground_recall": 0.9650401491809639,
+          "linear_shading_rmse": 0.02944755591126333,
+          "shading_nrmse": 0.9814018399077626,
+          "interior_gradient_correlation": 0.2422014670459137,
+          "diagnostic_loss": 0.2907823332977709
+        },
+        "method": "spirula",
+        "default": true,
+        "mesh_sha256": "a5aaed60782e07cc3d61ba5af7cb534d3ba53e4f4b633f6a4ddae42670d0ad0f",
+        "coordinate_provenance_sha256": "f86235846f1953489b46a43e0d24490429c894517ef809a8d3ac27dd25ba8826"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_16/asset/fusion.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_16/fusion-local-hull/result.json",
+        "label": "Spirula: depth fusion",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.94178886839694,
+          "foreground_recall": 0.9497175265096869,
+          "linear_shading_rmse": 0.030563736719005967,
+          "shading_nrmse": 1.0186058687040673,
+          "interior_gradient_correlation": 0.21140384598621975,
+          "diagnostic_loss": 0.3058652417834155
+        },
+        "method": "spirula",
+        "default": false,
+        "mesh_sha256": "9c9b5dd07d9d4b2f9346402a522b8354d1353bc447b29f25f30a7c22c9bc1c4d",
+        "coordinate_provenance_sha256": "b589c3e65a2e64e98ac95c4aa7339655037a4055cbf0df9f4dfd621ad24b20f7"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 17,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_17": {
+    "dataset": "out/all-figures-3d-principal-models-20261009/obj_17/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_17/asset/photo.glb",
+        "provenance": "out/figure-fixes-20261009/mv-matte/obj_17/candidate/result.json",
+        "label": "MV: генеративная форма",
+        "note": "Выбранное генеративное приближение по четырём фото. Лица, кисти и невидимые поверхности приблизительны.",
+        "metrics": {
+          "iou": 0.793679959253575,
+          "foreground_recall": 0.9316926118281614,
+          "linear_shading_rmse": 0.04673983121260776,
+          "shading_nrmse": 1.0483488333917048,
+          "interior_gradient_correlation": 0.06756272738831559,
+          "diagnostic_loss": 0.3854415102380794
+        },
+        "method": "hunyuan_mv",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "e49260f95f542cd89af4f49c806dc73bc1ebc6e007d835b177932d4ccf79d96a",
+        "coordinate_provenance_sha256": "a9eebdb51ca63303f6e79bdeeb8df183450f02b3680e9e2bf26a11919eb66c01"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 23,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_18": {
+    "dataset": "out/all-figures-3d-recovery-models-20261009/obj_18/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_18/asset/photo.glb",
+        "provenance": "out/figure-comparison-20261009/base-fixes/obj_18/candidate/result.json",
+        "label": "Spirula: выбранная форма · плоское дно",
+        "note": "Наблюдаемая форма с сохранённой фототекстурой. Мелкий шум и неточности тонких деталей остаются. Убрано продолжение основания вниз; неровности кромки сохранены.",
+        "metrics": {
+          "iou": 0.9208899821733099,
+          "foreground_recall": 0.9362366570914021,
+          "linear_shading_rmse": 0.04513959359211847,
+          "shading_nrmse": 1.144388511039888,
+          "interior_gradient_correlation": 0.19859430443453646,
+          "diagnostic_loss": 0.34066227889519995
+        },
+        "method": "spirula",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "213fe56932eaad68443180450b069be794e8870c9ccfacd33042a7a067bd0d66",
+        "coordinate_provenance_sha256": "0337d1dd2dca2b219c81833bbf560f2357a9632d6cf1f8644f123b3b5d056f09"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_18/asset/native.glb",
+        "provenance": "out/all-figures-3d-recovery-models-20261009/obj_18/native-local-hull/result.json",
+        "label": "Spirula: native",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9195898485705404,
+          "foreground_recall": 0.9346577566103433,
+          "linear_shading_rmse": 0.04527160000916742,
+          "shading_nrmse": 1.1480157245899414,
+          "interior_gradient_correlation": 0.184530472899038,
+          "diagnostic_loss": 0.3433141581998683
+        },
+        "method": "spirula",
+        "default": true,
+        "mesh_sha256": "bceeb117215ba4b3999b75a03f59ac097fb931003b7a53c099a9c925d1b47e51",
+        "coordinate_provenance_sha256": "8540b22cc162ee082bf59c0ba59862e52888a1b1246c72d55b6cd27072dde1df"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 17,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_20": {
+    "dataset": "out/all-figures-3d-models-20261008/obj_20/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_20/asset/photo.glb",
+        "provenance": "out/figure-comparison-20261009/base-fixes/obj_20/candidate/result.json",
+        "label": "Spirula: выбранная форма · плоское дно",
+        "note": "Наблюдаемая форма с сохранённой фототекстурой. Мелкий шум и неточности тонких деталей остаются. Убрано продолжение основания вниз; неровности кромки сохранены.",
+        "metrics": {
+          "iou": 0.9306357886540791,
+          "foreground_recall": 0.9460119309406554,
+          "linear_shading_rmse": 0.046500607621686715,
+          "shading_nrmse": 1.089601921814168,
+          "interior_gradient_correlation": 0.14691067854136164,
+          "diagnostic_loss": 0.3309750010470658
+        },
+        "method": "spirula",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "57dc26948be00e97acc6f9fd241acd4266bc471936b921aebf803a9f35aca1a2",
+        "coordinate_provenance_sha256": "9730ab71280b3ae5ea163ea8bb16b2c3a7c46a28b13276631fb0adf92c3a4382"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_20/asset/native.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_20/native-local-hull/result.json",
+        "label": "Spirula: native",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9310476779944641,
+          "foreground_recall": 0.9414511339838355,
+          "linear_shading_rmse": 0.0471196672881961,
+          "shading_nrmse": 1.1040052356774548,
+          "interior_gradient_correlation": 0.15357697214097277,
+          "diagnostic_loss": 0.333024278723608
+        },
+        "method": "spirula",
+        "default": true,
+        "mesh_sha256": "ea097543f6252381ed3cc10230487855dc476381844bdd7588012b2225ce2194",
+        "coordinate_provenance_sha256": "89a72690d81cb1006371e7d94f3a21ba4bc1b9fd98bfef9c85888f3c4f693c1d"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_20/asset/fusion.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_20/fusion-local-hull/result.json",
+        "label": "Spirula: depth fusion",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9303231694662766,
+          "foreground_recall": 0.9456153300771293,
+          "linear_shading_rmse": 0.046579622234505264,
+          "shading_nrmse": 1.091587150496633,
+          "interior_gradient_correlation": 0.15276251463311813,
+          "diagnostic_loss": 0.3309119108495042
+        },
+        "method": "spirula",
+        "default": false,
+        "mesh_sha256": "d28cde3fba8cf8cde371282602cf3117195e2c8cd63e7b46b08103b6b46273bc",
+        "coordinate_provenance_sha256": "74d025dcf1ba54cffcdac846d5a19a5847ba803f018469bd2d80aa18cc436b4a"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 17,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_21": {
+    "dataset": "out/all-figures-3d-models-20261008/obj_21/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_21/asset/photo.glb",
+        "provenance": "out/figure-comparison-20261009/base-fixes/obj_21/candidate/result.json",
+        "label": "Spirula: выбранная форма · плоское дно",
+        "note": "Наблюдаемая форма с сохранённой фототекстурой. Мелкий шум и неточности тонких деталей остаются. Убрано продолжение основания вниз; неровности кромки сохранены.",
+        "metrics": {
+          "iou": 0.952338969419547,
+          "foreground_recall": 0.9654642560266432,
+          "linear_shading_rmse": 0.04112987399923612,
+          "shading_nrmse": 1.0396032890726885,
+          "interior_gradient_correlation": 0.25186902300935177,
+          "diagnostic_loss": 0.3017981677457837
+        },
+        "method": "spirula",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "3987c9904e1eb3d7a0fca888e57701d0121b81cd94dd8a54919f978f62bed494",
+        "coordinate_provenance_sha256": "adc83c298ebd70c538527911be30633ed7e49ec32362998946cd6392bcc4f863"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_21/asset/native.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_21/native-local-hull/result.json",
+        "label": "Spirula: native",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9525678259300967,
+          "foreground_recall": 0.9656865209067881,
+          "linear_shading_rmse": 0.041115584260044566,
+          "shading_nrmse": 1.0393191880443502,
+          "interior_gradient_correlation": 0.2587932485891976,
+          "diagnostic_loss": 0.3009573823779116
+        },
+        "method": "spirula",
+        "default": true,
+        "mesh_sha256": "cb0bd59f2e3c7aa218d54136de59b0935dad9568e5b7944d464ee618d11fe72c",
+        "coordinate_provenance_sha256": "35991bac0337ce3c798a4232ebc93c906e1603ab76335d24842b12453597cbe6"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_21/asset/fusion.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_21/fusion-local-hull/result.json",
+        "label": "Spirula: depth fusion",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.946553141676895,
+          "foreground_recall": 0.9627165673065816,
+          "linear_shading_rmse": 0.04104774244017452,
+          "shading_nrmse": 1.0378846574038239,
+          "interior_gradient_correlation": 0.2727331895799937,
+          "diagnostic_loss": 0.3016823558520074
+        },
+        "method": "spirula",
+        "default": false,
+        "mesh_sha256": "80bf708a69738702f13cb698787f03454f1b33d58cad9de2f7387adb46ec3dff",
+        "coordinate_provenance_sha256": "a841d79d10a118624ca3958bca21a3195434413bdf26f8f7d96136258e848ac1"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 17,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_22": {
+    "dataset": "out/all-figures-3d-recovery-models-20261009/obj_22/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_22/asset/photo.glb",
+        "provenance": "out/figure-fixes-20261009/mv-matte/obj_22/candidate/result.json",
+        "label": "MV: генеративная форма",
+        "note": "Выбранное генеративное приближение по четырём фото. Лица, кисти и невидимые поверхности приблизительны.",
+        "metrics": {
+          "iou": 0.7508499160436313,
+          "foreground_recall": 0.9261395822996493,
+          "linear_shading_rmse": 0.04469681998907847,
+          "shading_nrmse": 1.1409582528523496,
+          "interior_gradient_correlation": 0.030084409093751003,
+          "diagnostic_loss": 0.4248432432436423
+        },
+        "method": "hunyuan_mv",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "4699f5fd00c5513b7b0b80d245b93e2b90bcdb1417cebd4383bf33e271f1a159",
+        "coordinate_provenance_sha256": "d61ea6c10b5400475ec56b9572d53e187a1547f9d30b3951792961448641438e"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 40,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_23": {
+    "dataset": "out/all-figures-3d-models-20261008/obj_23/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_23/asset/photo.glb",
+        "provenance": "out/figure-comparison-20261009/base-fixes/obj_23/candidate/result.json",
+        "label": "Spirula: выбранная форма · плоское дно",
+        "note": "Наблюдаемая форма с сохранённой фототекстурой. Мелкий шум и неточности тонких деталей остаются. Убрано продолжение основания вниз; неровности кромки сохранены.",
+        "metrics": {
+          "iou": 0.9537537880057947,
+          "foreground_recall": 0.9672452427137637,
+          "linear_shading_rmse": 0.03867613132342436,
+          "shading_nrmse": 1.0627788332191654,
+          "interior_gradient_correlation": 0.12952261164272036,
+          "diagnostic_loss": 0.3181019902772431
+        },
+        "method": "spirula",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "a4ce2b5f20319bc8ac4802191822aec0644b27532190c7e6688b6ee01d7287da",
+        "coordinate_provenance_sha256": "94571ca06a4d2c1a38d9e21e28304e4e95a3856bb5fdeb19485e8d8350f86052"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_23/asset/native.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_23/native-local-hull/result.json",
+        "label": "Spirula: native",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9535690631693776,
+          "foreground_recall": 0.9621710258951255,
+          "linear_shading_rmse": 0.03911412948531145,
+          "shading_nrmse": 1.0748248710383836,
+          "interior_gradient_correlation": 0.15685035460742625,
+          "diagnostic_loss": 0.317852313479183
+        },
+        "method": "spirula",
+        "default": true,
+        "mesh_sha256": "2f93b8835eb686aca66562ac54f7d927c1e3cdc60d662059d9490e9b50bc5ecd",
+        "coordinate_provenance_sha256": "6ec8a0932de040e98b9a986b25fa66ac557df69f4c34f1cd48f4591e2894fdbc"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_23/asset/fusion.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_23/fusion-local-hull/result.json",
+        "label": "Spirula: depth fusion",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9531941071855092,
+          "foreground_recall": 0.9664955992745017,
+          "linear_shading_rmse": 0.038680397429734,
+          "shading_nrmse": 1.062910601215871,
+          "interior_gradient_correlation": 0.13424678098706255,
+          "diagnostic_loss": 0.31787979927026433
+        },
+        "method": "spirula",
+        "default": false,
+        "mesh_sha256": "37b010ff38386621167df09561b052268d7880b5bddea555413a60ee4c1baeb5",
+        "coordinate_provenance_sha256": "5f8173001064a8a6a53220567db3aceaed9786ede01b27800e25d6c02f1a217c"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 17,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_24": {
+    "dataset": "out/all-figures-3d-models-20261008/obj_24/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_24/asset/photo.glb",
+        "provenance": "out/figure-comparison-20261009/base-fixes/obj_24/candidate/result.json",
+        "label": "Spirula: выбранная форма · плоское дно",
+        "note": "Наблюдаемая форма с сохранённой фототекстурой. Мелкий шум и неточности тонких деталей остаются. Убрано продолжение основания вниз; неровности кромки сохранены.",
+        "metrics": {
+          "iou": 0.9641508847284161,
+          "foreground_recall": 0.9755376496777672,
+          "linear_shading_rmse": 0.036394843673938235,
+          "shading_nrmse": 1.0177360601687817,
+          "interior_gradient_correlation": 0.2228723778998764,
+          "diagnostic_loss": 0.2955996203524023
+        },
+        "method": "spirula",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "3abbb19d9c1c5d5912c5063c2731bb842ec1188c2e5e4297488567e2fbd98233",
+        "coordinate_provenance_sha256": "24b04b350fed31ac04531686652b837ee2cec14fb668735812320c852edd28a0"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_24/asset/native.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_24/native-local-hull/result.json",
+        "label": "Spirula: native",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9640572858700838,
+          "foreground_recall": 0.9752629872506635,
+          "linear_shading_rmse": 0.03645838979065763,
+          "shading_nrmse": 1.0195639280706055,
+          "interior_gradient_correlation": 0.22791252281121885,
+          "diagnostic_loss": 0.29549861898496577
+        },
+        "method": "spirula",
+        "default": true,
+        "mesh_sha256": "2bae1acf35932308abac402bca0e2ecbc018f84f9717372da9bf97f63a810e30",
+        "coordinate_provenance_sha256": "8c05894f7c75dc19cf092178f68ecc59fe7cf8d5bad9c0d7cc3d95b0406bb13f"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_24/asset/fusion.glb",
+        "provenance": "out/all-figures-3d-models-20261008/obj_24/fusion-local-hull/result.json",
+        "label": "Spirula: depth fusion",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9564177288536275,
+          "foreground_recall": 0.9697531184404277,
+          "linear_shading_rmse": 0.03742947028797828,
+          "shading_nrmse": 1.0470781980537878,
+          "interior_gradient_correlation": 0.19221304538619355,
+          "diagnostic_loss": 0.30762724353068716
+        },
+        "method": "spirula",
+        "default": false,
+        "mesh_sha256": "7a75ed0608e4a475729406a9e5ff6242a95b95815d0e4e85546eb385e3c70653",
+        "coordinate_provenance_sha256": "5c3ed059c03298e36dcee447a1dbd18c14688aef291786be7b2859f25331cf52"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 17,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_25": {
+    "dataset": "out/all-figures-3d-principal-models-20261009/obj_25/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_25/asset/photo.glb",
+        "provenance": "out/figure-fixes-20261009/mv-matte/obj_25/candidate/result.json",
+        "label": "MV: генеративная форма",
+        "note": "Выбранное генеративное приближение по четырём фото. Лица, кисти и невидимые поверхности приблизительны.",
+        "metrics": {
+          "iou": 0.7915315405273045,
+          "foreground_recall": 0.9199412962490365,
+          "linear_shading_rmse": 0.050094042601824346,
+          "shading_nrmse": 1.1112584870452182,
+          "interior_gradient_correlation": 0.09239686338389894,
+          "diagnostic_loss": 0.3963993948597321
+        },
+        "method": "hunyuan_mv",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "5b30bd1cf9ac416d3aa892579a349d3761ac19625edb4c69b30d93e503cacc4b",
+        "coordinate_provenance_sha256": "b2a1a4194121afcb470b0c46d2251ec73aa08dd009bcf89435c306a67577729c"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 21,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_26": {
+    "dataset": "out/all-figures-3d-control-rebuild-models-20261009/obj_26/orbit",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_26/asset/photo.glb",
+        "provenance": "out/figure-fixes-20261009/mv-matte/obj_26/candidate/result.json",
+        "label": "MV: генеративная форма",
+        "note": "Выбранное генеративное приближение по четырём фото. Лица, кисти и невидимые поверхности приблизительны.",
+        "metrics": {
+          "iou": 0.8718589368602807,
+          "foreground_recall": 0.9613037931506095,
+          "linear_shading_rmse": 0.03722334597886866,
+          "shading_nrmse": 1.0556064024647394,
+          "interior_gradient_correlation": 0.16357909330580345,
+          "diagnostic_loss": 0.3460197964182553
+        },
+        "method": "hunyuan_mv",
+        "default": true,
+        "appearance_method": null,
+        "mesh_sha256": "4c1521f3a014a62c7b7c176298179ce8308dce13b9d905a7fe5246a029c4c3d2",
+        "coordinate_provenance_sha256": "b9c624f5b9e870f3c4d6d24bb85ba544965773e1c0f311bc22488407b0487875"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_26/asset/fusion.glb",
+        "provenance": "out/all-figures-3d-control-rebuild-models-20261009/obj_26/fusion-local-hull/result.json",
+        "label": "Spirula: depth fusion",
+        "note": "Наблюдаемая реконструкция без последних локальных исправлений. Сравните просветы, тонкие детали и край основания.",
+        "metrics": {
+          "iou": 0.9444916695356269,
+          "foreground_recall": 0.9617175571918983,
+          "linear_shading_rmse": 0.03803775191064685,
+          "shading_nrmse": 1.0794128356509125,
+          "interior_gradient_correlation": 0.11805779192366819,
+          "diagnostic_loss": 0.326280120123565
+        },
+        "method": "spirula",
+        "default": true,
+        "mesh_sha256": "682fec5c468156e5b9d0c499fd48b1eb818c7210077f969482c3ddd55b9bd451",
+        "coordinate_provenance_sha256": "6d2c0f87049ad034ae02408e790cce7381e758ae78185a713507561be3ec64fd"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 36,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_02": {
+    "dataset": "research/3d-quality/provenance/obj02-full-80-orbit-v2-2026-10-07",
+    "sparse": "research/3d-quality/cameras/dragon/sparse/0",
+    "rgba": "research/3d-quality/inputs/dragon",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_02/asset/photo.glb",
+        "provenance": "research/3d-quality/provenance/obj02-full-80-orbit-v2-2026-10-07/runs/spirula-control-15000/depth-fusion-consistent-v2/local-hull/result.json",
+        "label": "Spirula: depth fusion",
+        "note": "Ранее сохранённая наблюдаемая модель. Для синхронизации доступны пять исходных масок.",
+        "metrics": null,
+        "method": "spirula",
+        "default": true,
+        "sparse": "research/3d-quality/cameras/dragon/sparse/0",
+        "mesh_sha256": "f3766558c893a0d068936b034e0fb7d401f18327797b8754c543213a0c98f9de",
+        "coordinate_provenance_sha256": "b46a764ce11d8f18eaee90625ab2e9424770166df515978b32b371730ce51f2a"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_02/asset/native.glb",
+        "provenance": "research/3d-quality/provenance/obj02-full-80-orbit-v2-2026-10-07/runs/spirula-control-15000/mesh-soft/local-hull/result.json",
+        "label": "Spirula: native",
+        "note": "Ранее сохранённая наблюдаемая модель. Для синхронизации доступны пять исходных масок.",
+        "metrics": null,
+        "method": "spirula",
+        "default": true,
+        "sparse": "research/3d-quality/cameras/dragon/sparse/0",
+        "mesh_sha256": "8b6a5a27cf7abaf1c85adafea35aac145ad62a4e8a75eccdad86bbe8205dbc01",
+        "coordinate_provenance_sha256": "abc984404e595d4d9046baa3bb6677567dfcbf7b11acf264802218f03faf5e20"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 2,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  },
+  "obj_19": {
+    "dataset": "research/3d-quality/provenance/obj19-full-100-orbit-v2-2026-10-07",
+    "sparse": "research/3d-quality/cameras/gnome/sparse/0",
+    "rgba": "research/3d-quality/inputs/gnome",
+    "candidates": [
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_19/asset/photo.glb",
+        "provenance": "research/3d-quality/provenance/obj19-full-100-orbit-v2-2026-10-07/runs/spirula-control-15000/depth-fusion-consistent-v2/local-hull/result.json",
+        "label": "Spirula: depth fusion",
+        "note": "Ранее сохранённая наблюдаемая модель. Для синхронизации доступны пять исходных масок.",
+        "metrics": null,
+        "method": "spirula",
+        "default": true,
+        "sparse": "research/3d-quality/cameras/gnome/sparse/0",
+        "mesh_sha256": "ca9076f4a2c6ac2a3eebd36e546bfb6e437ad570d434196b6e01e9d16a59b1ab",
+        "coordinate_provenance_sha256": "03c9fabf06a44f2823eb290b5c5d3d5e002ffdb7b1a3fdbf08803433caceb960"
+      },
+      {
+        "mesh": "out/all-figures-3d-reviewed-20261009/obj_19/asset/native.glb",
+        "provenance": "research/3d-quality/provenance/obj19-full-100-orbit-v2-2026-10-07/runs/spirula-control-15000/local-hull-welded/result.json",
+        "label": "Spirula: native",
+        "note": "Ранее сохранённая наблюдаемая модель. Для синхронизации доступны пять исходных масок.",
+        "metrics": null,
+        "method": "spirula",
+        "default": true,
+        "sparse": "research/3d-quality/cameras/gnome/sparse/0",
+        "mesh_sha256": "87ffb5fcb871863c61e8cabe812a596082e6d0ffbd18f8f1e320639add0f2b98",
+        "coordinate_provenance_sha256": "4263a96e36b752d948ae2c89c8f21a315b9a5ecb8e52f54159c58a74e4de20bd"
+      },
+      {
+        "mesh": "research/3d-quality/models/photo-mv-orbit-gnome.glb",
+        "provenance": "out/figure-comparison-20261009/gnome-mv-coordinates.json",
+        "label": "MV: генеративная форма",
+        "note": "Прежнее генеративное приближение, зарегистрированное в ту же систему камер. Детали лица и скрытые поверхности приблизительны.",
+        "metrics": null,
+        "method": "hunyuan_mv",
+        "default": false,
+        "sparse": "research/3d-quality/cameras/gnome/sparse/0",
+        "mesh_sha256": "e10190675a11c3a151757081f5701ac2bccd835dc33fe7c4e7c7c5bc2ce080e8",
+        "coordinate_provenance_sha256": "0f47ef27e50892ec9ece65782fde2ecfd5145dd9f49719cebea10eaf5a273434"
+      }
+    ],
+    "inventory": {
+      "saved_unique_GLBS_in_out": 2,
+      "retained_raw_exports_are_not_all_quality_candidates": true
+    }
+  }
+}

@@ -1,0 +1,80 @@
+# Run from repository root; class IDs/names match classes.yaml.
+classes:
+  - id: 0
+    name: obj_01_mp4
+    video: research/3d-quality/videos/obj_01.mp4  # obj_01.mp4
+  - id: 1
+    name: obj_02_mp4
+    video: research/3d-quality/videos/obj_02.mp4  # obj_02.mp4
+  - id: 2
+    name: obj_03_mp4
+    video: research/3d-quality/videos/obj_03.mp4  # obj_03.mp4
+  - id: 3
+    name: obj_04_mp4
+    video: research/3d-quality/videos/obj_04.mp4  # obj_04.mp4
+  - id: 4
+    name: obj_05_mp4
+    video: research/3d-quality/videos/obj_05.mp4  # obj_05.mp4
+  - id: 5
+    name: obj_06_mp4
+    video: research/3d-quality/videos/obj_06.mp4  # obj_06.mp4
+  - id: 6
+    name: obj_07_mp4
+    video: research/3d-quality/videos/obj_07.mp4  # obj_07.mp4
+  - id: 7
+    name: obj_08_mp4
+    video: research/3d-quality/videos/obj_08.mp4  # obj_08.mp4
+  - id: 8
+    name: obj_09_mp4
+    video: research/3d-quality/videos/obj_09.mp4  # obj_09.mp4
+  - id: 9
+    name: obj_10_mp4
+    video: research/3d-quality/videos/obj_10.mp4  # obj_10.mp4
+  - id: 10
+    name: obj_11_mp4
+    video: research/3d-quality/videos/obj_11.mp4  # obj_11.mp4
+  - id: 11
+    name: obj_12_mp4
+    video: research/3d-quality/videos/obj_12.mp4  # obj_12.mp4
+  - id: 12
+    name: obj_13_mp4
+    video: research/3d-quality/videos/obj_13.mp4  # obj_13.mp4
+  - id: 13
+    name: obj_14_mp4
+    video: research/3d-quality/videos/obj_14.mp4  # obj_14.mp4
+  - id: 14
+    name: obj_15_mp4
+    video: research/3d-quality/videos/obj_15.mp4  # obj_15.mp4
+  - id: 15
+    name: obj_16_mp4
+    video: research/3d-quality/videos/obj_16.mp4  # obj_16.mp4
+  - id: 16
+    name: obj_17_mp4
+    video: research/3d-quality/videos/obj_17.mp4  # obj_17.mp4
+  - id: 17
+    name: obj_18_mp4
+    video: research/3d-quality/videos/obj_18.mp4  # obj_18.mp4
+  - id: 18
+    name: obj_19_mp4
+    video: research/3d-quality/videos/obj_19.mp4  # obj_19.mp4
+  - id: 19
+    name: obj_20_mp4
+    video: research/3d-quality/videos/obj_20.mp4  # obj_20.mp4
+  - id: 20
+    name: obj_21_mp4
+    video: research/3d-quality/videos/obj_21.mp4  # obj_21.mp4
+  - id: 21
+    name: obj_22_mp4
+    video: research/3d-quality/videos/obj_22.mp4  # obj_22.mp4
+  - id: 22
+    name: obj_23_mp4
+    video: research/3d-quality/videos/obj_23.mp4  # obj_23.mp4
+  - id: 23
+    name: obj_24_mp4
+    video: research/3d-quality/videos/obj_24.mp4  # obj_24.mp4
+  - id: 24
+    name: obj_25_mp4
+    video: research/3d-quality/videos/obj_25.mp4  # obj_25.mp4
+  - id: 25
+    name: obj_26_mp4
+    video: research/3d-quality/videos/obj_26.mp4  # obj_26.mp4
