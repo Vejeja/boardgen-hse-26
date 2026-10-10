@@ -38,7 +38,7 @@ def preflight(store: Store, kind: str, parameters: dict, project=None):
         raise ValueError("Выберите сохранённую версию датасета")
     if kind == "evaluate" and any(not parameters.get(k) for k in ("dataset_id", "model_id")):
         raise ValueError("Выберите модель и датасет с разметкой")
-    if kind in {"predict"} and any(
+    if kind in {"predict", "localize"} and any(
         not parameters.get(k) for k in ("model_id", "source")
     ):
         raise ValueError("Выберите модель и источник изображений или видео")
@@ -143,7 +143,7 @@ def preflight(store: Store, kind: str, parameters: dict, project=None):
             "accept_near_duplicates"
         ):
             raise ValueError("Просмотрите похожие пары датасета и подтвердите разделение")
-    if kind in {"evaluate", "predict"}:
+    if kind in {"evaluate", "predict", "localize"}:
         model = store.artifact(parameters["model_id"], verify=False)
         if model["kind"] != "train":
             raise ValueError("Выберите опубликованную модель обучения")
@@ -156,6 +156,10 @@ def preflight(store: Store, kind: str, parameters: dict, project=None):
             source = store.artifact(model["manifest"]["metadata"]["dataset_id"], verify=False)
             if source["manifest"]["metadata"]["names"] != data["manifest"]["metadata"]["names"]:
                 raise ValueError("Классы модели и датасета различаются")
-    if kind in {"predict"}:
+    if kind in {"predict", "localize"}:
         store.resolve(parameters["source"], exists=True)
+    if kind == "localize":
+        from .localization import validate_inputs
+
+        validate_inputs(store, project, parameters)
     return project, parameters

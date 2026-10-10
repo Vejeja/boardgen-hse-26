@@ -50,6 +50,7 @@ class RunRequest(Model):
         "train",
         "evaluate",
         "predict",
+        "localize",
         "install",
     ]
     parameters: dict = Field(default_factory=dict)
@@ -346,6 +347,36 @@ def create_app(root: Path):
         path = context.store.resolve(body.path, exists=True)
         with Image.open(path) as image:
             return {"width": image.width, "height": image.height}
+
+    @app.post("/api/localization-preview")
+    def localization_preview(body: PathRequest):
+        import base64
+        from contextlib import closing
+
+        import cv2
+
+        from boardgen.localization.pipeline import read_frames
+
+        source = context.store.resolve(body.path, exists=True)
+        with closing(
+            read_frames(source, resolve=lambda p: context.store.resolve(p, exists=True))
+        ) as frames:
+            frame = next(frames, None)
+            if frame is None:
+                raise ValueError("В источнике нет поддерживаемых кадров")
+            image = frame.image
+        h, w = image.shape[:2]
+        scale = min(1, 1400 / max(w, h))
+        if scale < 1:
+            image = cv2.resize(image, None, fx=scale, fy=scale)
+        ok, encoded = cv2.imencode(".jpg", image)
+        if not ok:
+            raise ValueError("Не удалось подготовить просмотр кадра")
+        return {
+            "width": w,
+            "height": h,
+            "image": "data:image/jpeg;base64," + base64.b64encode(encoded).decode(),
+        }
 
     @app.get("/api/artifacts")
     def artifacts():

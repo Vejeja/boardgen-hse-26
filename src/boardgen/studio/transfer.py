@@ -23,6 +23,9 @@ def source_paths(project):
     paths = [f["video"] for f in project["figures"]]
     paths += [b["image"] for b in project["scenes"]["boards"]]
     paths += project["scenes"]["skyboxes"]
+    localization_board = project.get("localization", {}).get("board", {}).get("image")
+    if localization_board:
+        paths.append(localization_board)
     for source in project["dataset"]["real_sources"]:
         paths.append(source["path"])
         if source["groups_csv"]:
@@ -298,6 +301,9 @@ def rebase_project(config, manifest, mappings):
     for board, old in zip(config["scenes"]["boards"], original["scenes"]["boards"], strict=True):
         board["image"] = source(old["image"])
     config["scenes"]["skyboxes"] = list(map(source, original["scenes"]["skyboxes"]))
+    localization_board = original.get("localization", {}).get("board", {}).get("image")
+    if localization_board:
+        config["localization"]["board"]["image"] = source(localization_board)
     for entry, old in zip(
         config["dataset"]["real_sources"], original["dataset"]["real_sources"], strict=True
     ):

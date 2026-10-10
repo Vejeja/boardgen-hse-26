@@ -108,6 +108,11 @@ def execute(store: Store, project: Project, job: dict, folder: Path) -> dict:
                 )["id"]
             ]
         }
+    if kind == "localize":
+        from .localization import localize
+
+        return localize(store, project, parameters, folder, versions)
+
     from .training import evaluate, predict, train
 
     fn = {"train": train, "evaluate": evaluate, "predict": predict}[kind]

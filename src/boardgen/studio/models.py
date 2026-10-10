@@ -261,10 +261,55 @@ class Evaluation(Model):
     imgsz: int | None = Field(None, ge=64, le=2048, multiple_of=32)
 
 
+class LocalizationCamera(Model):
+    width: int = Field(1152, ge=16, le=32768)
+    height: int = Field(1152, ge=16, le=32768)
+    fx: Positive = 1390.587
+    fy: Positive = 1390.587
+    cx: float = Field(576, ge=0, allow_inf_nan=False)
+    cy: float = Field(576, ge=0, allow_inf_nan=False)
+    distortion: list[float] = Field(default_factory=lambda: [0.0, 0.0, 0.0, 0.0, 0.0])
+
+    @model_validator(mode="after")
+    def calibration(self):
+        if self.cx >= self.width or self.cy >= self.height:
+            raise ValueError("Главная точка должна находиться внутри калибровочного изображения")
+        if len(self.distortion) not in {0, 4, 5, 8} or not all(
+            math.isfinite(v) for v in self.distortion
+        ):
+            raise ValueError("Дисторсия: 0, 4, 5 или 8 конечных коэффициентов OpenCV")
+        return self
 
 
+class BaseOverride(Model):
+    center_xy_m: tuple[float, float] | None = None
+    radius_m: Positive | None = None
+    height_m: Positive | None = None
+
+    @model_validator(mode="after")
+    def center(self):
+        if self.center_xy_m is not None and not all(math.isfinite(v) for v in self.center_xy_m):
+            raise ValueError("Центр основания должен быть конечным")
+        return self
 
 
+class Localization(Model):
+    camera: LocalizationCamera = Field(default_factory=LocalizationCamera)
+    board: Board = Field(default_factory=lambda: Board(image=""))
+    registration: Literal["template", "corners"] = "template"
+    corners: list[tuple[float, float]] = Field(default_factory=list)
+    fixed_camera: bool = False
+    video_stride: int = Field(5, ge=1, le=300)
+    preview_limit: int = Field(60, ge=1, le=500)
+    base_overrides: dict[Identifier, BaseOverride] = Field(default_factory=dict)
+
+    @model_validator(mode="after")
+    def points(self):
+        if len(self.corners) not in {0, 4} or any(
+            not math.isfinite(v) or not 0 <= v <= 1 for p in self.corners for v in p
+        ):
+            raise ValueError("Углы: четыре пары координат, нормированных от 0 до 1")
+        return self
 
 
 class Project(Model):
@@ -276,6 +321,7 @@ class Project(Model):
     dataset: Dataset = Field(default_factory=Dataset)
     training: Training = Field(default_factory=Training)
     evaluation: Evaluation = Field(default_factory=Evaluation)
+    localization: Localization = Field(default_factory=Localization)
 
     @model_validator(mode="after")
     def references(self):
@@ -289,6 +335,7 @@ class Project(Model):
             set(self.prepare.overrides) - set(ids)
             or set(self.scenes.height_overrides) - set(ids)
             or set(self.scenes.asset_versions) - set(ids)
+            or set(self.localization.base_overrides) - set(ids)
         ):
             raise ValueError("Настройки ссылаются на отсутствующую фигуру")
         if self.scenes.selected_classes is not None and set(self.scenes.selected_classes) - set(
