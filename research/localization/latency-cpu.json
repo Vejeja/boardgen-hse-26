@@ -1,0 +1,57 @@
+{
+  "device": "cpu",
+  "imgsz": 960,
+  "resolution": [
+    1152,
+    1152
+  ],
+  "frames": 22,
+  "successful": 20,
+  "objects": 68,
+  "setup_s": 1.9688310420024209,
+  "first_predict_s": 0.6670721670088824,
+  "stages": {
+    "read_s": {
+      "mean_s": 0.017890956225693862,
+      "median_s": 0.017648478999035433,
+      "p90_s": 0.019330499693751335,
+      "max_s": 0.020571416011080146
+    },
+    "yolo_s": {
+      "mean_s": 0.07119797358940229,
+      "median_s": 0.07102208350261208,
+      "p90_s": 0.0775401003062143,
+      "max_s": 0.08105383398651611
+    },
+    "registration_s": {
+      "mean_s": 0.11549641095453725,
+      "median_s": 0.10989535400585737,
+      "p90_s": 0.13491275799751748,
+      "max_s": 0.18117187499592546
+    },
+    "fit_s": {
+      "mean_s": 0.2025156515922969,
+      "median_s": 0.14512989549984923,
+      "p90_s": 0.3867560958053219,
+      "max_s": 0.4289883339952212
+    },
+    "total_s": {
+      "mean_s": 0.40710099236193026,
+      "median_s": 0.3731204369905754,
+      "p90_s": 0.5754570131000947,
+      "max_s": 0.6529799999989336
+    }
+  },
+  "successful_total": {
+    "mean_s": 0.4307003249487025,
+    "median_s": 0.39250412449473515,
+    "p90_s": 0.5806422673005728,
+    "max_s": 0.6529799999989336
+  },
+  "notes": [
+    "Two inference warmups precede per-frame timings",
+    "Includes input decode, YOLO and dynamic camera registration and fitting",
+    "Excludes GLB/map loading, preview drawing/writing and UI/serialization",
+    "Selected successful synthetic detections subset"
+  ]
+}

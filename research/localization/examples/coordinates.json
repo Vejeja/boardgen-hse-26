@@ -1,0 +1,191 @@
+{
+  "source": "template-verified benchmark; selected successful synthetic detections",
+  "convention": "world:x-right-y-map-top-z-up",
+  "units": "metres",
+  "frames": [
+    {
+      "image": "images/test/image_0000327.png",
+      "board_size_m": [
+        0.5,
+        0.28095238095238095
+      ],
+      "registration": {
+        "reprojection_rmse_px": 0.44316166904659465,
+        "pose_candidates": 2,
+        "method": "template_sift_pnp",
+        "inliers": 690,
+        "matches": 695,
+        "template_coverage": 0.7588145696514553,
+        "inlier_rmse_px": 0.44316166904659465,
+        "corners_px": [
+          [
+            885.4006858316034,
+            340.795122508739
+          ],
+          [
+            760.547588395675,
+            1107.0469298723754
+          ],
+          [
+            112.41784055405296,
+            927.0310358686328
+          ],
+          [
+            461.1418236971098,
+            248.28232757064302
+          ]
+        ]
+      },
+      "figures": [
+        {
+          "class_id": 5,
+          "xy_m": [
+            0.05106435488028616,
+            0.029360673791448508
+          ],
+          "radius_m": 0.030989253893494606,
+          "yaw_deg": 359.6021663397218,
+          "yaw_observed": false,
+          "confidence": 0.9714730978012085,
+          "error_mm": 0.10418220838286361,
+          "status": "estimated",
+          "name": "Баргест (красный, вожак)"
+        },
+        {
+          "class_id": 9,
+          "xy_m": [
+            -0.14005534586635612,
+            0.02295890171366029
+          ],
+          "radius_m": 0.02308344654738903,
+          "yaw_deg": 359.73718988792723,
+          "yaw_observed": false,
+          "confidence": 0.9654095768928528,
+          "error_mm": 0.5810835480743511,
+          "status": "estimated",
+          "name": "Гоблин-лучник (красный, вожак)"
+        }
+      ]
+    },
+    {
+      "image": "images/test/image_0000465.png",
+      "board_size_m": [
+        0.5,
+        0.28095238095238095
+      ],
+      "registration": {
+        "reprojection_rmse_px": 0.38258609238911306,
+        "pose_candidates": 2,
+        "method": "template_sift_pnp",
+        "inliers": 292,
+        "matches": 301,
+        "template_coverage": 0.7045047768818667,
+        "inlier_rmse_px": 0.38258609238911306,
+        "corners_px": [
+          [
+            501.8128695502949,
+            351.62741443317367
+          ],
+          [
+            981.5351732109053,
+            661.014182073047
+          ],
+          [
+            686.7604602750628,
+            912.825622771992
+          ],
+          [
+            223.67102601122193,
+            502.20466293186274
+          ]
+        ]
+      },
+      "figures": [
+        {
+          "class_id": 5,
+          "xy_m": [
+            0.1771371131171438,
+            -0.055397738482234296
+          ],
+          "radius_m": 0.030989253893494606,
+          "yaw_deg": 0.030299410473390728,
+          "yaw_observed": false,
+          "confidence": 0.9774051308631897,
+          "error_mm": 0.6554413564676543,
+          "status": "estimated",
+          "name": "Баргест (красный, вожак)"
+        },
+        {
+          "class_id": 5,
+          "xy_m": [
+            0.0872539817032008,
+            0.032435604694351666
+          ],
+          "radius_m": 0.030989253893494606,
+          "yaw_deg": 0.6377417155233425,
+          "yaw_observed": false,
+          "confidence": 0.9754335880279541,
+          "error_mm": 0.06898010203999784,
+          "status": "estimated",
+          "name": "Баргест (красный, вожак)"
+        },
+        {
+          "class_id": 3,
+          "xy_m": [
+            -0.014210260292781914,
+            -0.09498971398411686
+          ],
+          "radius_m": 0.009823787957429886,
+          "yaw_deg": 18.71070858904284,
+          "yaw_observed": false,
+          "confidence": 0.9675211906433105,
+          "error_mm": 0.5440937062931953,
+          "status": "estimated",
+          "name": "Эттин (красный, вожак)"
+        },
+        {
+          "class_id": 4,
+          "xy_m": [
+            -0.03446717118159897,
+            -0.015060965863635216
+          ],
+          "radius_m": 0.027456434443593025,
+          "yaw_deg": 0.2738336061270432,
+          "yaw_observed": false,
+          "confidence": 0.9672932624816895,
+          "error_mm": 0.29044346228845397,
+          "status": "estimated",
+          "name": "Баргест (белый, миньон)"
+        },
+        {
+          "class_id": 4,
+          "xy_m": [
+            -0.15009456618422762,
+            -0.0526489431601369
+          ],
+          "radius_m": 0.027456434443593025,
+          "yaw_deg": 358.41946307869335,
+          "yaw_observed": false,
+          "confidence": 0.9532489776611328,
+          "error_mm": 0.7330321894216202,
+          "status": "estimated",
+          "name": "Баргест (белый, миньон)"
+        },
+        {
+          "class_id": 12,
+          "xy_m": [
+            -0.10919094013382896,
+            0.07667362975234908
+          ],
+          "radius_m": 0.010450650937855244,
+          "yaw_deg": 337.7581983237797,
+          "yaw_observed": false,
+          "confidence": 0.9284594655036926,
+          "error_mm": 3.7730668035977226,
+          "status": "estimated",
+          "name": "Леорик Книжник"
+        }
+      ]
+    }
+  ]
+}

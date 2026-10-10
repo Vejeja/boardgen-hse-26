@@ -1,0 +1,514 @@
+{
+  "schema": "boardgen.localization-research.v1",
+  "experiment": "blender-nightly-13-20261010",
+  "selection": {
+    "confidence": 0.5,
+    "minimum_iou": 0.85,
+    "all_objects_correct": true,
+    "frames": 22,
+    "warning": "Selected successful detections, not full dataset accuracy"
+  },
+  "base_definition": "Circle of coherent lower horizontal support (area-weighted), lower 2% fallback; compare transformed mesh proxies, not manually measured physical bases",
+  "units": "millimetres",
+  "model_sha256": "c9d019ac25420e6e47e3b4d820f0d85fa1c20c257cb2c08f04c826be6c6489bb",
+  "inputs": {
+    "dataset_sha256": "8f8935f370b922194e0b3d2a33ccba3ab1e4d5679ae82ab6179006d7108e5bd9",
+    "predictions_sha256": "639242823f7d8d226adf7aff2e5e274eab5c12dd44f32fba89a5e31eea77f347",
+    "meshes": {
+      "/Users/v.kornilova/Documents/course/boardgen/workspaces/blender-nightly-13-20261010/.boardgen/artifacts/95cfe73992a84d6cb12a01a62d44d00f/figure.glb": "95d0dc638800aae15f9e7552fea364442ec814bf602928f949e1f0f7eb3dac86",
+      "/Users/v.kornilova/Documents/course/boardgen/workspaces/blender-nightly-13-20261010/.boardgen/artifacts/da53f37948ec4a12bae80a37629ee7b4/figure.glb": "628c4690399e047deafeb5e2949f097a9d3a02e034943ebaff5fc31b5efa82ee",
+      "/Users/v.kornilova/Documents/course/boardgen/workspaces/blender-nightly-13-20261010/.boardgen/artifacts/a660ecd9f7c2495f8e0d5b9bc696d72c/figure.glb": "08b418b3f78421c06301bd068774aa0b3d6455e8d955e8200feb292c9fe1b0fe",
+      "/Users/v.kornilova/Documents/course/boardgen/workspaces/blender-nightly-13-20261010/.boardgen/artifacts/8fdf51dae33b400e98b043fb393d9cee/figure.glb": "f4b811a517f5a016b77e2a2614e4f21eb3cb13ea93ae37217f5bb324f7f29269",
+      "/Users/v.kornilova/Documents/course/boardgen/workspaces/blender-nightly-13-20261010/.boardgen/artifacts/9c913d25491141e9bbb61e495695994c/figure.glb": "9cf732bc82b40d0bb33b76b104c7ed7789b66e0b6e4470be370fb1da91b5300d",
+      "/Users/v.kornilova/Documents/course/boardgen/workspaces/blender-nightly-13-20261010/.boardgen/artifacts/a9c4069c62874154b9d693fa29c98832/figure.glb": "f3766558c893a0d068936b034e0fb7d401f18327797b8754c543213a0c98f9de",
+      "/Users/v.kornilova/Documents/course/boardgen/workspaces/blender-nightly-13-20261010/.boardgen/artifacts/012de31d7f48417f95b6e9ac4bab1a02/figure.glb": "f199db54c3588cc76fcb370265a8d22cc22958d79d4390f043444ab2d9de5d2a",
+      "/Users/v.kornilova/Documents/course/boardgen/workspaces/blender-nightly-13-20261010/.boardgen/artifacts/71efeb3390a54d45843ceca04db26243/figure.glb": "7b10d4066e4ba81cf7da5afebf9e5f7d12416b0c5f086052675695c6c0a8aa48",
+      "/Users/v.kornilova/Documents/course/boardgen/workspaces/blender-nightly-13-20261010/.boardgen/artifacts/297694b0a0854d50bd1d40851ac8a82f/figure.glb": "ca9076f4a2c6ac2a3eebd36e546bfb6e437ad570d434196b6e01e9d16a59b1ab",
+      "/Users/v.kornilova/Documents/course/boardgen/workspaces/blender-nightly-13-20261010/.boardgen/artifacts/d4fecbfb7edb444b9fd15bb897e86f25/figure.glb": "3987c9904e1eb3d7a0fca888e57701d0121b81cd94dd8a54919f978f62bed494",
+      "/Users/v.kornilova/Documents/course/boardgen/workspaces/blender-nightly-13-20261010/.boardgen/artifacts/a3ec13cf59b34ac09843f89187d0a17a/figure.glb": "a00551ab2da211a0b6cf82ac32456f19c574791074a8707fa1fa11dc06177844",
+      "/Users/v.kornilova/Documents/course/boardgen/workspaces/blender-nightly-13-20261010/.boardgen/artifacts/73113531269746ffa58a35a3556d8ff5/figure.glb": "213fe56932eaad68443180450b069be794e8870c9ccfacd33042a7a067bd0d66",
+      "/Users/v.kornilova/Documents/course/boardgen/workspaces/blender-nightly-13-20261010/.boardgen/artifacts/1a9d245d2a254c738a574948a8b42d03/figure.glb": "4024b3d0fad09509d5acdd6c353566eba7da79a0eef8b28a93b0305ebdf0fdc2"
+    }
+  },
+  "results": {
+    "oracle": {
+      "processed_frames": 22,
+      "objects": 74,
+      "seconds": 7.1752062079904135,
+      "errors_mm": {
+        "median": 1.0821814164619283,
+        "p90": 4.828451550826909,
+        "max": 10.615391696883165
+      },
+      "bottom_baseline_mm": {
+        "median": 18.412303812172272,
+        "p90": 29.96809345072121,
+        "max": 33.655296416324624
+      },
+      "center_baseline_mm": {
+        "median": 16.55301835480377,
+        "p90": 56.778414986613676,
+        "max": 83.80822315406358
+      }
+    },
+    "template": {
+      "processed_frames": 20,
+      "objects": 67,
+      "seconds": 7.300387167008012,
+      "errors_mm": {
+        "median": 1.20845726975008,
+        "p90": 5.772775205983865,
+        "max": 10.696953996081852
+      },
+      "bottom_baseline_mm": {
+        "median": 18.40422477097224,
+        "p90": 29.540983460536747,
+        "max": 34.073659483521524
+      },
+      "center_baseline_mm": {
+        "median": 14.940671024145312,
+        "p90": 39.17166941084924,
+        "max": 68.47782829053742
+      }
+    }
+  },
+  "failures": [
+    {
+      "image": "images/test/image_0000442.png",
+      "error": "Карта не зарегистрирована: недостаточно согласованных совпадений"
+    },
+    {
+      "image": "images/test/image_0000443.png",
+      "error": "Карта не зарегистрирована: недостаточно согласованных совпадений"
+    }
+  ],
+  "per_frame": {
+    "oracle": [
+      {
+        "image": "images/test/image_0000327.png",
+        "objects": 2,
+        "errors_mm": [
+          0.39816419942887754,
+          0.3897750179778769
+        ]
+      },
+      {
+        "image": "images/test/image_0000339.png",
+        "objects": 4,
+        "errors_mm": [
+          0.17233012075744472,
+          0.9163270029142562,
+          0.2229078034635191,
+          1.60389175804808
+        ]
+      },
+      {
+        "image": "images/test/image_0000379.png",
+        "objects": 4,
+        "errors_mm": [
+          1.9047509943192371,
+          1.2256755534590056,
+          0.25428816717398267,
+          2.6109158385816036
+        ]
+      },
+      {
+        "image": "images/test/image_0000412.png",
+        "objects": 2,
+        "errors_mm": [
+          0.5905192588097967,
+          5.569152030527974
+        ]
+      },
+      {
+        "image": "images/test/image_0000422.png",
+        "objects": 2,
+        "errors_mm": [
+          1.9754572019136334,
+          1.1230209355876883
+        ]
+      },
+      {
+        "image": "images/test/image_0000426.png",
+        "objects": 5,
+        "errors_mm": [
+          7.634969326216092,
+          0.16707283718593255,
+          0.7955215713990481,
+          1.987631898063732,
+          5.873038843435336
+        ]
+      },
+      {
+        "image": "images/test/image_0000439.png",
+        "objects": 4,
+        "errors_mm": [
+          0.2813339061753457,
+          0.1942469215207734,
+          3.6616270627686154,
+          8.214883730603859
+        ]
+      },
+      {
+        "image": "images/test/image_0000442.png",
+        "objects": 2,
+        "errors_mm": [
+          0.2965179669527003,
+          3.902972591594572
+        ]
+      },
+      {
+        "image": "images/test/image_0000443.png",
+        "objects": 5,
+        "errors_mm": [
+          1.1053829236741401,
+          0.5877550244016853,
+          3.099442699992174,
+          4.330715054012501,
+          3.639198029836412
+        ]
+      },
+      {
+        "image": "images/test/image_0000447.png",
+        "objects": 3,
+        "errors_mm": [
+          4.968633178882306,
+          3.1178377036055815,
+          1.9721198199908552
+        ]
+      },
+      {
+        "image": "images/test/image_0000449.png",
+        "objects": 4,
+        "errors_mm": [
+          0.3957103855705223,
+          0.43130853565155564,
+          0.567338446564826,
+          3.7556133375898333
+        ]
+      },
+      {
+        "image": "images/test/image_0000453.png",
+        "objects": 2,
+        "errors_mm": [
+          0.6166731126890966,
+          0.4100888502053619
+        ]
+      },
+      {
+        "image": "images/test/image_0000458.png",
+        "objects": 2,
+        "errors_mm": [
+          6.251185864597971,
+          3.585140280967421
+        ]
+      },
+      {
+        "image": "images/test/image_0000459.png",
+        "objects": 2,
+        "errors_mm": [
+          2.921837121389684,
+          0.1984806358656475
+        ]
+      },
+      {
+        "image": "images/test/image_0000462.png",
+        "objects": 2,
+        "errors_mm": [
+          0.8479401474550645,
+          3.3096427875626704
+        ]
+      },
+      {
+        "image": "images/test/image_0000465.png",
+        "objects": 6,
+        "errors_mm": [
+          0.7692526552030085,
+          0.2240160058078653,
+          0.468097183881452,
+          0.4488353289466148,
+          0.7120520659538705,
+          3.6804375058135212
+        ]
+      },
+      {
+        "image": "images/test/image_0000468.png",
+        "objects": 4,
+        "errors_mm": [
+          3.386021710240261,
+          4.501361085364311,
+          0.437026386424039,
+          2.0794848660504073
+        ]
+      },
+      {
+        "image": "images/test/image_0000479.png",
+        "objects": 3,
+        "errors_mm": [
+          0.47527933001362577,
+          0.23237554236511188,
+          0.5356912631522963
+        ]
+      },
+      {
+        "image": "images/test/image_0000508.png",
+        "objects": 6,
+        "errors_mm": [
+          0.5828601032092345,
+          1.4260409585754446,
+          0.6489029479119387,
+          3.102844371649936,
+          1.978619814626271,
+          0.3912170915419155
+        ]
+      },
+      {
+        "image": "images/test/image_0000521.png",
+        "objects": 5,
+        "errors_mm": [
+          0.500313727143725,
+          2.6511408815349533,
+          1.8849484208120426,
+          0.8755949013157845,
+          6.306484263302935
+        ]
+      },
+      {
+        "image": "images/test/image_0000540.png",
+        "objects": 3,
+        "errors_mm": [
+          0.5212524503116815,
+          1.0589799092497163,
+          1.821720702141953
+        ]
+      },
+      {
+        "image": "images/test/image_0000541.png",
+        "objects": 2,
+        "errors_mm": [
+          10.615391696883165,
+          0.07099175591488571
+        ]
+      }
+    ],
+    "template": [
+      {
+        "image": "images/test/image_0000327.png",
+        "objects": 2,
+        "errors_mm": [
+          0.10418220838286361,
+          0.5810835480743511
+        ]
+      },
+      {
+        "image": "images/test/image_0000339.png",
+        "objects": 4,
+        "errors_mm": [
+          0.5884983248034426,
+          0.564006891140533,
+          0.15515613586147586,
+          1.7023095695801578
+        ]
+      },
+      {
+        "image": "images/test/image_0000379.png",
+        "objects": 4,
+        "errors_mm": [
+          1.8536154621127068,
+          1.3249176593813834,
+          0.3217997699620328,
+          2.677840086145544
+        ]
+      },
+      {
+        "image": "images/test/image_0000412.png",
+        "objects": 2,
+        "errors_mm": [
+          0.6806107037997452,
+          5.672389036800962
+        ]
+      },
+      {
+        "image": "images/test/image_0000422.png",
+        "objects": 2,
+        "errors_mm": [
+          2.0749769953787713,
+          2.3748205362429613
+        ]
+      },
+      {
+        "image": "images/test/image_0000426.png",
+        "objects": 5,
+        "errors_mm": [
+          9.164228272696256,
+          1.2817679408876157,
+          0.6289292474215773,
+          1.9571129158812328,
+          7.183375657284151
+        ]
+      },
+      {
+        "image": "images/test/image_0000439.png",
+        "objects": 4,
+        "errors_mm": [
+          0.20383417207625687,
+          0.38821236509617907,
+          4.523481440665384,
+          8.83927033505704
+        ]
+      },
+      {
+        "image": "images/test/image_0000442.png",
+        "objects": 0,
+        "errors_mm": []
+      },
+      {
+        "image": "images/test/image_0000443.png",
+        "objects": 0,
+        "errors_mm": []
+      },
+      {
+        "image": "images/test/image_0000447.png",
+        "objects": 3,
+        "errors_mm": [
+          7.030880939153598,
+          3.613839551343801,
+          1.8526549733862197
+        ]
+      },
+      {
+        "image": "images/test/image_0000449.png",
+        "objects": 4,
+        "errors_mm": [
+          0.4584344177868748,
+          0.6996278688952297,
+          0.5987953056160149,
+          3.4178978479554636
+        ]
+      },
+      {
+        "image": "images/test/image_0000453.png",
+        "objects": 2,
+        "errors_mm": [
+          0.6649297068658757,
+          0.4608540084645417
+        ]
+      },
+      {
+        "image": "images/test/image_0000458.png",
+        "objects": 2,
+        "errors_mm": [
+          5.92335445975822,
+          3.7132313326968873
+        ]
+      },
+      {
+        "image": "images/test/image_0000459.png",
+        "objects": 2,
+        "errors_mm": [
+          2.9888807220274796,
+          0.13879603986633826
+        ]
+      },
+      {
+        "image": "images/test/image_0000462.png",
+        "objects": 2,
+        "errors_mm": [
+          0.4650096497154687,
+          3.7403773060287078
+        ]
+      },
+      {
+        "image": "images/test/image_0000465.png",
+        "objects": 6,
+        "errors_mm": [
+          0.6554413564676543,
+          0.06898010203999784,
+          0.5440937062931953,
+          0.29044346228845397,
+          0.7330321894216202,
+          3.7730668035977226
+        ]
+      },
+      {
+        "image": "images/test/image_0000468.png",
+        "objects": 4,
+        "errors_mm": [
+          3.4289950070933073,
+          4.746113604928598,
+          0.4245427803251629,
+          2.151320093910483
+        ]
+      },
+      {
+        "image": "images/test/image_0000479.png",
+        "objects": 3,
+        "errors_mm": [
+          0.19444683676777555,
+          0.3384511863136705,
+          0.8212321967320112
+        ]
+      },
+      {
+        "image": "images/test/image_0000508.png",
+        "objects": 6,
+        "errors_mm": [
+          0.6134219268339832,
+          1.2900803447818892,
+          0.3419484845711335,
+          2.970995174110306,
+          1.7096394823132643,
+          0.6779804415709706
+        ]
+      },
+      {
+        "image": "images/test/image_0000521.png",
+        "objects": 5,
+        "errors_mm": [
+          0.828825173168117,
+          2.2594716598662243,
+          2.2999321038449425,
+          1.20845726975008,
+          6.250036283761544
+        ]
+      },
+      {
+        "image": "images/test/image_0000540.png",
+        "objects": 3,
+        "errors_mm": [
+          0.21478891678893192,
+          0.7729153842809401,
+          1.5105395073907149
+        ]
+      },
+      {
+        "image": "images/test/image_0000541.png",
+        "objects": 2,
+        "errors_mm": [
+          10.696953996081852,
+          0.4494801645720626
+        ]
+      }
+    ]
+  },
+  "code_sha256": {
+    "src/boardgen/localization/__init__.py": "4b94bb1329ab6735a8f7bdf2304ca4eefee24601648da64ab90167d8b0c0433d",
+    "src/boardgen/localization/assets.py": "a4ae5d979160c0c4c14033ef58271069d287ea020482f512727496e446789111",
+    "src/boardgen/localization/fitting.py": "a8d1c28df490e8125f7378862bc38f92b1d9c1e7527d416b8ea5b50918abef6b",
+    "src/boardgen/localization/geometry.py": "29ddbe4bf6ec1af91c687656b2d57686d34bd211dea98e9f9ba00dc3527b34c5",
+    "src/boardgen/localization/pipeline.py": "b9eea1808b508f2743767a9ab374cbdb8d5a0eae9347633d86bd8dc63f5596f1",
+    "src/boardgen/localization/registration.py": "8d76a280d649225fd3673f2d61f2f3a21f06d000850d3320e45a0017ad5eeb4d",
+    "src/boardgen/localization/visualization.py": "94e73af30ba56b7921e0017360bc143907706e345fe4e380f49681acf1cf8d9b"
+  },
+  "limitations": [
+    "Selected successful detections, not full dataset accuracy",
+    "Synthetic frames only",
+    "Ground truth uses the same mesh-base proxy, no manual physical-base measurements",
+    "Orientation is a bbox-fit hypothesis",
+    "Timing excludes detector inference"
+  ],
+  "local_reports": {
+    "oracle": "out/localization/oracle-verified/report.json",
+    "template": "out/localization/template-verified/report.json"
+  }
+}
