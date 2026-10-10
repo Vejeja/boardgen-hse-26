@@ -32,6 +32,7 @@ export async function updateReadiness() {
     "train",
     "evaluate",
     "predict",
+    "localize",
   ]) {
     const button = document.querySelector(`[data-action="${kind}"]`);
     if (!button) continue;
@@ -47,7 +48,7 @@ export async function updateReadiness() {
           }
         : kind === "evaluate"
           ? { dataset_id: state.datasetId, model_id: state.modelId }
-          : ["predict"].includes(kind)
+          : ["predict", "localize"].includes(kind)
             ? { model_id: state.modelId, source: state.predictionSource }
             : {};
     button.disabled = true;

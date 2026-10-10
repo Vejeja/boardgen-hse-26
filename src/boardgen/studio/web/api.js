@@ -162,6 +162,7 @@ export const kindNames = {
   train: "Обучение YOLO",
   evaluate: "Оценка качества",
   predict: "Поиск фигур",
+  localize: "Координаты и 3D-сцена",
   install: "Настройка окружения",
   reuse: "Переиспользование модели",
 };

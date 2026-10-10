@@ -8,6 +8,7 @@ import {
 } from "./controls.js";
 import { modelViewer } from "./viewer.js";
 import { imagePrediction } from "./result_data.js";
+import { showLocalization } from "./localization_results.js";
 function annotated(
   a,
   path,
@@ -35,6 +36,7 @@ function plot(history) {
 export async function showArtifact(id) {
   if (!state.artifacts.some((x) => x.id === id)) return;
   const a = await api(`/artifacts/${id}`);
+  if (a.kind === "localize") return showLocalization(a);
   const m = a.manifest.metadata;
   const files = Object.keys(a.manifest.files);
   let html = "";
