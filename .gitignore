@@ -46,3 +46,4 @@ node_modules/
 /docs/experiments/
 /research/yolo-blender-nightly/
 
+/.local_archive/
