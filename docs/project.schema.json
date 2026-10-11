@@ -1,0 +1,1358 @@
+{
+  "$defs": {
+    "Appearance": {
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "default": "photo",
+          "enum": [
+            "photo",
+            "native",
+            "neutral"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "photo_views": {
+          "default": 12,
+          "enum": [
+            4,
+            12,
+            24
+          ],
+          "title": "Photo Views",
+          "type": "integer"
+        },
+        "registration": {
+          "default": "silhouette",
+          "enum": [
+            "silhouette",
+            "orbit"
+          ],
+          "title": "Registration",
+          "type": "string"
+        },
+        "texture_size": {
+          "default": 4096,
+          "enum": [
+            1024,
+            2048,
+            4096
+          ],
+          "title": "Texture Size",
+          "type": "integer"
+        }
+      },
+      "title": "Appearance",
+      "type": "object"
+    },
+    "BaseOverride": {
+      "additionalProperties": false,
+      "properties": {
+        "center_xy_m": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Center Xy M"
+        },
+        "radius_m": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Radius M"
+        },
+        "height_m": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Height M"
+        }
+      },
+      "title": "BaseOverride",
+      "type": "object"
+    },
+    "Board": {
+      "additionalProperties": false,
+      "properties": {
+        "image": {
+          "title": "Image",
+          "type": "string"
+        },
+        "width_m": {
+          "default": 0.5,
+          "exclusiveMinimum": 0,
+          "title": "Width M",
+          "type": "number"
+        },
+        "height_m": {
+          "default": 0.5,
+          "exclusiveMinimum": 0,
+          "title": "Height M",
+          "type": "number"
+        }
+      },
+      "required": [
+        "image"
+      ],
+      "title": "Board",
+      "type": "object"
+    },
+    "Camera": {
+      "additionalProperties": false,
+      "properties": {
+        "distance_m": {
+          "default": [
+            0.8,
+            1.2
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            }
+          ],
+          "title": "Distance M",
+          "type": "array"
+        },
+        "elevation_deg": {
+          "default": [
+            25,
+            45
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Elevation Deg",
+          "type": "array"
+        },
+        "azimuth_deg": {
+          "default": [
+            160,
+            340
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Azimuth Deg",
+          "type": "array"
+        },
+        "fov_deg": {
+          "default": 45,
+          "maximum": 65,
+          "minimum": 35,
+          "title": "Fov Deg",
+          "type": "number"
+        },
+        "jitter_xy_m": {
+          "default": 0.03,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Jitter Xy M",
+          "type": "number"
+        },
+        "jitter_roll_deg": {
+          "default": 4,
+          "maximum": 45,
+          "minimum": 0,
+          "title": "Jitter Roll Deg",
+          "type": "number"
+        },
+        "exposure_ev": {
+          "default": -1.4,
+          "maximum": 10,
+          "minimum": -10,
+          "title": "Exposure Ev",
+          "type": "number"
+        }
+      },
+      "title": "Camera",
+      "type": "object"
+    },
+    "Clip": {
+      "additionalProperties": false,
+      "properties": {
+        "start_s": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Start S",
+          "type": "number"
+        },
+        "end_s": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End S"
+        }
+      },
+      "title": "Clip",
+      "type": "object"
+    },
+    "Dataset": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "default": "tabletop",
+          "pattern": "^[a-zA-Z0-9_-]{1,80}$",
+          "title": "Name",
+          "type": "string"
+        },
+        "include_synthetic": {
+          "default": true,
+          "title": "Include Synthetic",
+          "type": "boolean"
+        },
+        "real_sources": {
+          "items": {
+            "$ref": "#/$defs/RealDataset"
+          },
+          "title": "Real Sources",
+          "type": "array"
+        },
+        "val_fraction": {
+          "default": 0.2,
+          "exclusiveMaximum": 1,
+          "exclusiveMinimum": 0,
+          "title": "Val Fraction",
+          "type": "number"
+        },
+        "seed": {
+          "default": 42,
+          "maximum": 2147483647,
+          "minimum": 0,
+          "title": "Seed",
+          "type": "integer"
+        },
+        "near_duplicates": {
+          "default": "review",
+          "enum": [
+            "review",
+            "error"
+          ],
+          "title": "Near Duplicates",
+          "type": "string"
+        },
+        "test_fraction": {
+          "default": 0,
+          "exclusiveMaximum": 1,
+          "minimum": 0,
+          "title": "Test Fraction",
+          "type": "number"
+        },
+        "background_policy": {
+          "default": "none",
+          "enum": [
+            "none",
+            "test_only",
+            "all_splits"
+          ],
+          "title": "Background Policy",
+          "type": "string"
+        }
+      },
+      "title": "Dataset",
+      "type": "object"
+    },
+    "Evaluation": {
+      "additionalProperties": false,
+      "properties": {
+        "split": {
+          "default": "val",
+          "enum": [
+            "val",
+            "test"
+          ],
+          "title": "Split",
+          "type": "string"
+        },
+        "confidence": {
+          "default": 0.25,
+          "exclusiveMaximum": 1,
+          "exclusiveMinimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "nms_iou": {
+          "default": 0.7,
+          "exclusiveMaximum": 1,
+          "exclusiveMinimum": 0,
+          "title": "Nms Iou",
+          "type": "number"
+        },
+        "matching_iou": {
+          "default": 0.5,
+          "exclusiveMaximum": 1,
+          "exclusiveMinimum": 0,
+          "title": "Matching Iou",
+          "type": "number"
+        },
+        "imgsz": {
+          "anyOf": [
+            {
+              "maximum": 2048,
+              "minimum": 64,
+              "multipleOf": 32,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Imgsz"
+        }
+      },
+      "title": "Evaluation",
+      "type": "object"
+    },
+    "Figure": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "video": {
+          "minLength": 1,
+          "title": "Video",
+          "type": "string"
+        },
+        "clip": {
+          "$ref": "#/$defs/Clip"
+        },
+        "reviewed_views": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "propertyNames": {
+            "enum": [
+              "front",
+              "left",
+              "back",
+              "right"
+            ]
+          },
+          "title": "Reviewed Views",
+          "type": "object"
+        },
+        "reviewed_frames_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reviewed Frames Id"
+        },
+        "front_view": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Front View"
+        },
+        "period_views": {
+          "anyOf": [
+            {
+              "minimum": 5,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Period Views"
+        },
+        "focal_px": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Focal Px"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "video"
+      ],
+      "title": "Figure",
+      "type": "object"
+    },
+    "Localization": {
+      "additionalProperties": false,
+      "properties": {
+        "camera": {
+          "$ref": "#/$defs/LocalizationCamera"
+        },
+        "board": {
+          "$ref": "#/$defs/Board"
+        },
+        "registration": {
+          "default": "template",
+          "enum": [
+            "template",
+            "corners"
+          ],
+          "title": "Registration",
+          "type": "string"
+        },
+        "corners": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Corners",
+          "type": "array"
+        },
+        "fixed_camera": {
+          "default": false,
+          "title": "Fixed Camera",
+          "type": "boolean"
+        },
+        "video_stride": {
+          "default": 5,
+          "maximum": 300,
+          "minimum": 1,
+          "title": "Video Stride",
+          "type": "integer"
+        },
+        "preview_limit": {
+          "default": 60,
+          "maximum": 500,
+          "minimum": 1,
+          "title": "Preview Limit",
+          "type": "integer"
+        },
+        "base_overrides": {
+          "patternProperties": {
+            "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$": {
+              "$ref": "#/$defs/BaseOverride"
+            }
+          },
+          "title": "Base Overrides",
+          "type": "object"
+        }
+      },
+      "title": "Localization",
+      "type": "object"
+    },
+    "LocalizationCamera": {
+      "additionalProperties": false,
+      "properties": {
+        "width": {
+          "default": 1152,
+          "maximum": 32768,
+          "minimum": 16,
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "default": 1152,
+          "maximum": 32768,
+          "minimum": 16,
+          "title": "Height",
+          "type": "integer"
+        },
+        "fx": {
+          "default": 1390.587,
+          "exclusiveMinimum": 0,
+          "title": "Fx",
+          "type": "number"
+        },
+        "fy": {
+          "default": 1390.587,
+          "exclusiveMinimum": 0,
+          "title": "Fy",
+          "type": "number"
+        },
+        "cx": {
+          "default": 576,
+          "minimum": 0,
+          "title": "Cx",
+          "type": "number"
+        },
+        "cy": {
+          "default": 576,
+          "minimum": 0,
+          "title": "Cy",
+          "type": "number"
+        },
+        "distortion": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Distortion",
+          "type": "array"
+        }
+      },
+      "title": "LocalizationCamera",
+      "type": "object"
+    },
+    "Matte": {
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "default": "birefnet",
+          "enum": [
+            "birefnet",
+            "classic"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "input_size": {
+          "default": 1024,
+          "maximum": 2048,
+          "minimum": 256,
+          "multipleOf": 32,
+          "title": "Input Size",
+          "type": "integer"
+        },
+        "cross_check": {
+          "default": false,
+          "title": "Cross Check",
+          "type": "boolean"
+        }
+      },
+      "title": "Matte",
+      "type": "object"
+    },
+    "Platform": {
+      "additionalProperties": false,
+      "properties": {
+        "radius_m": {
+          "default": 0.075,
+          "exclusiveMinimum": 0,
+          "title": "Radius M",
+          "type": "number"
+        },
+        "height_m": {
+          "default": 0.018,
+          "exclusiveMinimum": 0,
+          "title": "Height M",
+          "type": "number"
+        },
+        "elevation_deg": {
+          "default": [
+            10,
+            50
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Elevation Deg",
+          "type": "array"
+        },
+        "frame_fraction": {
+          "default": [
+            0.25,
+            0.6
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Frame Fraction",
+          "type": "array"
+        }
+      },
+      "title": "Platform",
+      "type": "object"
+    },
+    "Prepare": {
+      "additionalProperties": false,
+      "properties": {
+        "defaults": {
+          "$ref": "#/$defs/Recipe"
+        },
+        "overrides": {
+          "additionalProperties": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Overrides",
+          "type": "object"
+        },
+        "reuse_completed": {
+          "default": true,
+          "title": "Reuse Completed",
+          "type": "boolean"
+        }
+      },
+      "title": "Prepare",
+      "type": "object"
+    },
+    "RealDataset": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "role": {
+          "default": "development",
+          "enum": [
+            "development",
+            "test_only"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "groups_csv": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Groups Csv"
+        },
+        "negative_labels_confirmed": {
+          "default": false,
+          "title": "Negative Labels Confirmed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "path"
+      ],
+      "title": "RealDataset",
+      "type": "object"
+    },
+    "Recipe": {
+      "additionalProperties": false,
+      "properties": {
+        "matte": {
+          "$ref": "#/$defs/Matte"
+        },
+        "shape": {
+          "$ref": "#/$defs/Shape"
+        },
+        "appearance": {
+          "$ref": "#/$defs/Appearance"
+        }
+      },
+      "title": "Recipe",
+      "type": "object"
+    },
+    "SceneSources": {
+      "additionalProperties": false,
+      "properties": {
+        "boards": {
+          "items": {
+            "$ref": "#/$defs/Board"
+          },
+          "title": "Boards",
+          "type": "array"
+        },
+        "skyboxes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Skyboxes",
+          "type": "array"
+        }
+      },
+      "title": "SceneSources",
+      "type": "object"
+    },
+    "Scenes": {
+      "additionalProperties": false,
+      "properties": {
+        "asset_versions": {
+          "additionalProperties": {
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$",
+            "type": "string"
+          },
+          "title": "Asset Versions",
+          "type": "object"
+        },
+        "selected_classes": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Selected Classes"
+        },
+        "scale_basis": {
+          "default": "nominal",
+          "enum": [
+            "nominal",
+            "shared_video"
+          ],
+          "title": "Scale Basis",
+          "type": "string"
+        },
+        "reference_class": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reference Class"
+        },
+        "count": {
+          "default": 1000,
+          "maximum": 1000000,
+          "minimum": 2,
+          "title": "Count",
+          "type": "integer"
+        },
+        "seed": {
+          "default": 42,
+          "maximum": 2147483647,
+          "minimum": 0,
+          "title": "Seed",
+          "type": "integer"
+        },
+        "image_size": {
+          "default": [
+            1280,
+            960
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            }
+          ],
+          "title": "Image Size",
+          "type": "array"
+        },
+        "objects_per_scene": {
+          "default": [
+            4,
+            12
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            }
+          ],
+          "title": "Objects Per Scene",
+          "type": "array"
+        },
+        "negative_fraction": {
+          "default": 0.05,
+          "maximum": 0.5,
+          "minimum": 0,
+          "title": "Negative Fraction",
+          "type": "number"
+        },
+        "boards": {
+          "items": {
+            "$ref": "#/$defs/Board"
+          },
+          "title": "Boards",
+          "type": "array"
+        },
+        "skyboxes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Skyboxes",
+          "type": "array"
+        },
+        "environment_strength": {
+          "default": 1,
+          "maximum": 20,
+          "minimum": 0,
+          "title": "Environment Strength",
+          "type": "number"
+        },
+        "camera": {
+          "$ref": "#/$defs/Camera"
+        },
+        "nominal_height_m": {
+          "default": 0.05,
+          "exclusiveMinimum": 0,
+          "title": "Nominal Height M",
+          "type": "number"
+        },
+        "height_overrides": {
+          "additionalProperties": {
+            "exclusiveMinimum": 0,
+            "type": "number"
+          },
+          "title": "Height Overrides",
+          "type": "object"
+        },
+        "min_side_px": {
+          "default": 12,
+          "maximum": 512,
+          "minimum": 1,
+          "title": "Min Side Px",
+          "type": "integer"
+        },
+        "max_attempts": {
+          "default": 10,
+          "maximum": 100,
+          "minimum": 1,
+          "title": "Max Attempts",
+          "type": "integer"
+        },
+        "neutral_ablation": {
+          "default": false,
+          "title": "Neutral Ablation",
+          "type": "boolean"
+        },
+        "scene_type": {
+          "default": "board",
+          "enum": [
+            "board",
+            "platform",
+            "mixed"
+          ],
+          "title": "Scene Type",
+          "type": "string"
+        },
+        "platform": {
+          "$ref": "#/$defs/Platform"
+        },
+        "split_sources": {
+          "additionalProperties": {
+            "$ref": "#/$defs/SceneSources"
+          },
+          "propertyNames": {
+            "enum": [
+              "train",
+              "val",
+              "test"
+            ]
+          },
+          "title": "Split Sources",
+          "type": "object"
+        },
+        "render_samples": {
+          "default": 64,
+          "maximum": 256,
+          "minimum": 1,
+          "title": "Render Samples",
+          "type": "integer"
+        },
+        "environment_rotation_deg": {
+          "default": [
+            -180,
+            180
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Environment Rotation Deg",
+          "type": "array"
+        },
+        "light_energy": {
+          "default": [
+            180,
+            180
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            }
+          ],
+          "title": "Light Energy",
+          "type": "array"
+        },
+        "exposure_jitter_ev": {
+          "default": 0,
+          "maximum": 3,
+          "minimum": 0,
+          "title": "Exposure Jitter Ev",
+          "type": "number"
+        },
+        "balanced_classes": {
+          "default": false,
+          "title": "Balanced Classes",
+          "type": "boolean"
+        },
+        "stratified_negatives": {
+          "default": false,
+          "title": "Stratified Negatives",
+          "type": "boolean"
+        }
+      },
+      "title": "Scenes",
+      "type": "object"
+    },
+    "Shape": {
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "default": "mv",
+          "enum": [
+            "mv",
+            "spirula"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "extraction": {
+          "default": "native",
+          "enum": [
+            "native",
+            "depth_fusion"
+          ],
+          "title": "Extraction",
+          "type": "string"
+        },
+        "candidate_frames": {
+          "default": 100,
+          "maximum": 400,
+          "minimum": 10,
+          "multipleOf": 5,
+          "title": "Candidate Frames",
+          "type": "integer"
+        },
+        "frame_size": {
+          "default": 1024,
+          "maximum": 2048,
+          "minimum": 256,
+          "title": "Frame Size",
+          "type": "integer"
+        },
+        "mesh_resolution": {
+          "default": 256,
+          "enum": [
+            128,
+            256,
+            384
+          ],
+          "title": "Mesh Resolution",
+          "type": "integer"
+        },
+        "timeout_seconds": {
+          "default": 840,
+          "maximum": 86400,
+          "minimum": 60,
+          "title": "Timeout Seconds",
+          "type": "integer"
+        },
+        "iterations": {
+          "default": 5000,
+          "maximum": 100000,
+          "minimum": 1000,
+          "title": "Iterations",
+          "type": "integer"
+        },
+        "cameras": {
+          "default": "orbit",
+          "enum": [
+            "orbit",
+            "sfm"
+          ],
+          "title": "Cameras",
+          "type": "string"
+        },
+        "profile": {
+          "default": "control",
+          "enum": [
+            "control",
+            "detail"
+          ],
+          "title": "Profile",
+          "type": "string"
+        },
+        "cap": {
+          "default": 120000,
+          "maximum": 1000000,
+          "minimum": 10000,
+          "title": "Cap",
+          "type": "integer"
+        },
+        "seed": {
+          "default": 23,
+          "maximum": 2147483647,
+          "minimum": 0,
+          "title": "Seed",
+          "type": "integer"
+        }
+      },
+      "title": "Shape",
+      "type": "object"
+    },
+    "Training": {
+      "additionalProperties": false,
+      "properties": {
+        "weights": {
+          "default": "yolo11n.pt",
+          "title": "Weights",
+          "type": "string"
+        },
+        "epochs": {
+          "default": 100,
+          "maximum": 10000,
+          "minimum": 1,
+          "title": "Epochs",
+          "type": "integer"
+        },
+        "time": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 24,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Time"
+        },
+        "imgsz": {
+          "default": 640,
+          "maximum": 2048,
+          "minimum": 64,
+          "multipleOf": 32,
+          "title": "Imgsz",
+          "type": "integer"
+        },
+        "batch": {
+          "default": 4,
+          "maximum": 128,
+          "minimum": 1,
+          "title": "Batch",
+          "type": "integer"
+        },
+        "patience": {
+          "default": 20,
+          "maximum": 1000,
+          "minimum": 0,
+          "title": "Patience",
+          "type": "integer"
+        },
+        "workers": {
+          "default": 2,
+          "maximum": 16,
+          "minimum": 0,
+          "title": "Workers",
+          "type": "integer"
+        },
+        "optimizer": {
+          "default": "auto",
+          "enum": [
+            "auto",
+            "SGD",
+            "Adam",
+            "AdamW"
+          ],
+          "title": "Optimizer",
+          "type": "string"
+        },
+        "lr0": {
+          "default": 0.01,
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "title": "Lr0",
+          "type": "number"
+        },
+        "seed": {
+          "default": 42,
+          "maximum": 2147483647,
+          "minimum": 0,
+          "title": "Seed",
+          "type": "integer"
+        },
+        "deterministic": {
+          "default": true,
+          "title": "Deterministic",
+          "type": "boolean"
+        },
+        "mosaic": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Mosaic",
+          "type": "number"
+        },
+        "cache": {
+          "default": false,
+          "title": "Cache",
+          "type": "boolean"
+        },
+        "nbs": {
+          "default": 64,
+          "maximum": 256,
+          "minimum": 1,
+          "title": "Nbs",
+          "type": "integer"
+        },
+        "warmup_epochs": {
+          "default": 3,
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Warmup Epochs",
+          "type": "number"
+        },
+        "weight_decay": {
+          "default": 0.0005,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Weight Decay",
+          "type": "number"
+        },
+        "cos_lr": {
+          "default": false,
+          "title": "Cos Lr",
+          "type": "boolean"
+        },
+        "close_mosaic": {
+          "default": 10,
+          "maximum": 1000,
+          "minimum": 0,
+          "title": "Close Mosaic",
+          "type": "integer"
+        },
+        "hsv_h": {
+          "default": 0.015,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Hsv H",
+          "type": "number"
+        },
+        "hsv_s": {
+          "default": 0.7,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Hsv S",
+          "type": "number"
+        },
+        "hsv_v": {
+          "default": 0.4,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Hsv V",
+          "type": "number"
+        },
+        "fliplr": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Fliplr",
+          "type": "number"
+        },
+        "flipud": {
+          "default": 0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Flipud",
+          "type": "number"
+        },
+        "mixup": {
+          "default": 0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Mixup",
+          "type": "number"
+        },
+        "copy_paste": {
+          "default": 0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Copy Paste",
+          "type": "number"
+        },
+        "scale": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Scale",
+          "type": "number"
+        },
+        "translate": {
+          "default": 0.1,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Translate",
+          "type": "number"
+        }
+      },
+      "title": "Training",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "boardgen.studio.v1",
+      "default": "boardgen.studio.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "name": {
+      "default": "Boardgen",
+      "maxLength": 120,
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "figures": {
+      "items": {
+        "$ref": "#/$defs/Figure"
+      },
+      "title": "Figures",
+      "type": "array"
+    },
+    "prepare": {
+      "$ref": "#/$defs/Prepare"
+    },
+    "scenes": {
+      "$ref": "#/$defs/Scenes"
+    },
+    "dataset": {
+      "$ref": "#/$defs/Dataset"
+    },
+    "training": {
+      "$ref": "#/$defs/Training"
+    },
+    "evaluation": {
+      "$ref": "#/$defs/Evaluation"
+    },
+    "localization": {
+      "$ref": "#/$defs/Localization"
+    }
+  },
+  "title": "Project",
+  "type": "object"
+}

@@ -1,0 +1,115 @@
+schema_version: boardgen.studio.v1
+name: Фигуры для настольной игры
+figures:
+- id: obj_02
+  name: Теневой дракон (красный, вожак)
+  video: research/3d-quality/videos/obj_02.mp4
+  clip:
+    start_s: 0.0
+    end_s: null
+  reviewed_views: {}
+  reviewed_frames_id: null
+  front_view: null
+  period_views: null
+  focal_px: null
+- id: obj_19
+  name: Грисбан Жаждущий
+  video: research/3d-quality/videos/obj_19.mp4
+  clip:
+    start_s: 0.0
+    end_s: null
+  reviewed_views: {}
+  reviewed_frames_id: null
+  front_view: null
+  period_views: null
+  focal_px: null
+prepare:
+  defaults:
+    matte:
+      method: birefnet
+      input_size: 1024
+      cross_check: false
+    shape:
+      method: mv
+      candidate_frames: 100
+      frame_size: 1024
+      mesh_resolution: 256
+      timeout_seconds: 840
+      iterations: 5000
+      cameras: orbit
+      profile: control
+      cap: 120000
+      seed: 23
+    appearance:
+      method: photo
+      photo_views: 12
+      registration: silhouette
+      texture_size: 4096
+  overrides: {}
+  reuse_completed: true
+scenes:
+  asset_versions: {}
+  selected_classes: null
+  scale_basis: nominal
+  reference_class: null
+  count: 1000
+  seed: 42
+  image_size:
+  - 1280
+  - 960
+  objects_per_scene:
+  - 4
+  - 12
+  negative_fraction: 0.05
+  boards:
+  - image: data/board/board1.png
+    width_m: 0.5
+    height_m: 0.5
+  skyboxes:
+  - data/skybox/room.jpg
+  environment_strength: 1.0
+  camera:
+    distance_m:
+    - 0.8
+    - 1.2
+    elevation_deg:
+    - 25.0
+    - 45.0
+    azimuth_deg:
+    - 160.0
+    - 340.0
+    fov_deg: 45.0
+    jitter_xy_m: 0.03
+    jitter_roll_deg: 4.0
+    exposure_ev: -1.4
+  nominal_height_m: 0.05
+  height_overrides: {}
+  min_side_px: 12
+  max_attempts: 10
+  neutral_ablation: false
+dataset:
+  name: tabletop
+  include_synthetic: true
+  real_sources: []
+  val_fraction: 0.2
+  seed: 42
+  near_duplicates: review
+training:
+  weights: yolo11n.pt
+  epochs: 100
+  imgsz: 640
+  batch: 4
+  patience: 20
+  workers: 2
+  optimizer: auto
+  lr0: 0.01
+  seed: 42
+  deterministic: true
+  mosaic: 0.5
+  cache: false
+evaluation:
+  split: val
+  confidence: 0.25
+  nms_iou: 0.7
+  matching_iou: 0.5
+  imgsz: null
